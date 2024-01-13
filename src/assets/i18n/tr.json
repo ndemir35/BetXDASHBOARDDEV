@@ -2,7 +2,7 @@
     "LOGIN": {
         "LOGIN_FORM": {
             "TITLE": "Giriş",
-            "USERNAME": "Kullanıcı Adı",
+            "USERNAME": "Kullanıcı Adı / Email",
             "PASSWORD": "Şifre",
             "LOGIN": "Giriş yap",
             "FORM_VALIDATION_FAIL_REQUIRED": "Lütfen gerekli alanları doldurun",

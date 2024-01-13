@@ -2,7 +2,7 @@
     "LOGIN": {
         "LOGIN_FORM": {
             "TITLE": "Login",
-            "USERNAME": "Username",
+            "USERNAME": "Username / Email",
             "PASSWORD": "Password",
             "LOGIN": "Login",
             "FORM_VALIDATION_FAIL_REQUIRED": "Please fill in the required fields",
