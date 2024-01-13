@@ -1,21 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './containers';
-import { LoginComponent } from './views/login/login.component';
+import { canActivateDashboard } from './guards/auth.guard'
 
 const routes: Routes = [
+  {
+    path: 'login',
+    pathMatch: 'full',
+    loadComponent: () => import('./views/login/login.component').then(x => x.LoginComponent)
+  },
   {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full'
   },
   {
-    path:  'login',
-    loadComponent: () => import('./views/login/login.component').then(x => x.LoginComponent)
-  },
-  {
     path: '',
     component: DefaultLayoutComponent,
+    canActivate: [canActivateDashboard],
     data: {
       title: $localize`Home`
     },

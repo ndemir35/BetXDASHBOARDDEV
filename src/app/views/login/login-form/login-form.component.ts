@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { SHARED_MODULES } from "@betx/shared";
 import { ButtonModule, FormModule, SpinnerModule } from "@coreui/angular-pro";
 import { IconModule } from "@coreui/icons-angular";
-import { LoginService } from '../login.service';
+import { AuthenticationService } from '../../../shared/services/authentication.service';
 import { Subscription } from "rxjs";
 import { Router, RouterModule } from "@angular/router";
 
@@ -36,7 +36,7 @@ export class LoginFormComponent implements OnInit, OnDestroy {
 
     constructor(
         private _formBuilder: FormBuilder,
-        private _loginService: LoginService,
+        private _loginService: AuthenticationService,
         private _router: Router
     ) { }
 
