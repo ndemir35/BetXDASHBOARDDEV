@@ -4,7 +4,6 @@
             "TITLE": "Login",
             "USERNAME": "Username",
             "PASSWORD": "Password",
-            "NEXT": "Next",
             "LOGIN": "Login",
             "FORM_VALIDATION_FAIL_REQUIRED": "Please fill in the required fields",
             "FORM_VALIDATION_FAIL": "Username or password is incorrect"
