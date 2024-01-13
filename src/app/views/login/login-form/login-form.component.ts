@@ -1,9 +1,11 @@
-import { ChangeDetectionStrategy, Component, OnChanges, OnInit, SimpleChanges } from "@angular/core";
+import { ChangeDetectionStrategy, Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { SHARED_MODULES } from "@betx/shared";
 import { ButtonModule, FormModule, SpinnerModule } from "@coreui/angular-pro";
 import { IconModule } from "@coreui/icons-angular";
 import { LoginService } from '../login.service';
+import { Subscription } from "rxjs";
+import { Router, RouterModule } from "@angular/router";
 
 
 @Component({
@@ -17,11 +19,13 @@ import { LoginService } from '../login.service';
         SpinnerModule,
         IconModule,
         ReactiveFormsModule,
+        RouterModule,
         SHARED_MODULES,
     ],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LoginFormComponent implements OnInit {
+export class LoginFormComponent implements OnInit, OnDestroy {
+    private _subscriptions = new Subscription();
     isLoading = false;
     isLoginFailed = false;
     form: FormGroup = new FormGroup({
@@ -32,8 +36,9 @@ export class LoginFormComponent implements OnInit {
 
     constructor(
         private _formBuilder: FormBuilder,
-        private _loginService: LoginService
-        ) { }
+        private _loginService: LoginService,
+        private _router: Router
+    ) { }
 
     getIsValidValueFor = (field: string) =>
         this.isSubmitted ? this.form.get(field)?.valid : null;
@@ -60,11 +65,22 @@ export class LoginFormComponent implements OnInit {
     login() {
         this.isSubmitted = true;
 
-        if(!this.form.valid) {
+        if (!this.form.valid) {
             return;
         }
 
         this.isLoading = true;
-        this._loginService.login();
+        this._subscriptions.add(
+            this._loginService.login().subscribe(loginResult => {
+                if (loginResult) {
+                    this._router.navigateByUrl('/dashboard')
+                }
+            })
+        );
     }
+
+    ngOnDestroy(): void {
+        this._subscriptions.unsubscribe();
+    }
+
 }
