@@ -32,6 +32,6 @@ export class AvatarComponent {
 
   logout() {
     this._authService.logout();
-    this._router.navigateByUrl('/login');
+    this._router.navigateByUrl('auth/login');
   }
 }

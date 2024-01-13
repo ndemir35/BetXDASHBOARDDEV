@@ -1,35 +1,51 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './containers';
-import { canActivateDashboard } from './guards/auth.guard'
+import { canActivateDashboard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'login',
-    pathMatch: 'full',
-    loadComponent: () => import('./views/login/login.component').then(x => x.LoginComponent)
+    path: 'auth',
+    loadChildren: () =>
+      import('./views/auth/auth.routes').then((m) => m.AUTH_ROUTES),
   },
-  {
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full'
-  },
+  // {
+  //   path: 'login',
+  //   pathMatch: 'full',
+  //   loadComponent: () =>
+  //     import('./views/login/login.component').then((x) => x.LoginComponent),
+  // },
+  // {
+  //   path: 'password-change',
+  //   pathMatch: 'full',
+  //   loadComponent: () =>
+  //     import('./views/password-change/password-change.component').then(
+  //       (x) => x.PasswordChangeComponent
+  //     ),
+  // },
+  // {
+  //   path: '',
+  //   redirectTo: 'dashboard',
+  //   pathMatch: 'full',
+  // },
   {
     path: '',
     component: DefaultLayoutComponent,
     canActivate: [canActivateDashboard],
     data: {
-      title: $localize`Home`
+      title: $localize`Home`,
     },
     children: [
       {
         path: 'dashboard',
         loadChildren: () =>
-          import('./views/dashboard/dashboard.module').then((m) => m.DashboardModule)
-      }
-    ]
+          import('./views/dashboard/dashboard.module').then(
+            (m) => m.DashboardModule
+          ),
+      },
+    ],
   },
-  { path: '**', redirectTo: 'dashboard' }
+  { path: '**', redirectTo: 'dashboard' },
 ];
 
 @NgModule({
@@ -37,10 +53,9 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
       scrollPositionRestoration: 'top',
       anchorScrolling: 'enabled',
-      initialNavigation: 'enabledBlocking'
-    })
+      initialNavigation: 'enabledBlocking',
+    }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

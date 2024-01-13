@@ -13,7 +13,6 @@ export class AuthenticationService {
    * @throws {Error} if the logout process fails
    */
   logout() {
-    throw new Error('Method not implemented.');
   }
 
   isLoggedIn(): Observable<boolean> {
