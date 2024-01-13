@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
 
-import { IconSetService } from '@coreui/icons-angular';
-import { iconSubset } from './icons/icon-subset';
 import { Title } from '@angular/platform-browser';
+import { IconSetService } from '@coreui/icons-angular';
+import { TranslateService } from '@ngx-translate/core';
+import { iconSubset } from './icons/icon-subset';
+
 
 @Component({
   selector: 'app-root',
@@ -13,20 +14,23 @@ export class AppComponent implements OnInit {
   title = 'BetX Admin Dashboard';
 
   constructor(
-    private router: Router,
+    private _translateService: TranslateService,
     titleService: Title,
-    iconSetService: IconSetService
+    iconSetService: IconSetService,
   ) {
     titleService.setTitle(this.title);
-    // iconSet singleton
     iconSetService.icons = { ...iconSubset };
   }
 
   ngOnInit(): void {
-    this.router.events.subscribe((evt) => {
-      if (!(evt instanceof NavigationEnd)) {
-        return;
-      }
-    });
+    this.initAppLanguage();
+  }
+
+  initAppLanguage(): void {
+    this._translateService.setDefaultLang('en-US');
+    const browserLanguage = this._translateService.getBrowserCultureLang();
+    if(browserLanguage) {
+      this._translateService.use(browserLanguage);
+    }
   }
 }

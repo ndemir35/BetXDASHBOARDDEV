@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -30,7 +30,18 @@ import {
   SidebarModule
 } from '@coreui/angular-pro';
 
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
+export function createTranslateLoader(http: HttpClient) {
+    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 const APP_CONTAINERS = [
   DefaultAsideComponent,
@@ -55,7 +66,16 @@ const APP_CONTAINERS = [
     ButtonModule,
     SidebarModule,
     BadgeModule,
-    NgScrollbarModule
+    NgScrollbarModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      },
+      defaultLanguage: 'en'
+    })
   ],
   providers: [
     {

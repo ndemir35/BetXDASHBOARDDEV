@@ -1,0 +1,11 @@
+{
+    "LOGIN": {
+        "LOGIN_FORM": {
+            "TITLE": "Login",
+            "USERNAME": "Username",
+            "PASSWORD": "Password",
+            "NEXT": "Next",
+            "LOGIN": "Login"
+        }
+    }
+}
