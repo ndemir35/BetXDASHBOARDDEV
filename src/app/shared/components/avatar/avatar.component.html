@@ -1,1 +1,19 @@
-<c-avatar color="primary" textColor="white">CUI</c-avatar>
+<c-dropdown>
+  <c-avatar
+    cDropdownToggle
+    [caret]="false"
+    size="m"
+    role="button"
+    color="primary"
+    textColor="white"
+    >CUI</c-avatar
+  >
+  <ul cDropdownMenu>
+    <li>
+      <div cButton role="button" class="d-flex gap-2 align-items-center" cDropdownItem>
+        <svg class="mr-3" cIcon name="cil-account-logout"></svg>
+        <span>Logout</span>
+      </div>
+    </li>
+  </ul>
+</c-dropdown>

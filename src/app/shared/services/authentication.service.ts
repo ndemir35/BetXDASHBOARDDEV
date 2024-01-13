@@ -2,17 +2,25 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
-    providedIn: 'root',
+  providedIn: 'root',
 })
 export class AuthenticationService {
+  constructor() {}
 
-    constructor() { }
+  /**
+   * Logs the user out of the application.
+   *
+   * @throws {Error} if the logout process fails
+   */
+  logout() {
+    throw new Error('Method not implemented.');
+  }
 
-    isLoggedIn(): Observable<boolean> {
-        return of(true);
-    };
+  isLoggedIn(): Observable<boolean> {
+    return of(true);
+  }
 
-    login(): Observable<boolean> {
-        return of(true);
-    }
+  login(): Observable<boolean> {
+    return of(true);
+  }
 }
