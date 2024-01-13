@@ -4,13 +4,12 @@ import { AvatarComponent } from '@betx/shared/components/avatar/avatar.component
 
 import {
   BreadcrumbModule,
-  GridModule,
   HeaderComponent,
   HeaderModule,
   NavModule,
-  SidebarModule,
+  SidebarModule
 } from '@coreui/angular-pro';
-import { IconModule, IconSetModule } from '@coreui/icons-angular';
+import { IconModule } from '@coreui/icons-angular';
 
 @Component({
   selector: 'betx-header',
@@ -20,7 +19,6 @@ import { IconModule, IconSetModule } from '@coreui/icons-angular';
     AvatarComponent,
     SHARED_MODULES,
     BreadcrumbModule,
-    GridModule,
     SidebarModule,
     HeaderModule,
     NavModule,

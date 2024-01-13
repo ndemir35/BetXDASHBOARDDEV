@@ -5,15 +5,19 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthenticationService {
+  private _forgotPasswordUsername = '';
+
   constructor() {}
 
-  /**
-   * Logs the user out of the application.
-   *
-   * @throws {Error} if the logout process fails
-   */
-  logout() {
+  set forgotPasswordUsername(username: string) {
+    this._forgotPasswordUsername = username;
   }
+
+  get forgotPasswordUsername() {
+    return this._forgotPasswordUsername;
+  }
+
+  logout() {}
 
   isLoggedIn(): Observable<boolean> {
     return of(true);
@@ -21,5 +25,9 @@ export class AuthenticationService {
 
   login(): Observable<boolean> {
     return of(true);
+  }
+
+  sendChangePasswordLink() {
+    throw new Error('Method not implemented.');
   }
 }

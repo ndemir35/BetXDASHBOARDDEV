@@ -14,7 +14,6 @@ import { DefaultFooterComponent } from './default-footer/default-footer.componen
   standalone: true,
   imports: [
     SHARED_MODULES,
-    GridModule,
     DefaultHeaderComponent,
     SidebarModule,
     NgScrollbarModule,
