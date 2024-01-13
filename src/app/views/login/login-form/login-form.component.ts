@@ -42,7 +42,7 @@ export class LoginFormComponent implements OnInit, OnDestroy {
     ) { }
 
     getIsValidValueFor = (field: string) =>
-        this.isSubmitted ? this.form.get(field)?.valid : null;
+        this.isSubmitted ? this.form.get(field)?.valid : undefined;
 
     isLoginButtonDisabled = () => this.form.get('username')?.value.length < MIN_CHARS_TO_ENABLE_LOGIN_BTN ||
         this.form.get('password')?.value.length < MIN_CHARS_TO_ENABLE_LOGIN_BTN;
