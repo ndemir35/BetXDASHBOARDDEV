@@ -23,6 +23,7 @@ import { LoginService } from '../login.service';
 })
 export class LoginFormComponent implements OnInit {
     isLoading = false;
+    isLoginFailed = false;
     form: FormGroup = new FormGroup({
         username: new FormControl(''),
         password: new FormControl(''),

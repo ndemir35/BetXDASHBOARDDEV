@@ -1,12 +1,12 @@
-<c-form-feedback [valid]="true">Looks
-  good!</c-form-feedback>
 <form [formGroup]="form" (ngSubmit)="login()" cForm>
 
   <div class="mb-3">
     <c-input-group class="flex-nowrap">
+
       <span cInputGroupText id="addon-wrapping"><svg cIcon name="cilEnvelopeOpen" size="s"></svg></span>
       <input [valid]="getIsValidValueFor('username')" formControlName="username" cFormControl
         [placeholder]="'LOGIN.LOGIN_FORM.USERNAME' | translate" />
+
     </c-input-group>
   </div>
 
@@ -20,7 +20,14 @@
 
     </c-input-group>
   </div>
-  <div></div>
+  <div class="mb-3">
+    <p *ngIf="isSubmitted && !form.valid" class="text-danger">
+      {{'LOGIN.LOGIN_FORM.FORM_VALIDATION_FAIL_REQUIRED' | translate }}
+    </p>
+    <p *ngIf="isSubmitted && isLoginFailed" class="text-danger">
+      {{'LOGIN.LOGIN_FORM.FORM_VALIDATION_FAIL' | translate }}
+    </p>
+  </div>
   <button [disabled]="isLoading" cButton class="align-items-center" shape="rounded-0" type="submit">
     <c-spinner *ngIf="isLoading" size="sm"></c-spinner>
     {{ 'LOGIN.LOGIN_FORM.NEXT' | translate }}

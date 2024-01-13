@@ -5,7 +5,9 @@
             "USERNAME": "Nome de usuário",
             "PASSWORD": "Senha",
             "NEXT": "Avançar",
-            "LOGIN": "Conecte-se"
+            "LOGIN": "Conecte-se",
+            "FORM_VALIDATION_FAIL_REQUIRED": "Por favor preencha os campos obrigatórios",
+            "FORM_VALIDATION_FAIL": "Nome de usuário ou senha estão incorretos"
         }
     }
 }
