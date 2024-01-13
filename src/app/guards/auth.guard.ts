@@ -1,8 +1,7 @@
-import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from "@angular/router";
-import { AuthenticationService } from "../shared/services/authentication.service";
 import { inject } from "@angular/core";
-import { catchError, map, tap } from "rxjs/operators";
-import { of } from "rxjs";
+import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from "@angular/router";
+import { tap } from "rxjs/operators";
+import { AuthenticationService } from "../shared/services/authentication.service";
 
 export const canActivateDashboard: CanActivateFn = (
     route: ActivatedRouteSnapshot,
