@@ -7,6 +7,7 @@ import { AuthenticationService } from '../../../shared/services/authentication.s
 import { Subscription } from "rxjs";
 import { Router, RouterModule } from "@angular/router";
 
+const MIN_CHARS_TO_ENABLE_LOGIN_BTN = 3;
 
 @Component({
     selector: 'betx-login-form',
@@ -42,6 +43,9 @@ export class LoginFormComponent implements OnInit, OnDestroy {
 
     getIsValidValueFor = (field: string) =>
         this.isSubmitted ? this.form.get(field)?.valid : null;
+
+    isLoginButtonDisabled = () => this.form.get('username')?.value.length < MIN_CHARS_TO_ENABLE_LOGIN_BTN ||
+        this.form.get('password')?.value.length < MIN_CHARS_TO_ENABLE_LOGIN_BTN;
 
     ngOnInit(): void {
         this.form = this._formBuilder.group(
