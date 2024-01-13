@@ -13,7 +13,6 @@ import { AppComponent } from './app.component';
 
 // Import containers
 import {
-  DefaultAsideComponent,
   DefaultFooterComponent,
   DefaultHeaderComponent,
   DefaultLayoutComponent
@@ -44,7 +43,6 @@ export function createTranslateLoader(http: HttpClient) {
 }
 
 const APP_CONTAINERS = [
-  DefaultAsideComponent,
   DefaultFooterComponent,
   DefaultHeaderComponent,
   DefaultLayoutComponent
