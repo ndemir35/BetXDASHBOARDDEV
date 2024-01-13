@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { DefaultLayoutComponent } from './containers';
+import { canActivateDashboard } from './guards/auth.guard'
 
 const routes: Routes = [
+  {
+    path: 'login',
+    pathMatch: 'full',
+    loadComponent: () => import('./views/login/login.component').then(x => x.LoginComponent)
+  },
   {
     path: '',
     redirectTo: 'dashboard',
@@ -12,6 +17,7 @@ const routes: Routes = [
   {
     path: '',
     component: DefaultLayoutComponent,
+    canActivate: [canActivateDashboard],
     data: {
       title: $localize`Home`
     },

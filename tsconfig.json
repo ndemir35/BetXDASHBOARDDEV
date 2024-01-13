@@ -1,11 +1,13 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
-  "compileOnSave": false,
+  "compileOnSave": true,
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
       "@angular/*": [ "node_modules/@angular/*" ],
-      "@coreui/*": ["node_modules/@coreui/*"],
+      "@coreui/*": ["node_modules/@coreui/*"], 
+      "@betx/*": ["src/app/*"],
+      "~/*": ["src/*"],
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
@@ -29,14 +31,14 @@
     ]
   },
   "angularCompilerOptions": {
-    "enableI18nLegacyMessageIdFormat": false,
+    "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": false
+    "enableIvy": true
   },
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.spec.json" },
-  ]
+  ],
+
 }

@@ -1,0 +1,13 @@
+{
+    "LOGIN": {
+        "LOGIN_FORM": {
+            "TITLE": "Giriş",
+            "USERNAME": "Kullanıcı Adı",
+            "PASSWORD": "Şifre",
+            "NEXT": "İleri",
+            "LOGIN": "Giriş yap",
+            
+            "FORM_VALIDATION_FAIL": "Kullanıcı adı veya şifre hatalı"
+        }
+    }
+}
