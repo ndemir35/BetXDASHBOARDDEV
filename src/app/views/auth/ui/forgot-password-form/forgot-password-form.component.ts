@@ -20,7 +20,7 @@ import {
 } from '@coreui/angular-pro';
 import { IconModule } from '@coreui/icons-angular';
 import { Subscription } from 'rxjs';
-import { AuthenticationService } from '../../../shared/services/authentication.service';
+import { IdentityService } from '../../data/identity.service';
 
 const MIN_CHARS_TO_ENABLE_LOGIN_BTN = 3;
 
@@ -52,7 +52,7 @@ export class ForgotPasswordFormComponent implements OnInit, OnDestroy {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _authService: AuthenticationService,
+    private _authService: IdentityService,
     private _router: Router
   ) {}
 

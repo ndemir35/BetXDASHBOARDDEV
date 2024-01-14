@@ -16,7 +16,7 @@ import { SHARED_MODULES } from '@betx/shared';
 import { ButtonModule, FormModule, GridModule, SpinnerModule } from '@coreui/angular-pro';
 import { IconModule } from '@coreui/icons-angular';
 import { Subscription } from 'rxjs';
-import { AuthenticationService } from '../../../shared/services/authentication.service';
+import { IdentityService } from '../../data/identity.service';
 
 const MIN_CHARS_TO_ENABLE_LOGIN_BTN = 3;
 
@@ -48,7 +48,7 @@ export class LoginFormComponent implements OnInit, OnDestroy {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _authService: AuthenticationService,
+    private _authService: IdentityService,
     private _router: Router
   ) {}
 

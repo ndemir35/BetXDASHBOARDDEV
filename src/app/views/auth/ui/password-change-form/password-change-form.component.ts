@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SHARED_MODULES } from '@betx/shared';
-import { AuthenticationService } from '@betx/shared/services/authentication.service';
+import { IdentityService } from '@betx/views/auth/data/identity.service';
 import { ButtonModule, FormModule, SpinnerModule } from '@coreui/angular-pro';
 import { IconModule } from '@coreui/icons-angular';
 
@@ -38,7 +38,7 @@ export class PasswordChangeFormComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _authService: AuthenticationService,
+    private _authService: IdentityService,
     private _router: Router
   ) {}
 

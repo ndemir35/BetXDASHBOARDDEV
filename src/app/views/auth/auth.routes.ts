@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { LoginFormComponent } from './login-form/login-form.component';
-import { PasswordChangeFormComponent } from './password-change-form/password-change-form.component';
+import { LoginFormComponent } from './ui/login-form/login-form.component';
+import { PasswordChangeFormComponent } from './ui/password-change-form/password-change-form.component';
 import { AuthComponent } from './auth.component';
-import { ForgotPasswordFormComponent } from './forgot-password-form/forgot-password-form.component';
+import { ForgotPasswordFormComponent } from './ui/forgot-password-form/forgot-password-form.component';
 
 export const AUTH_ROUTES: Routes = [
   {

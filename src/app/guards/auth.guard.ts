@@ -1,13 +1,13 @@
 import { inject } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from "@angular/router";
 import { tap } from "rxjs/operators";
-import { AuthenticationService } from "../shared/services/authentication.service";
+import { IdentityService } from "../views/auth/data/identity.service";
 
 export const canActivateDashboard: CanActivateFn = (
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
 ) => {
-    const authService = inject(AuthenticationService);
+    const authService = inject(IdentityService);
     const router = inject(Router);
 
     return authService.isLoggedIn().pipe(

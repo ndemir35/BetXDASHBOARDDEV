@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { SHARED_MODULES } from '@betx/shared';
-import { AuthenticationService } from '@betx/shared/services/authentication.service';
+import { IdentityService } from '@betx/views/auth/data/identity.service';
 import {
   AvatarModule,
   DropdownModule,
@@ -26,7 +26,7 @@ import { IconModule } from '@coreui/icons-angular';
 })
 export class AvatarComponent {
   constructor(
-    private _authService: AuthenticationService,
+    private _authService: IdentityService,
     private _router: Router
   ) {}
 
