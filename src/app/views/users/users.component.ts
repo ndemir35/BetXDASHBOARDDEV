@@ -3,16 +3,16 @@ import { RouterModule } from '@angular/router';
 import { SHARED_MODULES } from '@betx/shared';
 
 @Component({
-  selector: 'app-identity',
-  templateUrl: './identity.component.html',
-  styleUrls: ['./identity.component.css'],
+  selector: 'betx-users',
+  templateUrl: './users.component.html',
+  styleUrls: ['./users.component.css'],
   standalone: true,
   imports: [
     SHARED_MODULES,
     RouterModule
   ]
 })
-export class IdentityComponent implements OnInit {
+export class UsersComponent implements OnInit {
 
   constructor() { }
 

@@ -17,8 +17,8 @@ const routes: Routes = [
       {
         path: 'user',
         loadChildren: () =>
-          import('./views/identity/identity.routes').then(
-            (m) => m.IDENTITY_ROUTES
+          import('./views/users/users.routes').then(
+            (m) => m.USERS_ROUTES
           ),
       },
       {

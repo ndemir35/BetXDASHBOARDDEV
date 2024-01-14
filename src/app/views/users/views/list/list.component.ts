@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SHARED_MODULES } from '@betx/shared';
 
 @Component({
-  selector: 'app-list',
+  selector: 'betx-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css'],
   standalone: true,

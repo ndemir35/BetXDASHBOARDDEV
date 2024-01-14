@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SHARED_MODULES } from '@betx/shared';
 
 @Component({
-  selector: 'app-new',
+  selector: 'betx-new',
   templateUrl: './new.component.html',
   styleUrls: ['./new.component.css'],
   standalone: true,

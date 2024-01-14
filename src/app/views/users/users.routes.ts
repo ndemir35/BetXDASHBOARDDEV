@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { IdentityComponent } from './identity.component';
+import { UsersComponent } from './users.component';
 
-export const IDENTITY_ROUTES: Routes = [
+export const USERS_ROUTES: Routes = [
   {
     path: '',
-    component: IdentityComponent,
+    component: UsersComponent,
     children: [
       {
         path: 'new',
