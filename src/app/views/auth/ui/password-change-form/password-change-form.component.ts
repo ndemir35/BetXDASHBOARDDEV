@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SHARED_MODULES } from '@betx/shared';
-import { IdentityService } from '@betx/views/auth/data/identity.service';
+import { IdentityService } from '@betx/shared/data/services/identity.service';
 import { ButtonModule, FormModule, SpinnerModule } from '@coreui/angular-pro';
 import { IconModule } from '@coreui/icons-angular';
 

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { UserRegisterModel } from '../models';
 
 @Injectable({
   providedIn: 'root',
@@ -30,4 +31,6 @@ export class IdentityService {
   sendChangePasswordLink() {
     throw new Error('Method not implemented.');
   }
+
+  register(user: UserRegisterModel): void {}
 }

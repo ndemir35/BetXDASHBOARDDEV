@@ -4,7 +4,8 @@ import {
   cilSpeedometer,
   cilEnvelopeOpen,
   cilLockLocked,
-  cilAccountLogout
+  cilAccountLogout,
+  cilUser
 } from '@coreui/icons';
 
 export const iconSubset = {
@@ -13,7 +14,8 @@ export const iconSubset = {
   cilSpeedometer,
   cilEnvelopeOpen,
   cilLockLocked,
-  cilAccountLogout
+  cilAccountLogout,
+  cilUser
 };
 
 export enum IconSubset {
@@ -22,5 +24,6 @@ export enum IconSubset {
   cilSpeedometer = 'cilSpeedometer',
   cilEnvelopeOpen= 'cilEnvelopeOpen',
   cilLockLocked = 'cilLockLocked',
-  cilAccountLogout = 'cilAccountLogout'
+  cilAccountLogout = 'cilAccountLogout',
+  cilUser = 'cilUser'
 }

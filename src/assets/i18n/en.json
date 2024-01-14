@@ -1,26 +1,31 @@
 {
-    "LOGIN": {
-        "LOGIN_FORM": {
-            "TITLE": "Login",
-            "USERNAME": "Username / Email",
-            "PASSWORD": "Password",
-            "LOGIN": "Login",
-            "FORM_VALIDATION_FAIL_REQUIRED": "Please fill in the required fields",
-            "FORM_VALIDATION_FAIL": "Username or password is incorrect",
-            "FORGOT_YOUR_PASSWORD": "Forgot your password?"
-          },
-          "PASSWORD_CHANGE_FORM": {
-            "TITLE": "Reset password",
-            "NEW_PASSWORD": "New password",
-            "CONFIRM_NEW_PASSWORD": "Confirm new password",
-            "SUBMIT_NEW_PASSWORD": "Submit new password"
-          },
-          "FORGOT_PASSWORD_FORM": {
-            "TITLE": "Forgot your password?",
-            "USERNAME": "Username / Email",
-            "SEND": "Send",
-            "FORM_HELP": "We will send a link to your email address to reset your password.",
-            "BACK_TO_LOGIN": "Back to login"
-          }
-        }
-      }
+  "LOGIN": {
+    "LOGIN_FORM": {
+      "TITLE": "Login",
+      "USERNAME": "Username / Email",
+      "PASSWORD": "Password",
+      "LOGIN": "Login",
+      "FORM_VALIDATION_FAIL_REQUIRED": "Please fill in the required fields",
+      "FORM_VALIDATION_FAIL": "Username or password is incorrect",
+      "FORGOT_YOUR_PASSWORD": "Forgot your password?"
+    },
+    "PASSWORD_CHANGE_FORM": {
+      "TITLE": "Reset password",
+      "NEW_PASSWORD": "New password",
+      "CONFIRM_NEW_PASSWORD": "Confirm new password",
+      "SUBMIT_NEW_PASSWORD": "Submit new password"
+    },
+    "FORGOT_PASSWORD_FORM": {
+      "TITLE": "Forgot your password?",
+      "USERNAME": "Username / Email",
+      "SEND": "Send",
+      "FORM_HELP": "We will send a link to your email address to reset your password.",
+      "BACK_TO_LOGIN": "Back to login"
+    }
+  },
+  "DASHBOARD": {
+    "MENU": {
+      "USERS": "Users"
+    }
+  }
+}

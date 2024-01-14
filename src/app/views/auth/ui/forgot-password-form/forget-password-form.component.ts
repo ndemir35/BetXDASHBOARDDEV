@@ -16,7 +16,7 @@ import { SHARED_MODULES } from '@betx/shared';
 import { ButtonModule, FormModule, SpinnerModule } from '@coreui/angular-pro';
 import { IconModule } from '@coreui/icons-angular';
 import { Subscription } from 'rxjs';
-import { IdentityService } from '../../data/identity.service';
+import { IdentityService } from '../../../../shared/data/services/identity.service';
 
 const MIN_CHARS_TO_ENABLE_LOGIN_BTN = 3;
 

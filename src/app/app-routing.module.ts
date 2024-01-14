@@ -9,33 +9,18 @@ const routes: Routes = [
     loadChildren: () =>
       import('./views/auth/auth.routes').then((m) => m.AUTH_ROUTES),
   },
-  // {
-  //   path: 'login',
-  //   pathMatch: 'full',
-  //   loadComponent: () =>
-  //     import('./views/login/login.component').then((x) => x.LoginComponent),
-  // },
-  // {
-  //   path: 'password-change',
-  //   pathMatch: 'full',
-  //   loadComponent: () =>
-  //     import('./views/password-change/password-change.component').then(
-  //       (x) => x.PasswordChangeComponent
-  //     ),
-  // },
-  // {
-  //   path: '',
-  //   redirectTo: 'dashboard',
-  //   pathMatch: 'full',
-  // },
   {
     path: '',
     component: DefaultLayoutComponent,
     canActivate: [canActivateDashboard],
-    data: {
-      title: $localize`Home`,
-    },
     children: [
+      {
+        path: 'user',
+        loadChildren: () =>
+          import('./views/identity/identity.routes').then(
+            (m) => m.IDENTITY_ROUTES
+          ),
+      },
       {
         path: 'dashboard',
         loadChildren: () =>

@@ -22,5 +22,10 @@
       "FORM_HELP": "We will send a link to your email address to reset your password.",
       "BACK_TO_LOGIN": "Back to login"
     }
+  },
+  "DASHBOARD": {
+    "MENU": {
+      "USERS": "Users"
+    }
   }
 }

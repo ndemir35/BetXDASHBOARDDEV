@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { SHARED_MODULES } from '@betx/shared';
-import { IdentityService } from '@betx/views/auth/data/identity.service';
+import { IdentityService } from '@betx/shared/data/services/identity.service';
 import {
   AvatarModule,
   DropdownModule,
