@@ -10,13 +10,13 @@ export const IDENTITY_ROUTES: Routes = [
         path: 'new',
         pathMatch: 'full',
         loadComponent: () =>
-          import('./ui/new/new.component').then((m) => m.NewComponent),
+          import('./views/new/new.component').then((m) => m.NewComponent),
       },
       {
         path: 'list',
         pathMatch: 'full',
         loadComponent: () =>
-          import('./ui/list/list.component').then((m) => m.ListComponent),
+          import('./views/list/list.component').then((m) => m.ListComponent),
       },
       {
         path: '',
