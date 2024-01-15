@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 import { UserRegisterModel } from '../models';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { environment } from '~/environments/environment';
+import { ApiResponse } from '../models/response';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +11,7 @@ import { UserRegisterModel } from '../models';
 export class IdentityService {
   private _forgotPasswordUsername = '';
 
-  constructor() {}
+  constructor(private _http: HttpClient) {}
 
   set forgotPasswordUsername(username: string) {
     this._forgotPasswordUsername = username;
@@ -32,5 +35,25 @@ export class IdentityService {
     throw new Error('Method not implemented.');
   }
 
-  register(user: UserRegisterModel): void {}
+  register(user: UserRegisterModel): Observable<ApiResponse> {
+    return this._http
+      .post(`${environment.identityServiceUrl}/user/register`, user)
+      .pipe(
+        catchError((e) => {
+          return of({
+            message: e.message,
+            status: e.status,
+            isSuccessful: false,
+          });
+        }),
+        map(
+          (response: any) =>
+            ({
+              message: response.message,
+              status: response.status,
+              isSuccessful: response.isSuccessful,
+            } as ApiResponse)
+        )
+      );
+  }
 }

@@ -1,3 +1,39 @@
-<p>
-  new works!
-</p>
+<!-- TODO TRANSLATE -->
+<c-card>
+  <c-card-header>New user</c-card-header>
+  <c-card-body>
+    <form [formGroup]="newUserForm" (ngSubmit)="createNewUser()" cForm>
+      <div class="mb-3">
+        <label cLabel for="inputEmail-1">Email address</label>
+        <input formControlName="email" cFormControl type="email" />
+        <div cFormText>We'll never share your email with anyone else</div>
+      </div>
+
+      <div class="mb-3">
+        <label cLabel for="inputEmail-1">Username</label>
+        <input formControlName="username" cFormControl />
+      </div>
+      <div class="mb-3">
+        <label cLabel for="inputPassword-1">Password</label>
+        <input formControlName="password" cFormControl type="password" />
+      </div>
+      <button
+        type="submit"
+        disabledOnLoading
+        [loading]="isLoading"
+        cLoadingButton
+      >
+        Submit
+      </button>
+    </form>
+  </c-card-body>
+</c-card>
+
+<c-toaster placement="top-end" class="p-3" position="fixed">
+  <c-toast [visible]="showToast">
+    <c-toast-header> {{ toastTitle }} </c-toast-header>
+    <c-toast-body>
+      <p>{{ toastMessage }}</p>
+    </c-toast-body>
+  </c-toast>
+</c-toaster>

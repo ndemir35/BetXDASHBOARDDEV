@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SHARED_MODULES } from '@betx/shared';
+import { CardModule, NavModule } from '@coreui/angular-pro';
 
 @Component({
   selector: 'betx-users',
@@ -9,7 +10,9 @@ import { SHARED_MODULES } from '@betx/shared';
   standalone: true,
   imports: [
     SHARED_MODULES,
-    RouterModule
+    RouterModule,
+    NavModule,
+    CardModule
   ]
 })
 export class UsersComponent implements OnInit {

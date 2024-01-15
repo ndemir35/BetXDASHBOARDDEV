@@ -12,15 +12,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // Import containers
-import {
-  DefaultFooterComponent,
-} from './containers';
 
 import {
   BadgeModule,
   BreadcrumbModule,
   ButtonModule,
-  FooterModule,
   GridModule,
   HeaderModule,
   NavModule,
@@ -40,7 +36,6 @@ export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
-
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -48,7 +43,6 @@ export function createTranslateLoader(http: HttpClient) {
     BrowserAnimationsModule,
     AppRoutingModule,
     BreadcrumbModule,
-    FooterModule,
     GridModule,
     HeaderModule,
     SidebarModule,

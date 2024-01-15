@@ -5,7 +5,6 @@ import { INavData, SidebarModule } from '@coreui/angular-pro';
 import { TranslateService } from '@ngx-translate/core';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { Subscription, first } from 'rxjs';
-import { DefaultFooterComponent } from './default-footer/default-footer.component';
 import { DefaultHeaderComponent } from './default-header/default-header.component';
 import { IconSubset } from '@betx/icons/icon-subset';
 
@@ -19,7 +18,6 @@ import { IconSubset } from '@betx/icons/icon-subset';
     SidebarModule,
     NgScrollbarModule,
     RouterModule,
-    DefaultFooterComponent,
   ],
   styleUrls: ['./default-layout.component.scss'],
 })
