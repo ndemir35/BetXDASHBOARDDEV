@@ -51,11 +51,19 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy {
       this._translateService.onLangChange.pipe(first()).subscribe((event) => {
         this.navItems = [
           {
-            name: this._translateService.instant('DASHBOARD.MENU.USERS'),
+            name: 'DASHBOARD.MENU.DASHBOARD',
+            url: '/dashboard',
+            iconComponent: { name: 'cil-speedometer' },
+          },
+          {
+            name: 'DASHBOARD.MENU.USERS',
             url: '/user',
             iconComponent: { name: 'cil-user' },
           },
-        ];
+        ].map((item) => ({
+          ...item,
+          name: this._translateService.instant(item.name),
+        }));
       })
     );
   }

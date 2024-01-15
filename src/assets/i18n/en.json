@@ -25,6 +25,7 @@
   },
   "DASHBOARD": {
     "MENU": {
+      "DASHBOARD": "Dashboard",
       "USERS": "Users"
     }
   }

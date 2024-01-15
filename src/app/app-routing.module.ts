@@ -22,15 +22,15 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'dashboard',
+        path: 'home',
         loadChildren: () =>
-          import('./views/dashboard/dashboard.module').then(
-            (m) => m.DashboardModule
+          import('./views/dashboard/dashboard.routes').then(
+            (m) => m.DASHBOARD_ROUTES
           ),
       },
     ],
   },
-  { path: '**', redirectTo: 'dashboard' },
+  { path: '**', redirectTo: 'home' },
 ];
 
 @NgModule({

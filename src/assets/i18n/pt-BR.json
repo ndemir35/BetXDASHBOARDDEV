@@ -25,6 +25,7 @@
   },
   "DASHBOARD": {
     "MENU": {
+      "DASHBOARD": "Painel",
       "USERS": "Usuários"
     }
   }

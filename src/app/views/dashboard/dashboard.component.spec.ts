@@ -1,19 +1,16 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+/* tslint:disable:no-unused-variable */
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DashboardComponent } from './dashboard.component';
-import { CardBodyComponent, CardComponent, CardHeaderComponent } from '@coreui/angular-pro';
 
-describe('DashboardComponent', () => {
+describe('HomeComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
       declarations: [DashboardComponent],
-      imports: [CardComponent, CardHeaderComponent, CardBodyComponent]
-    })
-      .compileComponents();
-  });
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(DashboardComponent);
