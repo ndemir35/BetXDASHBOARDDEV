@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FORM_MODULES, SHARED_MODULES } from '@betx/shared';
+import { ToastService } from '@betx/shared/components/toast/toast.service';
 import { IdentityService } from '@betx/shared/data';
 import { ToastModule } from '@coreui/angular-pro';
 import { finalize, tap } from 'rxjs';
@@ -14,16 +15,16 @@ import { finalize, tap } from 'rxjs';
 })
 export class NewComponent implements OnInit {
   isLoading = false;
-  showToast = false;
-  toastMessage = '';
-  toastTitle = 'Success';
   newUserForm = new FormGroup({
     email: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
     username: new FormControl('', [Validators.required]),
   });
 
-  constructor(private _identityService: IdentityService) {}
+  constructor(
+    private _identityService: IdentityService,
+    private _toastService: ToastService
+  ) {}
 
   ngOnInit() {}
 
@@ -50,17 +51,21 @@ export class NewComponent implements OnInit {
           finalize(() => {
             this.isLoading = false;
             this.newUserForm.enable();
+            // TODO: MOVE TO ERROR HANDLER
           })
         )
         .subscribe((e) => {
+          this._toastService.show({
+            header: e.isSuccessful ? 'Success' : 'Error',
+            body: e.isSuccessful
+              ? 'Created user successfully'
+              : 'Error creating user!',
+            color: e.isSuccessful ? 'success' : 'danger',
+          });
+
           if (e.isSuccessful) {
+            this.newUserForm.reset();
           }
-          this.toastMessage = e.isSuccessful
-            ? 'Created user successfully'
-            : 'Error creating user!';
-          this.toastTitle = e.isSuccessful ? 'Success' : 'Error';
-          this.showToast = true;
-          this.newUserForm.reset();
           this.newUserForm.enable();
         });
     }

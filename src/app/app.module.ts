@@ -27,6 +27,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ToastComponent } from './shared/components/toast/toast.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -53,6 +54,7 @@ export function createTranslateLoader(http: HttpClient) {
     BadgeModule,
     NgScrollbarModule,
     HttpClientModule,
+    ToastComponent,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

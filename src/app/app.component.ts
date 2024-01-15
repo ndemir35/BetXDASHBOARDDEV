@@ -5,10 +5,13 @@ import { IconSetService } from '@coreui/icons-angular';
 import { TranslateService } from '@ngx-translate/core';
 import { iconSubset } from './icons/icon-subset';
 
-
 @Component({
   selector: 'app-root',
-  template: '<router-outlet></router-outlet>',
+  template: `
+    <router-outlet>
+      <betx-toast></betx-toast>
+    </router-outlet>
+  `,
 })
 export class AppComponent implements OnInit {
   title = 'BetX Admin Dashboard';
@@ -16,7 +19,7 @@ export class AppComponent implements OnInit {
   constructor(
     private _translateService: TranslateService,
     titleService: Title,
-    iconSetService: IconSetService,
+    iconSetService: IconSetService
   ) {
     titleService.setTitle(this.title);
     iconSetService.icons = { ...iconSubset };
@@ -29,7 +32,7 @@ export class AppComponent implements OnInit {
   initAppLanguage(): void {
     this._translateService.setDefaultLang('en-US');
     const browserLanguage = this._translateService.getBrowserCultureLang();
-    if(browserLanguage) {
+    if (browserLanguage) {
       this._translateService.use(browserLanguage);
     }
   }
