@@ -1,17 +1,20 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, map, of } from 'rxjs';
-import { UserRegisterModel } from '../models';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { BaseApiService } from '@betx/core/base-api-service';
+import { Observable, of } from 'rxjs';
 import { environment } from '~/environments/environment';
+import { UserRegisterModel } from '../models';
 import { ApiResponse } from '../models/response';
 
 @Injectable({
   providedIn: 'root',
 })
-export class IdentityService {
+export class IdentityService extends BaseApiService {
   private _forgotPasswordUsername = '';
 
-  constructor(private _http: HttpClient) {}
+  constructor(_http: HttpClient) {
+    super(_http);
+  }
 
   set forgotPasswordUsername(username: string) {
     this._forgotPasswordUsername = username;
@@ -36,24 +39,6 @@ export class IdentityService {
   }
 
   register(user: UserRegisterModel): Observable<ApiResponse> {
-    return this._http
-      .post(`${environment.identityServiceUrl}/user/register`, user)
-      .pipe(
-        catchError((e) => {
-          return of({
-            message: e.message,
-            status: e.status,
-            isSuccessful: false,
-          });
-        }),
-        map(
-          (response: any) =>
-            ({
-              message: response.message,
-              status: response.status,
-              isSuccessful: response.isSuccessful,
-            } as ApiResponse)
-        )
-      );
+    return this.post(`${environment.identityServiceUrl}/user/register`, user);
   }
 }
