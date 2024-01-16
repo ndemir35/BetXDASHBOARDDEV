@@ -19,6 +19,7 @@ export class NewComponent implements OnInit {
     email: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
     username: new FormControl('', [Validators.required]),
+    userTypeId: new FormControl('', [Validators.required]),
   });
 
   constructor(
@@ -36,8 +37,9 @@ export class NewComponent implements OnInit {
     const email = this.newUserForm.value.email;
     const password = this.newUserForm.value.password;
     const username = this.newUserForm.value.username;
+    const userTypeId = this.newUserForm.value.userTypeId;
 
-    if (email && password && username) {
+    if (email && password && username && userTypeId) {
       this.isLoading = true;
       this.newUserForm.disable();
 
@@ -46,6 +48,7 @@ export class NewComponent implements OnInit {
           email,
           username,
           password,
+          userTypeId
         })
         .pipe(
           finalize(() => {
@@ -57,7 +60,7 @@ export class NewComponent implements OnInit {
         .subscribe((e) => {
           this._toastService.show({
             header: e.isSuccessful ? 'Success' : 'Error',
-            body: e.isSuccessful
+            message: e.isSuccessful
               ? 'Created user successfully'
               : 'Error creating user!',
             color: e.isSuccessful ? 'success' : 'danger',

@@ -1,18 +1,31 @@
 <c-container>
   <h3 class="mb-3">{{ "LOGIN.LOGIN_FORM.TITLE" | translate }}</h3>
-  <form [formGroup]="form" (ngSubmit)="login()" cForm>
+
+  <form
+    #customStylesForm="ngForm"
+    [formGroup]="form"
+    (ngSubmit)="login()"
+    [noValidate]="true"
+    cForm
+  >
     <div class="mb-3">
       <c-input-group class="flex-nowrap">
         <span cInputGroupText id="addon-wrapping">
           <svg cIcon name="cilEnvelopeOpen" size="s"></svg>
         </span>
         <input
-          [valid]="getIsValidValueFor('username')"
           formControlName="username"
           cFormControl
           [placeholder]="'LOGIN.LOGIN_FORM.USERNAME' | translate"
+          [valid]="isFieldValid('username')"
         />
       </c-input-group>
+      <p
+        *ngIf="shouldShowValidationError('username', 'required')"
+        class="text-danger mt-2"
+      >
+        {{ "REQUIRED" | betxValidationMessage }}
+      </p>
     </div>
 
     <div class="mb-3">
@@ -21,32 +34,37 @@
           <svg cIcon name="cilLockLocked" size="s"></svg>
         </span>
         <input
-          [valid]="getIsValidValueFor('password')"
           formControlName="password"
           type="password"
           cFormControl
           [placeholder]="'LOGIN.LOGIN_FORM.PASSWORD' | translate"
+          [valid]="isFieldValid('password')"
         />
       </c-input-group>
-    </div>
-    <div class="mb-3">
-      <p *ngIf="isSubmitted && !form.valid" class="text-danger">
-        {{ "LOGIN.LOGIN_FORM.FORM_VALIDATION_FAIL_REQUIRED" | translate }}
-      </p>
-      <p *ngIf="isSubmitted && isLoginFailed" class="text-danger">
-        {{ "LOGIN.LOGIN_FORM.FORM_VALIDATION_FAIL" | translate }}
+      <p
+        *ngIf="shouldShowValidationError('password', 'required')"
+        class="text-danger mt-2"
+      >
+        {{ "REQUIRED" | betxValidationMessage }}
       </p>
     </div>
-
+    <c-alert *ngIf="errorCode?.length" color="danger">{{
+      errorCode | betxApiMessage
+    }}</c-alert>
     <c-row>
       <c-col class="text-left" lg="12">
-        <button cButton color="link" (click)="goToForgotMyPassword()">
+        <button
+          *ngIf="!isLoading"
+          cButton
+          color="link"
+          (click)="goToForgotMyPassword()"
+        >
           {{ "LOGIN.LOGIN_FORM.FORGOT_YOUR_PASSWORD" | translate }}
         </button>
       </c-col>
       <c-col class="text-right" lg="12">
         <button
-          [disabled]="isLoading || isLoginButtonDisabled()"
+          [disabled]="isLoading"
           cButton
           class="align-items-center"
           shape="rounded-0"

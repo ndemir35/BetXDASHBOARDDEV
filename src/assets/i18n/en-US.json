@@ -28,5 +28,11 @@
       "DASHBOARD": "Dashboard",
       "USERS": "Users"
     }
+  },
+  "API_RESPONSE": {
+    "USERNOTFOUND": "User with the provided email not found."
+  },
+  "VALIDATION": {
+    "REQUIRED": "This field is required"
   }
 }

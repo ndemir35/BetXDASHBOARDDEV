@@ -17,4 +17,11 @@ export class ToastService {
   show(message: ToastMessage) {
     this._toastStream.next(message);
   }
+
+  error(message: string) {
+    this.show({
+      message: message,
+      color: 'danger',
+    });
+  }
 }

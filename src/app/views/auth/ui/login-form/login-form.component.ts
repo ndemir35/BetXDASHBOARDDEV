@@ -1,24 +1,24 @@
 import {
-    ChangeDetectionStrategy,
-    Component,
-    OnDestroy,
-    OnInit
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
 } from '@angular/core';
-import {
-    FormBuilder,
-    FormControl,
-    FormGroup,
-    ReactiveFormsModule,
-    Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { SHARED_MODULES } from '@betx/shared';
-import { ButtonModule, FormModule, GridModule, SpinnerModule } from '@coreui/angular-pro';
+import {
+  FORM_MODULES,
+  SHARED_COMPONENTS,
+  SHARED_MODULES,
+  ValidationMessagePipe,
+} from '@betx/shared';
+import { UserLoginModel } from '@betx/shared/data';
+import { ApiResponse } from '@betx/shared/data/interfaces/response';
+import { ApiMessagePipe } from '@betx/shared/pipes/api-message.pipe';
+import { AlertModule, ButtonModule, SpinnerModule } from '@coreui/angular-pro';
 import { IconModule } from '@coreui/icons-angular';
-import { Subscription } from 'rxjs';
 import { IdentityService } from '../../../../shared/data/services/identity.service';
-
-const MIN_CHARS_TO_ENABLE_LOGIN_BTN = 3;
+import { isEmail } from '../../utils/is-email';
 
 @Component({
   selector: 'betx-login-form',
@@ -26,69 +26,96 @@ const MIN_CHARS_TO_ENABLE_LOGIN_BTN = 3;
   styleUrls: ['./login-form.component.scss'],
   standalone: true,
   imports: [
-    FormModule,
     ButtonModule,
     SpinnerModule,
     IconModule,
-    ReactiveFormsModule,
     RouterModule,
+    AlertModule,
     SHARED_MODULES,
+    FORM_MODULES,
+    SHARED_COMPONENTS,
+    ApiMessagePipe,
+    ValidationMessagePipe,
   ],
+  providers: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginFormComponent implements OnInit, OnDestroy {
-  private _subscriptions = new Subscription();
+export class LoginFormComponent implements OnInit {
   isLoading = false;
-  isLoginFailed = false;
+  isUsernameValid?: boolean;
+  isPasswordValid?: boolean;
+
   form: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
+    username: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required]),
   });
-  isSubmitted = false;
+  errorCode = '';
 
   constructor(
-    private _formBuilder: FormBuilder,
+    private _cdr: ChangeDetectorRef,
     private _authService: IdentityService,
     private _router: Router
   ) {}
 
-  getIsValidValueFor = (field: string) =>
-    this.isSubmitted ? this.form.get(field)?.valid : undefined;
+  ngOnInit(): void {}
 
-  isLoginButtonDisabled = () =>
-    this.form.get('username')?.value.length < MIN_CHARS_TO_ENABLE_LOGIN_BTN ||
-    this.form.get('password')?.value.length < MIN_CHARS_TO_ENABLE_LOGIN_BTN;
+  private _getUserLoginModel(): UserLoginModel {
+    const username = this.form.get('username')?.value;
+    const password = this.form.get('password')?.value;
 
-  ngOnInit(): void {
-    this.form = this._formBuilder.group({
-      username: [{ value: '', disabled: false }, [Validators.required]],
-      password: [{ value: '', disabled: false }, [Validators.required]],
-    });
+    const userLoginModel = {
+      password: password,
+    } as UserLoginModel;
+
+    if (isEmail(username)) {
+      userLoginModel.email = username;
+    } else {
+      userLoginModel.username = username;
+    }
+
+    return userLoginModel;
+  }
+
+  isFieldValid(inputName: string) {
+    const input = this.form.get(inputName);
+    return input?.dirty ? input.valid : undefined;
+  }
+
+  shouldShowValidationError(inputName: string, errorName: string) {
+    const input = this.form.get(inputName);
+    const error = input?.errors?.[errorName];
+    return input?.dirty && error;
+  }
+
+  getErrorMessage(inputName: string) {
+    return this.form.get(inputName)?.errors?.['required']?.length;
   }
 
   login() {
-    this.isSubmitted = true;
-
     if (!this.form.valid) {
       return;
     }
 
+    this.errorCode = '';
     this.isLoading = true;
-    this._subscriptions.add(
-      this._authService.login().subscribe((loginResult) => {
-        if (loginResult) {
-          this._router.navigateByUrl('/dashboard');
+    this.form.disable();
+    this._cdr.markForCheck();
+
+    this._authService
+      .login(this._getUserLoginModel())
+      .subscribe((apiResponse: ApiResponse) => {
+        if (apiResponse.errorCode?.length) {
+          this.errorCode = apiResponse.errorCode;
         }
-      })
-    );
+
+        this.isLoading = false;
+        this.form.enable();
+        this._cdr.markForCheck();
+      });
   }
 
   goToForgotMyPassword() {
     this._authService.forgotPasswordUsername = this.form.get('username')?.value;
     this._router.navigateByUrl('auth/forgot-password');
-  }
-
-  ngOnDestroy(): void {
-    this._subscriptions.unsubscribe();
   }
 }

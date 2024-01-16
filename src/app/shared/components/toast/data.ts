@@ -1,6 +1,6 @@
 
 export interface ToastMessage {
-    header: string;
-    body: string;
+    header?: string;
+    message: string;
     color: string;
 }

@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { BaseApiService } from '@betx/core/base-api-service';
 import { Observable, of } from 'rxjs';
 import { environment } from '~/environments/environment';
-import { UserRegisterModel } from '../models';
-import { ApiResponse } from '../models/response';
+import { UserLoginModel, UserRegisterModel } from '../interfaces';
+import { ApiResponse } from '../interfaces/response';
 
 @Injectable({
   providedIn: 'root',
@@ -30,8 +30,11 @@ export class IdentityService extends BaseApiService {
     return of(true);
   }
 
-  login(): Observable<boolean> {
-    return of(true);
+  login(userLoginModel: UserLoginModel): Observable<ApiResponse> {
+    return this.post(
+      `${environment.identityServiceUrl}/user/login`,
+      userLoginModel
+    );
   }
 
   sendChangePasswordLink() {
@@ -39,6 +42,7 @@ export class IdentityService extends BaseApiService {
   }
 
   register(user: UserRegisterModel): Observable<ApiResponse> {
+    user.userTypeId = '1';
     return this.post(`${environment.identityServiceUrl}/user/register`, user);
   }
 }

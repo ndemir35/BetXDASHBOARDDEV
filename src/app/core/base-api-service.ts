@@ -1,16 +1,19 @@
-import { HttpClient } from '@angular/common/http';
-import { ApiResponse } from '@betx/shared/data/models/response';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { ApiResponse } from '@betx/shared/data/interfaces/response';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 export class BaseApiService {
   constructor(private _http: HttpClient) {}
 
-  private _handleError(error: any): Observable<ApiResponse> {
+  private _handleError(
+    errorResponse: HttpErrorResponse
+  ): Observable<ApiResponse> {
     return of(<ApiResponse>{
-      status: error?.status,
-      message: error?.message,
+      status: errorResponse?.status,
+      message: errorResponse?.message,
       isSuccessful: false,
+      errorCode: errorResponse.error?.errors?.[0]?.code?.toUpperCase(),
     });
   }
 
@@ -19,18 +22,19 @@ export class BaseApiService {
       status: response.status,
       message: response.statusText,
       isSuccessful: response.status === 200,
+      errorCode: response['errors']?.[0]?.['code']?.toUpperCase(),
     };
   }
 
   post<T>(url: string, body: T): Observable<ApiResponse> {
     return this._http
       .post(url, body)
-      .pipe(catchError(this._handleError), map(this._mapResponse));
+      .pipe(map(this._mapResponse), catchError(this._handleError));
   }
 
   get<T>(url: string): Observable<ApiResponse> {
     return this._http
       .get(url)
-      .pipe(catchError(this._handleError), map(this._mapResponse));
+      .pipe(map(this._mapResponse), catchError(this._handleError));
   }
 }
