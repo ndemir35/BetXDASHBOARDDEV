@@ -1,0 +1,36 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background: url("../../../../../assets/img//background.jpg") no-repeat center
+    center fixed;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+}
+
+c-card-body {
+  padding: 44px;
+  width: 400px;
+}
+
+.logo {
+  width: 160px;
+  height: 80px;
+  display: block;
+  margin: 0 auto;
+}
+
+@media (max-width: 575.98px) {
+  c-card-body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    padding: 16px;
+    justify-content: center;
+    flex-direction: column;
+  }
+}

@@ -1,35 +1,34 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './containers';
-import { canActivateDashboard } from './guards/auth.guard'
+import { canActivateDashboard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'login',
-    pathMatch: 'full',
-    loadComponent: () => import('./views/login/login.component').then(x => x.LoginComponent)
-  },
-  {
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full'
+    path: 'auth',
+    loadChildren: () =>
+      import('./views/auth/auth.routes').then((m) => m.AUTH_ROUTES),
   },
   {
     path: '',
     component: DefaultLayoutComponent,
     canActivate: [canActivateDashboard],
-    data: {
-      title: $localize`Home`
-    },
     children: [
+      {
+        path: 'user',
+        loadChildren: () =>
+          import('./views/users/users.routes').then((m) => m.USERS_ROUTES),
+      },
       {
         path: 'dashboard',
         loadChildren: () =>
-          import('./views/dashboard/dashboard.module').then((m) => m.DashboardModule)
-      }
-    ]
+          import('./views/dashboard/dashboard.routes').then(
+            (m) => m.DASHBOARD_ROUTES
+          ),
+      },
+    ],
   },
-  { path: '**', redirectTo: 'dashboard' }
+  { path: '**', redirectTo: 'dashboard' },
 ];
 
 @NgModule({
@@ -37,10 +36,9 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
       scrollPositionRestoration: 'top',
       anchorScrolling: 'enabled',
-      initialNavigation: 'enabledBlocking'
-    })
+      initialNavigation: 'enabledBlocking',
+    }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

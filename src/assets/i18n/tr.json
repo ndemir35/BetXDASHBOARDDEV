@@ -1,13 +1,42 @@
 {
-    "LOGIN": {
-        "LOGIN_FORM": {
-            "TITLE": "Giriş",
-            "USERNAME": "Kullanıcı Adı",
-            "PASSWORD": "Şifre",
-            "NEXT": "İleri",
-            "LOGIN": "Giriş yap",
-            
-            "FORM_VALIDATION_FAIL": "Kullanıcı adı veya şifre hatalı"
-        }
+  "LOGIN": {
+    "LOGIN_FORM": {
+      "TITLE": "Giriş",
+      "USERNAME": "Kullanıcı Adı / Email",
+      "PASSWORD": "Şifre",
+      "LOGIN": "Giriş yap",
+      "FORM_VALIDATION_FAIL_REQUIRED": "Lütfen gerekli alanları doldurun",
+      "FORM_VALIDATION_FAIL": "Kullanıcı adı veya şifre hatalı",
+      "FORGOT_YOUR_PASSWORD": "Şifreni mi unuttun?"
+    },
+    "PASSWORD_CHANGE_FORM": {
+      "TITLE": "Şifre sıfırlama",
+      "NEW_PASSWORD": "Yeni şifre",
+      "CONFIRM_NEW_PASSWORD": "Yeni şifreyi doğrula",
+      "SUBMIT_NEW_PASSWORD": "Yeni şifreyi gönder"
+    },
+    "FORGOT_PASSWORD_FORM": {
+      "TITLE": "Şifreni mi unuttun?",
+      "USERNAME": "Kullanıcı Adı / Email",
+      "SEND": "Gönder",
+      "FORM_HELP": "Email adresine şifreni sıfırlamak için bir link göndereceğiz.",
+      "BACK_TO_LOGIN": "Giriş'e dön"
     }
+  },
+  "DASHBOARD": {
+    "MENU": {
+      "DASHBOARD": "Gösterge Paneli",
+      "USERS": "Kullanıcılar"
+    }
+  },
+  "API_RESPONSE": {
+    "USERNOTFOUND": "Sağlanan e-postaya sahip kullanıcı bulunamadı.",
+    "USERLOCKEDOUT": "Kullanıcı kilitlendi.",
+    "INVALIDCREDENTIALS": "Geçersiz kimlik bilgileri.",
+    "INVALIDPASSWORD": "Geçersiz şifre.",
+    "USERNOTCONFIRMED": "Kullanıcı doğrulanmadı."
+  },
+  "VALIDATION": {
+    "REQUIRED": "Bu alan gereklidir"
+  }
 }

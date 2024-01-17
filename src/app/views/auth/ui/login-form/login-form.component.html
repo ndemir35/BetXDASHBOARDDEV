@@ -1,0 +1,79 @@
+<c-container>
+  <h3 class="mb-3">{{ "LOGIN.LOGIN_FORM.TITLE" | translate }}</h3>
+
+  <form
+    #customStylesForm="ngForm"
+    [formGroup]="form"
+    (ngSubmit)="login()"
+    [noValidate]="true"
+    cForm
+  >
+    <div class="mb-3">
+      <c-input-group class="flex-nowrap">
+        <span cInputGroupText id="addon-wrapping">
+          <svg cIcon name="cilEnvelopeOpen" size="s"></svg>
+        </span>
+        <input
+          formControlName="username"
+          cFormControl
+          [placeholder]="'LOGIN.LOGIN_FORM.USERNAME' | translate"
+          [valid]="isFieldValid('username')"
+        />
+      </c-input-group>
+      <p
+        *ngIf="shouldShowValidationError('username', 'required')"
+        class="text-danger mt-2"
+      >
+        {{ "REQUIRED" | betxValidationMessage }}
+      </p>
+    </div>
+
+    <div class="mb-3">
+      <c-input-group class="flex-nowrap">
+        <span cInputGroupText id="addon-wrapping">
+          <svg cIcon name="cilLockLocked" size="s"></svg>
+        </span>
+        <input
+          formControlName="password"
+          type="password"
+          cFormControl
+          [placeholder]="'LOGIN.LOGIN_FORM.PASSWORD' | translate"
+          [valid]="isFieldValid('password')"
+        />
+      </c-input-group>
+      <p
+        *ngIf="shouldShowValidationError('password', 'required')"
+        class="text-danger mt-2"
+      >
+        {{ "REQUIRED" | betxValidationMessage }}
+      </p>
+    </div>
+    <c-alert *ngIf="errorCode?.length" color="danger">{{
+      errorCode | betxApiMessage
+    }}</c-alert>
+    <c-row>
+      <c-col class="text-left" lg="12">
+        <button
+          *ngIf="!isLoading"
+          cButton
+          color="link"
+          (click)="goToForgotMyPassword()"
+        >
+          {{ "LOGIN.LOGIN_FORM.FORGOT_YOUR_PASSWORD" | translate }}
+        </button>
+      </c-col>
+      <c-col class="text-right" lg="12">
+        <button
+          [disabled]="isLoading"
+          cButton
+          class="align-items-center"
+          shape="rounded-0"
+          type="submit"
+        >
+          <c-spinner *ngIf="isLoading" size="sm"></c-spinner>
+          {{ "LOGIN.LOGIN_FORM.LOGIN" | translate }}
+        </button>
+      </c-col>
+    </c-row>
+  </form>
+</c-container>

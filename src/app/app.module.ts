@@ -12,52 +12,38 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // Import containers
-import {
-  DefaultAsideComponent,
-  DefaultFooterComponent,
-  DefaultHeaderComponent,
-  DefaultLayoutComponent
-} from './containers';
 
 import {
   BadgeModule,
   BreadcrumbModule,
   ButtonModule,
-  FooterModule,
   GridModule,
   HeaderModule,
   NavModule,
-  SidebarModule
+  SidebarModule,
 } from '@coreui/angular-pro';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ToastComponent } from './shared/components/toast/toast.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
 export function createTranslateLoader(http: HttpClient) {
-    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
-const APP_CONTAINERS = [
-  DefaultAsideComponent,
-  DefaultFooterComponent,
-  DefaultHeaderComponent,
-  DefaultLayoutComponent
-];
-
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     BreadcrumbModule,
-    FooterModule,
     GridModule,
     HeaderModule,
     SidebarModule,
@@ -68,24 +54,24 @@ const APP_CONTAINERS = [
     BadgeModule,
     NgScrollbarModule,
     HttpClientModule,
+    ToastComponent,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
+        deps: [HttpClient],
       },
-      defaultLanguage: 'en'
-    })
+      defaultLanguage: 'en',
+    }),
   ],
   providers: [
     {
       provide: LocationStrategy,
-      useClass: HashLocationStrategy
+      useClass: HashLocationStrategy,
     },
     IconSetService,
-    Title
+    Title,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}
