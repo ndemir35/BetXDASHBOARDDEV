@@ -28,5 +28,15 @@
       "DASHBOARD": "Painel",
       "USERS": "Usuários"
     }
+  },
+  "API_RESPONSE": {
+    "USERNOTFOUND": "Usuário com o e-mail fornecido não encontrado.",
+    "USERLOCKEDOUT": "O usuário está bloqueado.",
+    "INVALIDCREDENTIALS": "Credenciais inválidas.",
+    "INVALIDPASSWORD": "Senha inválida.",
+    "USERNOTCONFIRMED": "O usuário não está confirmado."
+  },
+  "VALIDATION": {
+    "REQUIRED": "Este campo é obrigatório"
   }
 }

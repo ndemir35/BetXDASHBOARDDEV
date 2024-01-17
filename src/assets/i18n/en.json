@@ -28,5 +28,15 @@
       "DASHBOARD": "Dashboard",
       "USERS": "Users"
     }
+  },
+  "API_RESPONSE": {
+    "USERNOTFOUND": "User with the provided email not found.",
+    "USERLOCKEDOUT": "User is locked out.",
+    "INVALIDCREDENTIALS": "Invalid credentials.",
+    "INVALIDPASSWORD": "Invalid password.",
+    "USERNOTCONFIRMED": "User is not confirmed."
+  },
+  "VALIDATION": {
+    "REQUIRED": "This field is required"
   }
 }

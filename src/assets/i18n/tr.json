@@ -28,5 +28,15 @@
       "DASHBOARD": "Gösterge Paneli",
       "USERS": "Kullanıcılar"
     }
+  },
+  "API_RESPONSE": {
+    "USERNOTFOUND": "Sağlanan e-postaya sahip kullanıcı bulunamadı.",
+    "USERLOCKEDOUT": "Kullanıcı kilitlendi.",
+    "INVALIDCREDENTIALS": "Geçersiz kimlik bilgileri.",
+    "INVALIDPASSWORD": "Geçersiz şifre.",
+    "USERNOTCONFIRMED": "Kullanıcı doğrulanmadı."
+  },
+  "VALIDATION": {
+    "REQUIRED": "Bu alan gereklidir"
   }
 }
