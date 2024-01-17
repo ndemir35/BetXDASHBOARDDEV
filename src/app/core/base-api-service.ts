@@ -6,10 +6,10 @@ import { catchError, map } from 'rxjs/operators';
 export class BaseApiService {
   constructor(private _http: HttpClient) {}
 
-  private _handleError(
+  private _handleError<T>(
     errorResponse: HttpErrorResponse
-  ): Observable<ApiResponse> {
-    return of(<ApiResponse>{
+  ): Observable<ApiResponse<T>> {
+    return of(<ApiResponse<T>>{
       status: errorResponse?.status,
       message: errorResponse?.message,
       isSuccessful: false,
@@ -17,24 +17,25 @@ export class BaseApiService {
     });
   }
 
-  private _mapResponse(response: any): ApiResponse {
+  private _mapResponse<T>(response: any): ApiResponse<T> {
     return {
       status: response.status,
       message: response.statusText,
-      isSuccessful: response.status === 200,
+      isSuccessful: response.isSuccess,
       errorCode: response['errors']?.[0]?.['code']?.toUpperCase(),
+      data: response.data,
     };
   }
 
-  post<T>(url: string, body: T): Observable<ApiResponse> {
+  post<T, K>(url: string, body: T): Observable<ApiResponse<K>> {
     return this._http
       .post(url, body)
-      .pipe(map(this._mapResponse), catchError(this._handleError));
+      .pipe(map(this._mapResponse<K>), catchError(this._handleError<K>));
   }
 
-  get<T>(url: string): Observable<ApiResponse> {
+  get<T, K>(url: string): Observable<ApiResponse<K>> {
     return this._http
       .get(url)
-      .pipe(map(this._mapResponse), catchError(this._handleError));
+      .pipe(map(this._mapResponse<K>), catchError(this._handleError<K>));
   }
 }

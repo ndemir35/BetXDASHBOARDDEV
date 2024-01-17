@@ -17,12 +17,10 @@ const routes: Routes = [
       {
         path: 'user',
         loadChildren: () =>
-          import('./views/users/users.routes').then(
-            (m) => m.USERS_ROUTES
-          ),
+          import('./views/users/users.routes').then((m) => m.USERS_ROUTES),
       },
       {
-        path: 'home',
+        path: 'dashboard',
         loadChildren: () =>
           import('./views/dashboard/dashboard.routes').then(
             (m) => m.DASHBOARD_ROUTES
@@ -30,7 +28,7 @@ const routes: Routes = [
       },
     ],
   },
-  { path: '**', redirectTo: 'home' },
+  { path: '**', redirectTo: 'dashboard' },
 ];
 
 @NgModule({

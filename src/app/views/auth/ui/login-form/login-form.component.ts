@@ -13,12 +13,16 @@ import {
   ValidationMessagePipe,
 } from '@betx/shared';
 import { UserLoginModel } from '@betx/shared/data';
-import { ApiResponse } from '@betx/shared/data/interfaces/response';
+import {
+  ApiResponse,
+  UserLoginResponse,
+} from '@betx/shared/data/interfaces/response';
 import { ApiMessagePipe } from '@betx/shared/pipes/api-message.pipe';
 import { AlertModule, ButtonModule, SpinnerModule } from '@coreui/angular-pro';
 import { IconModule } from '@coreui/icons-angular';
 import { IdentityService } from '../../../../shared/data/services/identity.service';
 import { isEmail } from '../../utils/is-email';
+import { StorageService } from '@betx/shared/data/services/storage.service';
 
 @Component({
   selector: 'betx-login-form',
@@ -37,7 +41,6 @@ import { isEmail } from '../../utils/is-email';
     ApiMessagePipe,
     ValidationMessagePipe,
   ],
-  providers: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginFormComponent implements OnInit {
@@ -54,7 +57,8 @@ export class LoginFormComponent implements OnInit {
   constructor(
     private _cdr: ChangeDetectorRef,
     private _authService: IdentityService,
-    private _router: Router
+    private _router: Router,
+    private _storageService: StorageService
   ) {}
 
   ngOnInit(): void {}
@@ -78,7 +82,7 @@ export class LoginFormComponent implements OnInit {
 
   isFieldValid(inputName: string) {
     const input = this.form.get(inputName);
-    return input?.dirty ? input.valid : undefined;
+    return input?.dirty && !this.isLoading ? input.valid : undefined;
   }
 
   shouldShowValidationError(inputName: string, errorName: string) {
@@ -91,26 +95,48 @@ export class LoginFormComponent implements OnInit {
     return this.form.get(inputName)?.errors?.['required']?.length;
   }
 
+  private _beforeRequestExecution() {
+    this.errorCode = '';
+    this.isLoading = true;
+    this.form.disable();
+    this._cdr.markForCheck();
+  }
+
+  private _whenRequestSuccess(userLoginResponse: UserLoginResponse) {
+    this._storageService.setAuthToken(userLoginResponse.token);
+    this._router.navigateByUrl('');
+  }
+
+  private _whenRequestFailure(errorCode: string) {
+    this.errorCode = errorCode;
+  }
+
+  private _afterRequestExecution() {
+    this.isLoading = false;
+    this.form.enable();
+    this._cdr.markForCheck();
+  }
+
   login() {
     if (!this.form.valid) {
       return;
     }
 
-    this.errorCode = '';
-    this.isLoading = true;
-    this.form.disable();
-    this._cdr.markForCheck();
+    this._beforeRequestExecution();
 
     this._authService
       .login(this._getUserLoginModel())
-      .subscribe((apiResponse: ApiResponse) => {
-        if (apiResponse.errorCode?.length) {
-          this.errorCode = apiResponse.errorCode;
+      .subscribe((apiResponse: ApiResponse<UserLoginResponse>) => {
+        if (apiResponse.isSuccessful) {
+          this._whenRequestSuccess(apiResponse.data);
+          return;
         }
 
-        this.isLoading = false;
-        this.form.enable();
-        this._cdr.markForCheck();
+        if (apiResponse.errorCode?.length) {
+          this._whenRequestFailure(apiResponse.errorCode);
+        }
+
+        this._afterRequestExecution();
       });
   }
 

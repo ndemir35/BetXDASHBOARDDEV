@@ -4,7 +4,7 @@ import { BaseApiService } from '@betx/core/base-api-service';
 import { Observable, of } from 'rxjs';
 import { environment } from '~/environments/environment';
 import { UserLoginModel, UserRegisterModel } from '../interfaces';
-import { ApiResponse } from '../interfaces/response';
+import { ApiResponse, UserLoginResponse, UserLogoutResponse } from '../interfaces/response';
 
 @Injectable({
   providedIn: 'root',
@@ -24,14 +24,18 @@ export class IdentityService extends BaseApiService {
     return this._forgotPasswordUsername;
   }
 
-  logout() {}
+  logout(): Observable<ApiResponse<UserLogoutResponse>> {
+    return this.post(`${environment.identityServiceUrl}/user/logout`, {});
+  }
 
   isLoggedIn(): Observable<boolean> {
     return of(true);
   }
 
-  login(userLoginModel: UserLoginModel): Observable<ApiResponse> {
-    return this.post(
+  login(
+    userLoginModel: UserLoginModel
+  ): Observable<ApiResponse<UserLoginResponse>> {
+    return this.post<UserLoginModel, UserLoginResponse>(
       `${environment.identityServiceUrl}/user/login`,
       userLoginModel
     );
@@ -41,7 +45,7 @@ export class IdentityService extends BaseApiService {
     throw new Error('Method not implemented.');
   }
 
-  register(user: UserRegisterModel): Observable<ApiResponse> {
+  register(user: UserRegisterModel): Observable<ApiResponse<any>> {
     user.userTypeId = '1';
     return this.post(`${environment.identityServiceUrl}/user/register`, user);
   }

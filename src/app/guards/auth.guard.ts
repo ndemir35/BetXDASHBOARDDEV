@@ -1,20 +1,24 @@
-import { inject } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from "@angular/router";
-import { tap } from "rxjs/operators";
-import { IdentityService } from "../shared/data/services/identity.service";
+import { inject } from '@angular/core';
+import {
+    ActivatedRouteSnapshot,
+    CanActivateFn,
+    Router,
+    RouterStateSnapshot,
+} from '@angular/router';
+import { StorageService } from '@betx/shared';
 
 export const canActivateDashboard: CanActivateFn = (
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
 ) => {
-    const authService = inject(IdentityService);
-    const router = inject(Router);
+  const storageService = inject(StorageService);
+  const router = inject(Router);
+  const authToken = storageService.getAuthToken();
 
-    return authService.isLoggedIn().pipe(
-        tap(isLoggedIn => {
-            if (!isLoggedIn) {
-                router.navigateByUrl('login');
-            }
-        })
-    )
+  if (!authToken?.length) {
+    router.navigateByUrl('auth/login');
+    return false;
+  }
+
+  return true
 };
