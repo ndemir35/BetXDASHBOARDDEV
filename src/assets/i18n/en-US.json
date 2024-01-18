@@ -26,7 +26,8 @@
   "DASHBOARD": {
     "MENU": {
       "DASHBOARD": "Dashboard",
-      "USERS": "Users"
+      "USERS": "Users",
+      "ROLES": "Roles"
     }
   },
   "API_RESPONSE": {

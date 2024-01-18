@@ -26,7 +26,8 @@
   "DASHBOARD": {
     "MENU": {
       "DASHBOARD": "Gösterge Paneli",
-      "USERS": "Kullanıcılar"
+      "USERS": "Kullanıcılar",
+      "ROLES": "Roller"
     }
   },
   "API_RESPONSE": {
