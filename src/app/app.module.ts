@@ -23,11 +23,17 @@ import {
   SidebarModule,
 } from '@coreui/angular-pro';
 
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  HttpClient,
+  HttpClientModule,
+} from '@angular/common/http';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ToastComponent } from './shared/components/toast/toast.component';
+import { TokenInterceptor } from './interceptors/token.interceptor';
+import { SpinnerComponent } from './shared/components/spinner';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -55,6 +61,7 @@ export function createTranslateLoader(http: HttpClient) {
     NgScrollbarModule,
     HttpClientModule,
     ToastComponent,
+    SpinnerComponent,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -71,6 +78,11 @@ export function createTranslateLoader(http: HttpClient) {
     },
     IconSetService,
     Title,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

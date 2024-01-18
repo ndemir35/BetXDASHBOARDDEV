@@ -9,6 +9,7 @@ import {
   PopoverModule,
 } from '@coreui/angular-pro';
 import { IconModule } from '@coreui/icons-angular';
+import { SpinnerService } from '../spinner';
 
 @Component({
   selector: 'betx-avatar',
@@ -28,15 +29,17 @@ export class AvatarComponent {
   constructor(
     private _authService: IdentityService,
     private _storageService: StorageService,
-    private _router: Router
-  ) {}
+    private _router: Router,
+    private _spinnerService: SpinnerService
+  ) {
+  }
 
   logout() {
-    this._authService.logout().subscribe(x => {
-      console.log(x);
+    this._spinnerService.show();
+    this._authService.logout().subscribe((x) => {
       this._storageService.removeAuthToken();
-      // this._router.navigateByUrl('auth/login');
-
+      this._spinnerService.hide();
+      this._router.navigateByUrl('auth/login');
     });
   }
 }
