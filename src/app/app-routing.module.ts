@@ -20,6 +20,11 @@ const routes: Routes = [
           import('./views/users/users.routes').then((m) => m.USERS_ROUTES),
       },
       {
+        path: 'role',
+        loadChildren: () =>
+          import('./views/role/role.routing').then((m) => m.ROLE_ROUTES),
+      },
+      {
         path: 'dashboard',
         loadChildren: () =>
           import('./views/dashboard/dashboard.routes').then(
