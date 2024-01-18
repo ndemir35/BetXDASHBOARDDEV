@@ -1,9 +1,13 @@
 import { Directive, OnDestroy, OnInit } from '@angular/core';
-import { INavData } from '@coreui/angular-pro';
+import { SHARED_MODULES } from '@betx/shared';
+import { INavData, SidebarModule } from '@coreui/angular-pro';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject, takeUntil } from 'rxjs';
 
-@Directive()
+export const MENU_IMPORTS = [SHARED_MODULES, SidebarModule];
+export const MENU_TEMPLATE_URL = '../menu-base.html';
+
+@Directive({})
 export abstract class MenuBase implements OnInit, OnDestroy {
   private _destroy$ = new Subject<void>();
   abstract navItems: INavData[];
