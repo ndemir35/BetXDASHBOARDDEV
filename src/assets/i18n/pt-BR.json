@@ -39,5 +39,14 @@
   },
   "VALIDATION": {
     "REQUIRED": "Este campo é obrigatório"
+  },
+  "VIEW": {
+    "ROLES": {
+      "TITLE": "Funções",
+      "LIST": {
+        "NAME": "Nome",
+        "EXPIRES_AT": "Expira em"
+      }
+    }
   }
 }

@@ -1,0 +1,14 @@
+<c-smart-table
+  activePage="1"
+  [loading]="isLoading"
+  [columnFilter]="true"
+  [columnSorter]="true"
+  [columns]="columns"
+  header
+  [itemsPerPage]="10"
+  [items]="data"
+  pagination
+  [tableProps]="{ hover: true, striped: true, responsive: true }"
+  selectable="true"
+>
+</c-smart-table>

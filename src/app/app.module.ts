@@ -1,5 +1,5 @@
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, Injector, NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -29,11 +29,16 @@ import {
   HttpClientModule,
 } from '@angular/common/http';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import {
+  TranslateLoader,
+  TranslateModule,
+  TranslateService,
+} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ToastComponent } from './shared/components/toast/toast.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { SpinnerComponent } from './shared/components/spinner';
+import { appInitializerFactory } from './app-initializer-factory';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -68,7 +73,6 @@ export function createTranslateLoader(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient],
       },
-      defaultLanguage: 'en',
     }),
   ],
   providers: [
@@ -81,6 +85,12 @@ export function createTranslateLoader(http: HttpClient) {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
+      multi: true,
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appInitializerFactory,
+      deps: [TranslateService, Injector],
       multi: true,
     },
   ],

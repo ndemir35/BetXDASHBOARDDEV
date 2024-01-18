@@ -39,5 +39,14 @@
   },
   "VALIDATION": {
     "REQUIRED": "Bu alan gereklidir"
+  },
+  "VIEW": {
+    "ROLES": {
+      "TITLE": "Roller",
+      "LIST": {
+        "NAME": "İsim",
+        "EXPIRES_AT": "Son geçerlilik tarihi"
+      }
+    }
   }
 }

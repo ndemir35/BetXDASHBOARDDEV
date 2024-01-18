@@ -1,4 +1,4 @@
-import { UserType } from "./types";
+import { UserType } from './enums';
 
 export interface ApiResponse<T> {
   status?: number;
@@ -11,6 +11,12 @@ export interface ApiResponse<T> {
 export interface UserLoginResponse {
   token: string;
   userType: UserType;
+}
+
+export interface RoleListResponse {
+  roleId: string;
+  roleName: string;
+  expireDate?: number;
 }
 
 export interface UserLogoutResponse {}

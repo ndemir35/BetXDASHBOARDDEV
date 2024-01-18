@@ -12,6 +12,7 @@ import {
 import { TranslateModule } from '@ngx-translate/core';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import { ApiMessagePipe, ValidationMessagePipe } from './pipes';
+import { IconModule } from '@coreui/icons-angular';
 
 export const SHARED_MODULES: Provider[] = [
   TranslateModule,
@@ -20,6 +21,7 @@ export const SHARED_MODULES: Provider[] = [
   CardModule,
   ButtonModule,
   SpinnerModule,
+  IconModule,
 ];
 
 export const FORM_MODULES: Provider[] = [

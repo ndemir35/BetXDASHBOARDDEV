@@ -8,7 +8,7 @@ export const MENU_ITEM_USER: INavData = {
 };
 
 export const MENU_ITEM_ROLE: INavData = {
-  name: 'DASHBOARD.MENU.ROLE',
+  name: 'DASHBOARD.MENU.ROLES',
   url: '/role',
   iconComponent: { name: IconSubset.cilApplicationsSettings },
 };

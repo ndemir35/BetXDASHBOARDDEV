@@ -39,5 +39,14 @@
   },
   "VALIDATION": {
     "REQUIRED": "This field is required"
+  },
+  "VIEW": {
+    "ROLES": {
+      "TITLE": "Roles",
+      "LIST": {
+        "NAME": "Name",
+        "EXPIRES_AT": "Expires at"
+      }
+    }
   }
 }

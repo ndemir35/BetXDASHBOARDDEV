@@ -1,13 +1,14 @@
-import { Component, Input } from '@angular/core';
-import { SHARED_MODULES } from '@betx/shared';
+import { Component, Input, OnInit } from '@angular/core';
+import { SHARED_MODULES, StorageService, UserType } from '@betx/shared';
 import { AvatarComponent } from '@betx/shared/components/avatar/avatar.component';
 
 import {
+  BadgeModule,
   BreadcrumbModule,
   HeaderComponent,
   HeaderModule,
   NavModule,
-  SidebarModule
+  SidebarModule,
 } from '@coreui/angular-pro';
 import { IconModule } from '@coreui/icons-angular';
 
@@ -22,12 +23,19 @@ import { IconModule } from '@coreui/icons-angular';
     SidebarModule,
     HeaderModule,
     NavModule,
-    IconModule
+    IconModule,
+    BadgeModule,
   ],
 })
-export class DefaultHeaderComponent extends HeaderComponent {
-  constructor() {
+export class DefaultHeaderComponent extends HeaderComponent implements OnInit {
+  userType: UserType = UserType.NotDefined;
+  
+  constructor(private _storageService: StorageService) {
     super();
+  }
+
+  ngOnInit(): void {
+    this.userType = this._storageService.userType.value;
   }
 
   @Input() sidebarId: string = 'sidebar1';
