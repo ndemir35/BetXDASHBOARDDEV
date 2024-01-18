@@ -7,6 +7,7 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
 import { Subscription, first } from 'rxjs';
 import { DefaultHeaderComponent } from './default-header/default-header.component';
 import { IconSubset } from '@betx/icons/icon-subset';
+import { MenuComponent } from '@betx/views/menu';
 
 @Component({
   selector: 'betx-default-layout',
@@ -18,6 +19,7 @@ import { IconSubset } from '@betx/icons/icon-subset';
     SidebarModule,
     NgScrollbarModule,
     RouterModule,
+    MenuComponent
   ],
   styleUrls: ['./default-layout.component.scss'],
 })

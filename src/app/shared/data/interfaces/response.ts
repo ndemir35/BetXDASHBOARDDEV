@@ -1,3 +1,5 @@
+import { UserType } from "./types";
+
 export interface ApiResponse<T> {
   status?: number;
   message?: string;
@@ -8,7 +10,7 @@ export interface ApiResponse<T> {
 
 export interface UserLoginResponse {
   token: string;
-  userType: string;
+  userType: UserType;
 }
 
 export interface UserLogoutResponse {}

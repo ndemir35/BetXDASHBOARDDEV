@@ -13,11 +13,7 @@ import {
 } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { SHARED_MODULES } from '@betx/shared';
-import {
-  ButtonModule,
-  FormModule,
-  SpinnerModule,
-} from '@coreui/angular-pro';
+import { ButtonModule, FormModule, SpinnerModule } from '@coreui/angular-pro';
 import { IconModule } from '@coreui/icons-angular';
 import { Subscription } from 'rxjs';
 import { IdentityService } from '../../../../shared/data/services/identity.service';
@@ -65,10 +61,7 @@ export class ForgotPasswordFormComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.form = this._formBuilder.group({
-      username: [
-        { value: this._authService.forgotPasswordUsername, disabled: false },
-        [Validators.required],
-      ],
+      username: [{ value: '', disabled: false }, [Validators.required]],
       password: [{ value: '', disabled: false }, [Validators.required]],
     });
   }
