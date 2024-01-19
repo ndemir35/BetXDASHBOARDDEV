@@ -48,5 +48,8 @@
         "EXPIRES_AT": "Expires at"
       }
     }
+  },
+  "GENERIC": {
+    "NO_ITEMS": "No items found"
   }
 }
