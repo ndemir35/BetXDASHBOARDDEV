@@ -1,0 +1,99 @@
+{
+  "COMMON": {
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "NEW": "New",
+    "NAME": "Name",
+    "LASTNAME": "Surname",
+    "SAVE": "Save"
+  },
+  "POPUP": {
+    "ARE_YOU_SURE": "Are you sure?",
+    "CONFIRM": "Confirm",
+    "CANCEL": "Cancel",
+    "SUCCESS": "Operation successful",
+    "ERROR": "Operation failed",
+    "ERROR_MESSAGE": "An error occurred while processing your operation.",
+    "SUCCESS_MESSAGE": "The operation has completed successfully."
+  },
+  "LOGIN": {
+    "LOGIN_FORM": {
+      "TITLE": "Login",
+      "USERNAME": "Username / Email",
+      "PASSWORD": "Password",
+      "LOGIN": "Login",
+      "FORM_VALIDATION_FAIL_REQUIRED": "Please fill in the required fields",
+      "FORM_VALIDATION_FAIL": "Username or password is incorrect",
+      "FORGOT_YOUR_PASSWORD": "Forgot your password?"
+    },
+    "PASSWORD_CHANGE_FORM": {
+      "TITLE": "Reset password",
+      "NEW_PASSWORD": "New password",
+      "CONFIRM_NEW_PASSWORD": "Confirm new password",
+      "SUBMIT_NEW_PASSWORD": "Submit new password"
+    },
+    "FORGOT_PASSWORD_FORM": {
+      "TITLE": "Forgot your password?",
+      "USERNAME": "Username / Email",
+      "SEND": "Send",
+      "FORM_HELP": "We will send a link to your email address to reset your password.",
+      "BACK_TO_LOGIN": "Back to login"
+    }
+  },
+  "DASHBOARD": {
+    "MENU": {
+      "DASHBOARD": "Dashboard",
+      "USERS": "Users",
+      "ROLES": "Roles"
+    }
+  },
+  "API_RESPONSE": {
+    "USER_NOT_FOUND": "User with the provided email not found.",
+    "USER_LOCKED_OUT": "User is locked out.",
+    "INVALID_CREDENTIALS": "Invalid credentials.",
+    "INVALID_PASSWORD": "Invalid password.",
+    "USER_NOT_CONFIRMED": "User is not confirmed.",
+    "ROLE_NOT_FOUND": "The Role {{roleName}} not found.",
+    "ROLE_NOT_EMPTY": "Some users are still using this role \"{{roleName}}\". Please remove the role \"{{roleName}}\" from all users and try again.",
+    "DUPLICATEROLENAME": "A role with a name \"{{roleName}}\" is already defined.",
+    "DUPLICATE_ROLE_NAME": "A role with a name \"{{roleName}}\" is already defined."
+  },
+  "VALIDATION": {
+    "REQUIRED": "This field is required"
+  },
+  "VIEW": {
+    "ROLES": {
+      "TITLE": "Roles",
+      "DELETE_WARNING": "Do you really want to delete the role \"{{roleName}}\"?",
+      "DELETE_SUCCESS": "\"{{roleName}}\" deleted successfully!",
+      "DELETE_ERROR": "The delete operation of role \"{{roleName}}\" has failed!",
+      "LIST": {
+        "NAME": "Name",
+        "EXPIRES_AT": "Expires at"
+      }
+    },
+    "USERS": {
+      "TITLE": "Users"
+    }
+  },
+  "GENERIC": {
+    "NO_ITEMS": "No items found"
+  },
+  "BREADCRUMBS": {
+    "DASHBOARD": "Dashboard",
+    "LIST_ROLE": "Role List",
+    "NEW_ROLE": "New Role",
+    "LIST_USER": "User List",
+    "NEW_USER": "New User"
+  },
+  "ACTION_MENU": {
+    "ACTIONS": "Actions"
+  },
+  "PROFILE_MENU": {
+    "LANGUAGE": "Language",
+    "LOGOUT": "Logout",
+    "TURKISH": "Turkish",
+    "ENGLISH": "English",
+    "PORTUGUESE": "Portuguese"
+  }
+}
