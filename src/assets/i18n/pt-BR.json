@@ -51,5 +51,12 @@
   },
   "GENERIC": {
     "NO_ITEMS": "Nenhum item encontrado"
+  },
+  "BREADCRUMBS": {
+    "DASHBOARD": "Painel",
+    "LIST_ROLE": "Lista de Funções",
+    "NEW_ROLE": "Nova Função",
+    "LIST_USER": "Lista de Usuários",
+    "NEW_USER": "Novo Usuário"
   }
 }

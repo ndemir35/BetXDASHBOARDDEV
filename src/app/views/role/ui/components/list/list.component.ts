@@ -3,15 +3,20 @@ import { IconSubset } from '@betx/icons/icon-subset';
 import { Role, SHARED_MODULES } from '@betx/shared';
 import { RoleService } from '@betx/shared/data/services/role.service';
 import {
+  AlignDirective,
   CardModule,
   IColumn,
   ListGroupModule,
   PopoverModule,
+  SharedModule,
   SmartTableModule,
   TableModule,
+  TemplateIdDirective,
 } from '@coreui/angular-pro';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject, takeUntil } from 'rxjs';
+
+export interface RoleListTableData extends Role {}
 
 @Component({
   selector: 'betx-list',
@@ -25,6 +30,9 @@ import { Subject, takeUntil } from 'rxjs';
     PopoverModule,
     ListGroupModule,
     SmartTableModule,
+    AlignDirective,
+    TemplateIdDirective,
+    SharedModule,
   ],
 })
 export class ListComponent implements OnInit, OnDestroy {
@@ -40,6 +48,13 @@ export class ListComponent implements OnInit, OnDestroy {
     {
       key: 'expiresAt',
       label: this._translateService.instant('VIEW.ROLES.LIST.EXPIRES_AT'),
+    },
+    {
+      key: 'show',
+      label: '',
+      _style: { width: '5%' },
+      filter: false,
+      sorter: false,
     },
   ];
 
@@ -61,10 +76,8 @@ export class ListComponent implements OnInit, OnDestroy {
       .subscribe((response) => {
         if (response.isSuccessful) {
           this.data = response.data;
-          console.log(this.data);
         }
         this.isLoading = false;
-        console.log(response);
       });
   }
 }

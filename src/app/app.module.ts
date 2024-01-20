@@ -2,24 +2,19 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { APP_INITIALIZER, Injector, NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { NgScrollbarModule } from 'ngx-scrollbar';
-
-// Import routing module
 import { AppRoutingModule } from './app-routing.module';
-
-// Import app component
 import { AppComponent } from './app.component';
-
-// Import containers
 
 import {
   BadgeModule,
   BreadcrumbModule,
+  BreadcrumbRouterService,
   ButtonModule,
   GridModule,
   HeaderModule,
   NavModule,
+  SharedModule,
   SidebarModule,
 } from '@coreui/angular-pro';
 
@@ -35,10 +30,11 @@ import {
   TranslateService,
 } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { ToastComponent } from './shared/components/toast/toast.component';
+import { appInitializerFactory } from './app-initializer-factory';
+import { BreadcrumbService } from './core/data/services';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { SpinnerComponent } from './shared/components/spinner';
-import { appInitializerFactory } from './app-initializer-factory';
+import { ToastComponent } from './shared/components/toast/toast.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -67,6 +63,7 @@ export function createTranslateLoader(http: HttpClient) {
     HttpClientModule,
     ToastComponent,
     SpinnerComponent,
+    SharedModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -92,6 +89,10 @@ export function createTranslateLoader(http: HttpClient) {
       useFactory: appInitializerFactory,
       deps: [TranslateService, Injector],
       multi: true,
+    },
+    {
+      provide: BreadcrumbRouterService,
+      useClass: BreadcrumbService,
     },
   ],
   bootstrap: [AppComponent],

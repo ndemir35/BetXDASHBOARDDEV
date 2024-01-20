@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BaseApiService } from '@betx/core/base-api-service';
+import { BaseApiService } from '@betx/core/data/services/base-api-service';
 import { Observable, of } from 'rxjs';
 import { environment } from '~/environments/environment';
 import { UserLoginModel, UserRegisterModel } from '../interfaces';

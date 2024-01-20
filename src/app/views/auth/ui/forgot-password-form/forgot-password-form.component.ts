@@ -36,8 +36,7 @@ const MIN_CHARS_TO_ENABLE_LOGIN_BTN = 3;
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ForgotPasswordFormComponent implements OnInit, OnDestroy {
-  private _subscriptions = new Subscription();
+export class ForgotPasswordFormComponent implements OnInit{
   isLoading = false;
   isLoginFailed = false;
   form: FormGroup = new FormGroup({
@@ -74,7 +73,5 @@ export class ForgotPasswordFormComponent implements OnInit, OnDestroy {
     this._router.navigateByUrl('auth/login');
   }
 
-  ngOnDestroy(): void {
-    this._subscriptions.unsubscribe();
-  }
+ 
 }

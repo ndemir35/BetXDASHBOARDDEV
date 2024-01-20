@@ -51,5 +51,12 @@
   },
   "GENERIC": {
     "NO_ITEMS": "No items found"
+  },
+  "BREADCRUMBS": {
+    "DASHBOARD": "Dashboard",
+    "LIST_ROLE": "Role List",
+    "NEW_ROLE": "New Role",
+    "LIST_USER": "User List",
+    "NEW_USER": "New User"
   }
 }

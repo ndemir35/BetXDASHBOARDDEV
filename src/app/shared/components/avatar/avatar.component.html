@@ -1,4 +1,4 @@
-<c-dropdown>
+<c-dropdown alignment="end" variant="nav-item">
   <c-avatar
     cDropdownToggle
     [caret]="false"
@@ -6,14 +6,50 @@
     role="button"
     color="primary"
     textColor="white"
-    >CUI</c-avatar
+    >CU</c-avatar
   >
-  <ul cDropdownMenu>
+  <ul cDropdownMenu class="pt-0 pr-5 w-auto">
     <li>
-      <div cButton role="button" class="d-flex gap-2 align-items-center" cDropdownItem (click)="logout()">
-        <svg class="mr-3" cIcon name="cil-account-logout"></svg>
-        <span>Logout</span>
-      </div>
+      <h6
+        cDropdownHeader
+        class="bg-light dark:bg-white dark:bg-opacity-10 fw-semibold py-2"
+      >
+        Language
+      </h6>
+    </li>
+    <li>
+      <a [routerLink]="[]" (click)="setLang('tr')" cDropdownItem>
+        <svg cIcon class="me-2" name="cifTr"></svg>
+        Turkish
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="[]" (click)="setLang('en-US')" cDropdownItem>
+        <svg cIcon class="me-2" name="cifUs"></svg>
+        English(US)
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="[]" (click)="setLang('en-GB')" cDropdownItem>
+        <svg cIcon class="me-2" name="cifGb"></svg>
+        English(GB)
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="[]" (click)="setLang('pt-BR')" cDropdownItem>
+        <svg cIcon class="me-2" name="cifBr"></svg>
+        Portuguese(BR)
+      </a>
+    </li>
+
+    <li>
+      <hr cDropdownDivider />
+    </li>
+    <li>
+      <a [routerLink]="[]" (click)="logout()" cDropdownItem>
+        <svg cIcon class="me-2" name="cilAccountLogout"></svg>
+        Logout
+      </a>
     </li>
   </ul>
 </c-dropdown>

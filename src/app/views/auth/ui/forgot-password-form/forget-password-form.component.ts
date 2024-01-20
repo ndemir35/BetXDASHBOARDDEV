@@ -74,13 +74,13 @@ export class ForgetPasswordFormComponent implements OnInit, OnDestroy {
     }
 
     this.isLoading = true;
-    this._subscriptions.add(
-      this._loginService.login().subscribe((loginResult) => {
-        if (loginResult) {
-          this._router.navigateByUrl('/dashboard');
-        }
-      })
-    );
+    // this._subscriptions.add(
+    //   this._loginService.login().subscribe((loginResult) => {
+    //     if (loginResult) {
+    //       this._router.navigateByUrl('/dashboard');
+    //     }
+    //   })
+    // );
   }
 
   ngOnDestroy(): void {

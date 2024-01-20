@@ -33,9 +33,9 @@ export class BaseApiService {
       .pipe(map(this._mapResponse<K>), catchError(this._handleError<K>));
   }
 
-  get<T, K>(url: string): Observable<ApiResponse<K>> {
+  get<T>(url: string): Observable<ApiResponse<T>> {
     return this._http
       .get(url)
-      .pipe(map(this._mapResponse<K>), catchError(this._handleError<K>));
+      .pipe(map(this._mapResponse<T>), catchError(this._handleError<T>));
   }
 }

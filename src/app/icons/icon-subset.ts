@@ -9,6 +9,18 @@ import {
   cilOptions,
   cilDelete,
   cilArrowTop,
+  cilSun,
+  cilMoon,
+  cilFile,
+  cilCreditCard,
+  cilTask,
+  cilBell,
+  cilCommentSquare,
+  cilSettings,
+  cifTr,
+  cifUs,
+  cifBr,
+  cifGb
 } from '@coreui/icons';
 
 export const iconSubset = {
@@ -22,6 +34,18 @@ export const iconSubset = {
   cilOptions,
   cilDelete,
   cilArrowTop,
+  cilSun,
+  cilMoon,
+  cilFile,
+  cilCreditCard,
+  cilTask,
+  cilBell,
+  cilCommentSquare,
+  cilSettings,
+  cifTr,
+  cifUs,
+  cifBr,
+  cifGb
 };
 
 export enum IconSubset {
@@ -35,4 +59,16 @@ export enum IconSubset {
   cilOptions = 'cilOptions',
   cilDelete = 'cilDelete',
   cilArrowTop = 'cilArrowTop',
+  cilSun = 'cilSun',
+  cilMoon = 'cilMoon',
+  cilFile = 'cilFile',
+  cilCreditCard = 'cilCreditCard',  
+  cilTask = 'cilTask',
+  cilBell = 'cilBell',
+  cilCommentSquare = 'cilCommentSquare',
+  cilSettings = 'cilSettings',
+  cifTr = 'cifTr',
+  cifUs = 'cifUs',
+  cifBr = 'cifBr',
+  cifGb = 'cifGb'
 }

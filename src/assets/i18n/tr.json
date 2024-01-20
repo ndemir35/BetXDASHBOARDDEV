@@ -51,5 +51,12 @@
   },
   "GENERIC": {
     "NO_ITEMS": "Kayıt bulunamadı"
+  },
+  "BREADCRUMBS": {
+    "DASHBOARD": "Gösterge Paneli",
+    "LIST_ROLE": "Rol Listesi",
+    "NEW_ROLE": "Yeni Rol",
+    "LIST_USER": "Kullanıcı Listesi",
+    "NEW_USER": "Yeni Kullaıcı"
   }
 }

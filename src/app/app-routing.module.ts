@@ -31,6 +31,10 @@ const routes: Routes = [
             (m) => m.DASHBOARD_ROUTES
           ),
       },
+      {
+        path: '**',
+        redirectTo: 'dashboard',
+      },
     ],
   },
   { path: '**', redirectTo: 'dashboard' },

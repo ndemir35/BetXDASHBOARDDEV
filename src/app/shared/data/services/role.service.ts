@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BaseApiService } from '@betx/core/base-api-service';
-import { Observable, map } from 'rxjs';
+import { BaseApiService } from '@betx/core/data/services/base-api-service';
+import { Observable, catchError, map, of } from 'rxjs';
 import { environment } from '~/environments/environment';
 import { ApiResponse, Role, RoleListResponse } from '../interfaces';
 
@@ -14,18 +14,18 @@ export class RoleService extends BaseApiService {
   }
 
   listRoles(): Observable<ApiResponse<Role[]>> {
-    return this.get<void, RoleListResponse[]>(
+    return this.get<RoleListResponse[]>(
       `${environment.identityServiceUrl}/role/list`
     ).pipe(
       map((response) => ({
         ...response,
-        data: response.data.map(
+        data: response.data?.map(
           (d) =>
-            ({
+            (({
               id: d.roleId,
               name: d.roleName,
               expiresAt: d.expireDate,
-            } as Role)
+            } as Role) ?? [])
         ),
       }))
     );
