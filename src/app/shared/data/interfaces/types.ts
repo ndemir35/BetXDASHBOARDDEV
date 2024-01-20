@@ -11,9 +11,19 @@ export interface UserLoginModel {
   password: string;
 }
 
+export interface RoleDeleteModel {
+  roleId: string;
+}
+
+export interface RoleNewModel {
+  roleName: string;
+  expireDate?: Date;
+}
+
+export interface RoleUpdateModel extends RoleDeleteModel, RoleNewModel {}
+
 export interface Role {
   id: string;
   name: string;
   expiresAt?: number;
 }
-

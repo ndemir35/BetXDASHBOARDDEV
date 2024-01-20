@@ -1,0 +1,17 @@
+<h4 class="mb-3">{{ "BREADCRUMBS.NEW_ROLE" | translate }}</h4>
+
+<form cForm [formGroup]="roleFormGroup" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label cLabel for="inputEmail-1">{{
+      "VIEW.ROLES.LIST.NAME" | translate
+    }}</label>
+    <input cFormControl type="text" formControlName="name" />
+  </div>
+  <div class="mb-3">
+    <label cLabel>{{ "VIEW.ROLES.LIST.EXPIRES_AT" | translate }}</label>
+    <c-date-picker closeOnSelect formControlName="expiresAt"/>
+  </div>
+  <button type="submit" [loading]="isLoading" cLoadingButton disabledOnLoading>
+    {{ "COMMON.SAVE" | translate }}
+  </button>
+</form>

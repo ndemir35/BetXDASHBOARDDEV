@@ -1,7 +1,13 @@
-<c-row>
-  <c-col class="text-right">
-    <button color="danger" variant="ghost" size="sm" cButton>
-      <svg cIcon width="24" [name]="icons.cilDelete"></svg>
+<c-row class="mb-4">
+  <c-col>
+    <button
+      [routerLink]="['/role/new']"
+      color="success"
+      variant="ghost"
+      cButton
+    >
+      <svg cIcon name="cil-plus"></svg>
+      {{ "COMMON.NEW" | translate }}
     </button>
   </c-col>
 </c-row>
@@ -16,7 +22,7 @@
   [itemsPerPage]="10"
   [items]="data"
   pagination
-  [tableProps]="{ hover: true,  responsive: true }"
+  [tableProps]="{ hover: true, responsive: true }"
   selectable="true"
   [noItemsLabel]="'GENERIC.NO_ITEMS' | translate"
 >
@@ -34,9 +40,13 @@
     >
       <ng-container [ngSwitch]="columnName">
         <ng-container *ngSwitchCase="'show'" class="py-2">
-          <button cButton color="dark" variant="ghost" size="sm">
-            <svg cIcon width="24" [name]="icons.cilOptions"></svg>
-          </button>
+          <betx-action-menu
+            (onEditClick)="onEditRowClick(item.id)"
+            (onDeleteClick)="onDeleteRowClick(item.id, item.name)"
+          ></betx-action-menu>
+        </ng-container>
+        <ng-container *ngSwitchCase="'expiresAt'" class="py-2">
+          {{ item.expiresAt + "Z" | date : "fullDate" }}
         </ng-container>
         <ng-container *ngSwitchDefault>
           {{ tdContent }}

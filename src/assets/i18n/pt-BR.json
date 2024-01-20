@@ -1,4 +1,21 @@
 {
+  "COMMON": {
+    "EDIT": "Editar",
+    "DELETE": "Deletar",
+    "NEW": "Novo",
+    "NAME": "Nome",
+    "LASTNAME": "Sobrenome",
+    "SAVE": "Salvar",
+    "ERROR_MESSAGE": "Ocorreu um erro ao processar sua operação.",
+    "SUCCESS_MESSAGE": "A operação foi concluída com sucesso."
+  },
+  "POPUP": {
+    "ARE_YOU_SURE": "Tem certeza?",
+    "CONFIRM": "Confirme",
+    "CANCEL": "Cancelar",
+    "SUCCESS": "Operação bem sucedida",
+    "ERROR": "Operação falhou"
+  },
   "LOGIN": {
     "LOGIN_FORM": {
       "TITLE": "Conecte-se",
@@ -31,11 +48,15 @@
     }
   },
   "API_RESPONSE": {
-    "USERNOTFOUND": "Usuário com o e-mail fornecido não encontrado.",
-    "USERLOCKEDOUT": "O usuário está bloqueado.",
-    "INVALIDCREDENTIALS": "Credenciais inválidas.",
-    "INVALIDPASSWORD": "Senha inválida.",
-    "USERNOTCONFIRMED": "O usuário não está confirmado."
+    "USER_NOT_FOUND": "Usuário com o e-mail fornecido não encontrado.",
+    "USER_LOCKED_OUT": "O usuário está bloqueado.",
+    "INVALID_CREDENTIALS": "Credenciais inválidas.",
+    "INVALID_PASSWORD": "Senha inválida.",
+    "USER_NOT_CONFIRMED": "O usuário não está confirmado.",
+    "ROLE_NOT_FOUND": "A função {{roleName}} não encontrada.",
+    "ROLE_NOT_EMPTY": "Alguns usuários ainda usam esta função \"{{roleName}}\". Remova a função \"{{roleName}}\" de todos os usuários e tente novamente.",
+    "DUPLICATEROLENAME": "Uma função com o nome \"{{roleName}}\" já está definida.",
+    "DUPLICATE_ROLE_NAME": "Uma função com o nome \"{{roleName}}\" já está definida."
   },
   "VALIDATION": {
     "REQUIRED": "Este campo é obrigatório"
@@ -43,10 +64,16 @@
   "VIEW": {
     "ROLES": {
       "TITLE": "Funções",
+      "DELETE_WARNING": "Você realmente deseja excluir a função: \"{{roleName}}\"?",
+      "DELETE_SUCCESS": "\"{{roleName}}\"  excluído com sucesso!",
+      "DELETE_ERROR": "A operação de exclusão da função \"{{roleName}}\" falhou!",
       "LIST": {
         "NAME": "Nome",
         "EXPIRES_AT": "Expira em"
       }
+    },
+    "USERS": {
+      "TITLE": "Usuários"
     }
   },
   "GENERIC": {
@@ -58,5 +85,15 @@
     "NEW_ROLE": "Nova Função",
     "LIST_USER": "Lista de Usuários",
     "NEW_USER": "Novo Usuário"
+  },
+  "ACTION_MENU": {
+    "ACTIONS": "Ações"
+  },
+  "PROFILE_MENU": {
+    "LANGUAGE": "Língua",
+    "LOGOUT": "Sair",
+    "TURKISH": "Turca",
+    "ENGLISH": "Inglês",
+    "PORTUGUESE": "Português"
   }
 }

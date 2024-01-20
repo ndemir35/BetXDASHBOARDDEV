@@ -1,0 +1,67 @@
+.toast-wrapper.simple-toast {
+  .progress-bar-container {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 0 0 2px 2px;
+  }
+
+  .progress-bar {
+    height: 4px;
+    transition: none;
+    width: 0;
+  }
+
+  .evolve-toast {
+    &:hover {
+      box-shadow: $nap-toast-box-shadow-hover;
+    }
+
+    &.standard-dialog {
+      border-color: transparent;
+
+      .progress-bar {
+        background-color: rgba(42, 42, 42, 0.2);
+      }
+    }
+
+    &.success-dialog {
+      background-color: $success;
+      color: white;
+
+      .progress-bar {
+        background-color: lighten($success, 15%);
+      }
+    }
+
+    &.info-dialog {
+      background-color: $info;
+
+      .progress-bar {
+        background-color: lighten($warning, 15%);
+      }
+    }
+
+    &.warning-dialog {
+      background-color: $warning;
+
+      .progress-bar {
+        background-color: lighten($warning, 20%);
+      }
+    }
+
+    &.danger-dialog {
+      background-color: $danger;
+
+      .progress-bar {
+        background-color: lighten($danger, 10%);
+      }
+    }
+
+    .toast-title-content {
+        color: white;
+    }
+
+    .content-holder {
+        color: white;
+    }
+  }
+}

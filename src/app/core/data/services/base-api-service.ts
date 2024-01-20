@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 export class BaseApiService {
+  
   constructor(private _http: HttpClient) {}
 
   private _handleError<T>(
@@ -27,10 +28,10 @@ export class BaseApiService {
     };
   }
 
-  post<T, K>(url: string, body: T): Observable<ApiResponse<K>> {
+  post<TRequest, TResponse>(url: string, body: TRequest): Observable<ApiResponse<TResponse>> {
     return this._http
       .post(url, body)
-      .pipe(map(this._mapResponse<K>), catchError(this._handleError<K>));
+      .pipe(map(this._mapResponse<TResponse>), catchError(this._handleError<TResponse>));
   }
 
   get<T>(url: string): Observable<ApiResponse<T>> {

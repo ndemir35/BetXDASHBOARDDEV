@@ -1,4 +1,21 @@
 {
+  "COMMON": {
+    "EDIT": "Güncelle",
+    "DELETE": "Sil",
+    "NEW": "Yeni",
+    "NAME": "İsim",
+    "LASTNAME": "Soyisim",
+    "SAVE": "Kaydet",
+    "ERROR_MESSAGE": "İşleminiz gerçekleştirilirken bir hata oluştu.",
+    "SUCCESS_MESSAGE": "İşleminiz başarıyla tamamlandı."
+  },
+  "POPUP": {
+    "ARE_YOU_SURE": "Emin misin?",
+    "CONFIRM": "Onayla",
+    "CANCEL": "Vazgeç",
+    "SUCCESS": "İşlem başarılı",
+    "ERROR": "İşlem başarısız"
+  },
   "LOGIN": {
     "LOGIN_FORM": {
       "TITLE": "Giriş",
@@ -31,11 +48,15 @@
     }
   },
   "API_RESPONSE": {
-    "USERNOTFOUND": "Sağlanan e-postaya sahip kullanıcı bulunamadı.",
-    "USERLOCKEDOUT": "Kullanıcı kilitlendi.",
-    "INVALIDCREDENTIALS": "Geçersiz kimlik bilgileri.",
-    "INVALIDPASSWORD": "Geçersiz şifre.",
-    "USERNOTCONFIRMED": "Kullanıcı doğrulanmadı."
+    "USER_NOT_FOUND": "Sağlanan e-postaya sahip kullanıcı bulunamadı.",
+    "USER_LOCKED_OUT": "Kullanıcı kilitlendi.",
+    "INVALID_CREDENTIALS": "Geçersiz kimlik bilgileri.",
+    "INVALID_PASSWORD": "Geçersiz şifre.",
+    "USER_NOT_CONFIRMED": "Kullanıcı doğrulanmadı.",
+    "ROLE_NOT_FOUND": "{{roleName}} rolü bulunamadı.",
+    "ROLE_NOT_EMPTY": "Bazı kullanıcılar \"{{roleName}},\" rolünü kullanıyor. Lütfen \"{{roleName}}\" rolünü tüm kullanıcılardan kaldırın ve tekrar deneyin.",
+    "DUPLICATEROLENAME": "\"{{roleName}}\" adlı bir rol zaten tanımlanmış.",
+    "DUPLICATE_ROLE_NAME": "\"{{roleName}}\" adlı bir rol zaten tanımlanmış."
   },
   "VALIDATION": {
     "REQUIRED": "Bu alan gereklidir"
@@ -43,10 +64,16 @@
   "VIEW": {
     "ROLES": {
       "TITLE": "Roller",
+      "DELETE_WARNING": "\"{{roleName}}\" rolünü gerçekten silmek istiyor musunuz?",
+      "DELETE_SUCCESS": "\" {{roleName}}\"  başarıyla silindi!",
+      "DELETE_ERROR": "\"{{roleName}}\"  rolünün silme işlemi başarısız oldu!",
       "LIST": {
         "NAME": "İsim",
         "EXPIRES_AT": "Son geçerlilik tarihi"
       }
+    },
+    "USERS": {
+      "TITLE": "Kullanıcılar"
     }
   },
   "GENERIC": {
@@ -58,5 +85,15 @@
     "NEW_ROLE": "Yeni Rol",
     "LIST_USER": "Kullanıcı Listesi",
     "NEW_USER": "Yeni Kullaıcı"
+  },
+  "ACTION_MENU": {
+    "ACTIONS": "Aksiyonlar"
+  },
+  "PROFILE_MENU": {
+    "LANGUAGE": "Dil",
+    "LOGOUT": "Çıkış Yap",
+    "TURKISH": "Türkçe",
+    "ENGLISH": "İngilizce",
+    "PORTUGUESE": "Portekizce"
   }
 }

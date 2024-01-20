@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {
   ButtonModule,
   CardModule,
+  DatePickerModule,
   FormModule,
   GridModule,
   LoadingButtonModule,
@@ -28,6 +29,7 @@ export const FORM_MODULES: Provider[] = [
   ReactiveFormsModule,
   FormModule,
   LoadingButtonModule,
+  DatePickerModule,
 ];
 
 export const SHARED_COMPONENTS: Provider[] = [ErrorMessageComponent];

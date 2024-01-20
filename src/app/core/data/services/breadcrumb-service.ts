@@ -8,6 +8,7 @@ const ROUTE_MAP: ReadonlyMap<string, string> = new Map<string, string>([
   ['//user', 'BREADCRUMBS.LIST_USER'],
   ['//user//new', 'BREADCRUMBS.NEW_USER'],
   ['//role', 'BREADCRUMBS.LIST_ROLE'],
+  ['//role//new', 'BREADCRUMBS.NEW_ROLE'],
 ]);
 
 @Injectable({

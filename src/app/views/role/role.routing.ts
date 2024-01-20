@@ -14,6 +14,20 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'new',
+        loadComponent: () =>
+          import('./ui/components/new/new.component').then(
+            (m) => m.NewComponent
+          ),
+      },
+      {
+        path: 'edit',
+        loadComponent: () =>
+          import('./ui/components/edit/edit.component').then(
+            (m) => m.EditComponent
+          ),
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: 'list',

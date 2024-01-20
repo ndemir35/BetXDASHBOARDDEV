@@ -14,31 +14,25 @@
         cDropdownHeader
         class="bg-light dark:bg-white dark:bg-opacity-10 fw-semibold py-2"
       >
-        Language
+        {{ "PROFILE_MENU.LANGUAGE" | translate }}
       </h6>
     </li>
     <li>
       <a [routerLink]="[]" (click)="setLang('tr')" cDropdownItem>
         <svg cIcon class="me-2" name="cifTr"></svg>
-        Turkish
+        {{ "PROFILE_MENU.TURKISH" | translate }}
       </a>
     </li>
     <li>
       <a [routerLink]="[]" (click)="setLang('en-US')" cDropdownItem>
         <svg cIcon class="me-2" name="cifUs"></svg>
-        English(US)
-      </a>
-    </li>
-    <li>
-      <a [routerLink]="[]" (click)="setLang('en-GB')" cDropdownItem>
-        <svg cIcon class="me-2" name="cifGb"></svg>
-        English(GB)
+        {{ "PROFILE_MENU.ENGLISH" | translate }}
       </a>
     </li>
     <li>
       <a [routerLink]="[]" (click)="setLang('pt-BR')" cDropdownItem>
         <svg cIcon class="me-2" name="cifBr"></svg>
-        Portuguese(BR)
+        {{ "PROFILE_MENU.PORTUGUESE" | translate }}
       </a>
     </li>
 
@@ -48,7 +42,7 @@
     <li>
       <a [routerLink]="[]" (click)="logout()" cDropdownItem>
         <svg cIcon class="me-2" name="cilAccountLogout"></svg>
-        Logout
+        {{ "PROFILE_MENU.LOGOUT" | translate }}
       </a>
     </li>
   </ul>

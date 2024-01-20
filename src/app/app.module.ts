@@ -35,6 +35,12 @@ import { BreadcrumbService } from './core/data/services';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { SpinnerComponent } from './shared/components/spinner';
 import { ToastComponent } from './shared/components/toast/toast.component';
+import {
+  ConfirmBoxConfigModule,
+  DialogConfigModule,
+  NgxAwesomePopupModule,
+  ToastNotificationConfigModule,
+} from '@costlydeveloper/ngx-awesome-popup';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -71,6 +77,10 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient],
       },
     }),
+    NgxAwesomePopupModule.forRoot(), // Essential, mandatory main module.
+    DialogConfigModule.forRoot(), // Needed for instantiating dynamic components.
+    ConfirmBoxConfigModule.forRoot({}), // Needed for instantiating confirm boxes.
+    ToastNotificationConfigModule.forRoot(),
   ],
   providers: [
     {

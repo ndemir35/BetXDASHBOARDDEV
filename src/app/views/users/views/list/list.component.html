@@ -1,10 +1,10 @@
-<!-- TODO TRANSLATE -->
-
 <c-card>
-  <c-card-header>User List</c-card-header>
+  <c-card-header>{{ "VIEW.USERS.TITLE" | translate }}</c-card-header>
   <c-nav>
     <c-nav-item>
-      <a [active]="true" [routerLink]="['/user/new']" cNavLink> New </a>
+      <a [active]="true" [routerLink]="['/user/new']" cNavLink>
+        {{ "COMMON.NEW" | translate }}
+      </a>
     </c-nav-item>
   </c-nav>
 
@@ -13,9 +13,9 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Class</th>
-          <th scope="col">Heading</th>
-          <th scope="col">Heading</th>
+          <th scope="col">{{ 'COMMON.NAME' | translate}}</th>
+          <th scope="col">{{ 'COMMON.LASTNAME' | translate}}</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -40,3 +40,4 @@
     </table>
   </c-container>
 </c-card>
+
