@@ -6,13 +6,12 @@ import {
   AvatarModule,
   BadgeModule,
   DropdownModule,
-  ListGroupModule,
   NavModule,
-  PopoverModule,
+  PopoverModule
 } from '@coreui/angular-pro';
 import { IconModule } from '@coreui/icons-angular';
-import { SpinnerService } from '../spinner';
 import { TranslateService } from '@ngx-translate/core';
+import { SpinnerService } from '../spinner';
 
 @Component({
   selector: 'betx-avatar',

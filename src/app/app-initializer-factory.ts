@@ -14,7 +14,7 @@ export function appInitializerFactory(
       );
       locationInitialized.then(() => {
         const langToSet = navigator.language;
-        translate.setDefaultLang('en-US');
+        translate.setDefaultLang('en');
         translate.use(langToSet).subscribe(
           () => {
             console.info(`Successfully initialized '${langToSet}' language.'`);

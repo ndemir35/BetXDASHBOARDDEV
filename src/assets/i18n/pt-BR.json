@@ -1,13 +1,14 @@
 {
   "COMMON": {
-    "EDIT": "Editar",
+    "EDIT": "Atualizar",
     "DELETE": "Deletar",
     "NEW": "Novo",
     "NAME": "Nome",
     "LASTNAME": "Sobrenome",
     "SAVE": "Salvar",
     "ERROR_MESSAGE": "Ocorreu um erro ao processar sua operação.",
-    "SUCCESS_MESSAGE": "A operação foi concluída com sucesso."
+    "SUCCESS_MESSAGE": "A operação foi concluída com sucesso.",
+    "INDEFINITE": "Indeterminado"
   },
   "POPUP": {
     "ARE_YOU_SURE": "Tem certeza?",
@@ -59,21 +60,47 @@
     "DUPLICATE_ROLE_NAME": "Uma função com o nome \"{{roleName}}\" já está definida."
   },
   "VALIDATION": {
-    "REQUIRED": "Este campo é obrigatório"
+    "REQUIRED": "Este campo é obrigatório",
+    "DATE_MUST_BE_FUTURE": "A data deve estar no futuro"
   },
   "VIEW": {
     "ROLES": {
       "TITLE": "Funções",
+      "DESCRIPTION": "Controle suas funções com facilidade, tendo a capacidade de editar, excluir ou criar novas funções. Otimize seu processo de gerenciamento de funções personalizando permissões e acesso de usuários para atender às necessidades da sua organização.",
       "DELETE_WARNING": "Você realmente deseja excluir a função: \"{{roleName}}\"?",
       "DELETE_SUCCESS": "\"{{roleName}}\"  excluído com sucesso!",
       "DELETE_ERROR": "A operação de exclusão da função \"{{roleName}}\" falhou!",
+      "NEW": {
+        "TITLE": "Nova função"
+      },
       "LIST": {
         "NAME": "Nome",
         "EXPIRES_AT": "Expira em"
+      },
+      "EDIT": {
+        "TITLE": "Atualizar função"
+      },
+      "DETAIL": {
+        "TITLE": "Detalhes da função",
+        "PERMISSION": {
+          "TITLE": "Permissões",
+          "DESCRIPTION": "Gerenciamento de Funções Descomplicado: Capacite os Usuários a Adicionar ou Remover Permissões dos Papéis com Facilidade"
+        },
+        "USER": {
+          "TITLE": "Usuários",
+          "DESCRIPTION": "Explore a lista de usuários atualmente atribuídos a este papel. Aqui, você tem a capacidade de gerenciar facilmente a composição de usuários do papel. Adicione novos usuários a este papel sem esforço ou remova usuários existentes com apenas alguns cliques. Fortaleça sua administração de funções com uma funcionalidade fácil de gerenciamento de usuários."
+        }
       }
     },
     "USERS": {
-      "TITLE": "Usuários"
+      "TITLE": "Usuários",
+      "DESCRIPTION": "Gerencie seus usuários com facilidade, tendo a capacidade de editar, excluir ou criar novos usuários. Personalize perfis de usuários e permissões para ajustar seu acesso e funções de acordo com as necessidades da sua organização.",
+      "NEW": {
+        "TITLE": "Novo usuário"
+      },
+      "EDIT": {
+        "TITLE": "Atualizar usuário"
+      }
     }
   },
   "GENERIC": {
@@ -81,10 +108,10 @@
   },
   "BREADCRUMBS": {
     "DASHBOARD": "Painel",
-    "LIST_ROLE": "Lista de Funções",
-    "NEW_ROLE": "Nova Função",
-    "LIST_USER": "Lista de Usuários",
-    "NEW_USER": "Novo Usuário"
+    "LIST_ROLE": "Lista de funções",
+    "NEW_ROLE": "Nova função",
+    "LIST_USER": "Lista de usuários",
+    "NEW_USER": "Novo usuário"
   },
   "ACTION_MENU": {
     "ACTIONS": "Ações"

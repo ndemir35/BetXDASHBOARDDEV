@@ -5,7 +5,8 @@
     "NEW": "New",
     "NAME": "Name",
     "LASTNAME": "Surname",
-    "SAVE": "Save"
+    "SAVE": "Save",
+    "INDEFINITE": "Indefinite"
   },
   "POPUP": {
     "ARE_YOU_SURE": "Are you sure?",
@@ -81,10 +82,10 @@
   },
   "BREADCRUMBS": {
     "DASHBOARD": "Dashboard",
-    "LIST_ROLE": "Role List",
-    "NEW_ROLE": "New Role",
-    "LIST_USER": "User List",
-    "NEW_USER": "New User"
+    "LIST_ROLE": "Role list",
+    "NEW_ROLE": "New role",
+    "LIST_USER": "User list",
+    "NEW_USER": "New user"
   },
   "ACTION_MENU": {
     "ACTIONS": "Actions"

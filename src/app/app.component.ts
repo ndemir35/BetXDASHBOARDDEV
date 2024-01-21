@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   }
 
   initAppLanguage(): void {
-    this._translateService.setDefaultLang('en-US');
+    this._translateService.setDefaultLang('en');
     const browserLanguage = this._translateService.getBrowserCultureLang();
     if (browserLanguage) {
       this._translateService.use(browserLanguage);

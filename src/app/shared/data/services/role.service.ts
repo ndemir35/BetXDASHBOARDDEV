@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BaseApiService } from '@betx/core/data/services/base-api-service';
-import { Observable, catchError, map, of } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { environment } from '~/environments/environment';
 import {
   ApiResponse,
@@ -9,7 +9,7 @@ import {
   RoleDeleteModel,
   RoleListResponse,
   RoleNewModel,
-  RoleUpdateModel,
+  RoleUpdateModel
 } from '../interfaces';
 
 const SERVICE_URL = environment.identityServiceUrl;
@@ -18,6 +18,7 @@ const SERVICE_URL = environment.identityServiceUrl;
   providedIn: 'root',
 })
 export class RoleService extends BaseApiService {
+
   constructor(_httpClient: HttpClient) {
     super(_httpClient);
   }
@@ -64,6 +65,7 @@ export class RoleService extends BaseApiService {
   add(model: RoleNewModel): Observable<ApiResponse<any>> {
     return this.post<RoleNewModel, any>(SERVICE_URL + '/role/add', model);
   }
+
 
   /**
    * Updates an existing role in the system.

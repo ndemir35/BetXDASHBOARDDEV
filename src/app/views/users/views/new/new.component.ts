@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { BreadcrumbEntry, BreadcrumbService } from '@betx/core/data/services';
 import { FORM_MODULES, SHARED_MODULES } from '@betx/shared';
 import { ToastService } from '@betx/shared/components/toast/toast.service';
 import { IdentityService } from '@betx/shared/data';
 import { ToastModule } from '@coreui/angular-pro';
-import { finalize, tap } from 'rxjs';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'betx-new',
@@ -24,10 +25,13 @@ export class NewComponent implements OnInit {
 
   constructor(
     private _identityService: IdentityService,
-    private _toastService: ToastService
+    private _toastService: ToastService,
+    private _breadcrumbsService: BreadcrumbService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this._breadcrumbsService.setActive(BreadcrumbEntry.UserNew);
+  }
 
   createNewUser() {
     if (!this.newUserForm.valid) {

@@ -1,17 +1,43 @@
-<h4 class="mb-3">{{ "BREADCRUMBS.NEW_ROLE" | translate }}</h4>
+<h1 class="mb-4">{{ "BREADCRUMBS.NEW_ROLE" | translate }}</h1>
 
-<form cForm [formGroup]="roleFormGroup" (ngSubmit)="onSubmit()">
+<form #form="ngForm" cForm [formGroup]="roleFormGroup" (ngSubmit)="onSubmit()">
   <div class="mb-3">
     <label cLabel for="inputEmail-1">{{
       "VIEW.ROLES.LIST.NAME" | translate
     }}</label>
     <input cFormControl type="text" formControlName="name" />
+    <p
+      *ngIf="
+        roleFormGroup.get('name')?.dirty &&
+        roleFormGroup.get('name')?.errors?.['required']
+      "
+      class="text-danger mt-3"
+    >
+      {{ "VALIDATION.REQUIRED" | translate }}
+    </p>
   </div>
   <div class="mb-3">
     <label cLabel>{{ "VIEW.ROLES.LIST.EXPIRES_AT" | translate }}</label>
-    <c-date-picker closeOnSelect formControlName="expiresAt"/>
+    <c-date-picker closeOnSelect formControlName="expiresAt" />
+    <p
+      *ngIf="
+        roleFormGroup.get('expiresAt')?.dirty &&
+        roleFormGroup.get('expiresAt')?.errors?.['minDate']
+      "
+      class="text-danger mt-3"
+    >
+      {{ "VALIDATION.DATE_MUST_BE_FUTURE" | translate }}
+    </p>
   </div>
-  <button type="submit" [loading]="isLoading" cLoadingButton disabledOnLoading>
-    {{ "COMMON.SAVE" | translate }}
-  </button>
+  <div class="d-flex justify-content-end">
+    <button
+      type="submit"
+      [loading]="isLoading"
+      cLoadingButton
+      disabledOnLoading
+      [disabled]="roleFormGroup.invalid"
+    >
+      {{ "COMMON.SAVE" | translate }}
+    </button>
+  </div>
 </form>

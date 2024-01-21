@@ -1,18 +1,18 @@
 <c-row class="mb-3">
-  <c-col sm="8">
-    <h1 class="mb-4">{{ "VIEW.USERS.TITLE" | translate }}</h1>
-  </c-col>
-  <c-col class="d-flex align-items-center justify-content-end" sm="4">
-    <button cButton [routerLink]="['/user/new']" cNavLink color="success">
+  <c-col class="d-flex align-items-center justify-content-end" sm="12">
+    <button cButton color="success">
       <svg cIcon name="cil-plus"></svg>
       {{ "COMMON.NEW" | translate }}
     </button>
   </c-col>
 </c-row>
+
 <c-row class="mb-3">
-  <p>
-    {{ "VIEW.USERS.DESCRIPTION" | translate }}
-  </p>
+  <c-col sm="8">
+    <p>
+      {{ "VIEW.ROLES.DETAIL.PERMISSION.DESCRIPTION" | translate }}
+    </p>
+  </c-col>
 </c-row>
 
 <c-smart-table

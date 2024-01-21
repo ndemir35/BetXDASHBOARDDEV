@@ -3,5 +3,4 @@ export enum UserType {
   Operator = 'Operator',
   Customer = 'Customer',
   Player = 'Player',
-  NotDefined = 'NotDefined',
 }

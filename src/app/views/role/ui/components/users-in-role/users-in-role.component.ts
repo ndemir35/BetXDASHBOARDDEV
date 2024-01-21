@@ -1,19 +1,16 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { BreadcrumbEntry, BreadcrumbService } from '@betx/core/data/services';
 import { SHARED_MODULES } from '@betx/shared';
-import {
-  SmartTableModule
-} from '@coreui/angular-pro';
+import { SmartTableComponent } from '@coreui/angular-pro';
 
 @Component({
-  selector: 'betx-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css'],
+  selector: 'betx-users-in-role',
+  templateUrl: './users-in-role.component.html',
+  styleUrls: ['./users-in-role.component.css'],
   standalone: true,
-  imports: [SHARED_MODULES, SmartTableModule, RouterModule],
+  imports: [SHARED_MODULES, SmartTableComponent],
 })
-export class ListComponent implements OnInit {
+export class UsersInRoleComponent implements OnInit {
   data: any[] = [
     {
       fullName: 'Berk Öztürk',
@@ -32,9 +29,8 @@ export class ListComponent implements OnInit {
       userType: 'Customer',
     },
   ];
-  constructor(private _breadcrumbService: BreadcrumbService) {
-    this._breadcrumbService.setActive(BreadcrumbEntry.UserList);
-  }
+
+  constructor() {}
 
   ngOnInit() {
     this.data = [
@@ -44,7 +40,7 @@ export class ListComponent implements OnInit {
       ...this.data,
       ...this.data,
       ...this.data,
-      ...this.data,
-    ];
+      ...this.data
+    ]
   }
 }

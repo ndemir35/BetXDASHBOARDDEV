@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BreadcrumbEntry, BreadcrumbService } from '@betx/core/data/services';
 import {
   FORM_MODULES,
   PopupService,
@@ -8,6 +9,7 @@ import {
   RoleService,
   SHARED_MODULES,
 } from '@betx/shared';
+import { minDateValidator } from '@betx/shared/validators/min-date';
 import { finalize, tap } from 'rxjs';
 
 @Component({
@@ -25,15 +27,18 @@ export class NewComponent implements OnInit {
     _formBuilder: FormBuilder,
     private _roleService: RoleService,
     private _popupService: PopupService,
-    private _router: Router
+    private _router: Router,
+    private _breadcrumbService: BreadcrumbService
   ) {
     this.roleFormGroup = _formBuilder.group({
       name: ['', Validators.required],
-      expiresAt: [''],
+      expiresAt: [null, [minDateValidator(new Date())]],
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this._breadcrumbService.setActive(BreadcrumbEntry.RoleNew);
+  }
 
   private _getRequestModel() {
     return {
@@ -43,15 +48,14 @@ export class NewComponent implements OnInit {
   }
 
   onSubmit() {
-    this.roleFormGroup.disable();
-
     if (this.roleFormGroup.invalid) {
       return;
     }
 
+    this.roleFormGroup.disable();
+
     this.isLoading = true;
     const model = this._getRequestModel();
-    console.log(model.expireDate)
     this._roleService
       .add(model)
       .pipe(

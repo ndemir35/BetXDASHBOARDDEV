@@ -1,19 +1,23 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { BreadcrumbEntry, BreadcrumbService } from '@betx/core/data/services';
 import { IconSubset } from '@betx/icons/icon-subset';
-import { Role, SHARED_MODULES } from '@betx/shared';
-import { ActionMenuComponent } from '@betx/shared/components/action-menu/action-menu.component';
 import {
-  SpinnerComponent,
-  SpinnerService,
-} from '@betx/shared/components/spinner';
+  DateColumnComponent,
+  Role,
+  SHARED_MODULES
+} from '@betx/shared';
+import { ActionMenuComponent } from '@betx/shared/components/action-menu/action-menu.component';
+import { SpinnerService } from '@betx/shared/components/spinner';
 import { PopupService } from '@betx/shared/data/services/popup.service';
 import { RoleService } from '@betx/shared/data/services/role.service';
+import { RoleContextService } from '@betx/views/role/data/role-context.service';
 import {
   AlignDirective,
   CardModule,
   IColumn,
   ListGroupModule,
+  ModalModule,
   PopoverModule,
   SharedModule,
   SmartTableModule,
@@ -45,7 +49,8 @@ const COLUMN_HEADERS: ReadonlyMap<string, string> = new Map<string, string>([
     SharedModule,
     ActionMenuComponent,
     RouterModule,
-    SpinnerComponent,
+    DateColumnComponent,
+    ModalModule,
   ],
 })
 export class ListComponent implements OnInit, OnDestroy {
@@ -75,13 +80,17 @@ export class ListComponent implements OnInit, OnDestroy {
     private _roleService: RoleService,
     private _translateService: TranslateService,
     private _popupService: PopupService,
-    private _spinnerService: SpinnerService
+    private _spinnerService: SpinnerService,
+    private _roleContextService: RoleContextService,
+    private _router: Router,
+    private _breadcrumbService: BreadcrumbService
   ) {}
 
   ngOnInit() {
+    this._breadcrumbService.setActive(BreadcrumbEntry.RoleList);
+
     this.isLoading = true;
 
-    // TODO: Make this generic
     this._translateService.onLangChange
       .pipe(takeUntil(this._destroy$))
       .subscribe((_) => {
@@ -98,6 +107,11 @@ export class ListComponent implements OnInit, OnDestroy {
       });
 
     this._getRoles().subscribe();
+  }
+
+  goToDetail(item: Role) {
+    this._roleContextService.detailRole$.next(item);
+    this._router.navigateByUrl('/role/detail/' + item.id);
   }
 
   private _getRoles() {
@@ -153,8 +167,9 @@ export class ListComponent implements OnInit, OnDestroy {
       .subscribe();
   }
 
-  onEditRowClick(id: string) {
-    alert('EDIT' + id);
+  onEditRowClick(item: Role) {
+    this._roleContextService.currentEditRole$.next(item);
+    this._router.navigateByUrl('/role/edit');
   }
 
   ngOnDestroy(): void {

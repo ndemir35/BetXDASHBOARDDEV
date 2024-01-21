@@ -2,14 +2,13 @@
   <c-dropdown direction="dropstart" variant="nav-item">
     <button
       class="bx-action-menu__toggle"
+      style="padding: 4px 8px"
       cDropdownToggle
       [caret]="false"
-      size="sm"
-      color="dark"
       cButton
-      variant="ghost"
+      variant="outline"
     >
-      <svg cIcon name="cilSettings"></svg>
+      <svg cIcon size="l" name="cilOptions"></svg>
     </button>
     <ul cDropdownMenu class="pt-0 pr-5 w-auto">
       <li>
@@ -22,7 +21,7 @@
       </li>
 
       <li role="button" *ngFor="let actionItem of actions">
-        <a (click)="actionItem.handler.emit()" cDropdownItem>
+        <a (click)="actionItem.handler?.emit()" cDropdownItem>
           <svg cIcon [name]="actionItem.icon"></svg>
           {{ actionItem.label | translate }}
         </a>

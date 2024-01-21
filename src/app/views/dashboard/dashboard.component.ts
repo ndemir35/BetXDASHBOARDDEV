@@ -3,16 +3,18 @@ import {
   ChangeDetectorRef,
   Component,
   Input,
+  OnDestroy,
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { BreadcrumbEntry, BreadcrumbService } from '@betx/core/data/services';
 import { SHARED_MODULES } from '@betx/shared';
 import { ChartjsModule } from '@coreui/angular-chartjs';
 import {
-  BreadcrumbRouterService,
   DropdownModule,
-  WidgetModule,
+  WidgetModule
 } from '@coreui/angular-pro';
 import { cibFacebook, cibLinkedin, cibTwitter } from '@coreui/icons';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'betx-dashboard',
@@ -27,8 +29,18 @@ import { cibFacebook, cibLinkedin, cibTwitter } from '@coreui/icons';
     DropdownModule,
   ],
 })
-export class DashboardComponent implements AfterContentInit {
-  constructor(private changeDetectorRef: ChangeDetectorRef) {}
+export class DashboardComponent implements AfterContentInit, OnDestroy {
+  private destroy$ = new Subject<void>();
+
+  constructor(
+    private changeDetectorRef: ChangeDetectorRef,
+    private breadcrumbsService: BreadcrumbService
+  ) {}
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
   icons = { cibFacebook, cibLinkedin, cibTwitter };
 
@@ -138,6 +150,7 @@ export class DashboardComponent implements AfterContentInit {
   }
 
   ngAfterContentInit(): void {
+    this.breadcrumbsService.setActive(BreadcrumbEntry.Dashboard);
     this.changeDetectorRef.detectChanges();
   }
 }

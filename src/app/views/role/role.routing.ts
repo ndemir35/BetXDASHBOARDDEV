@@ -28,6 +28,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'detail/:id',
+        loadChildren: () =>
+          import('./ui/components/detail/detail.routes').then(
+            (m) => m.ROLE_DETAIL_ROUTES
+          ),
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: 'list',

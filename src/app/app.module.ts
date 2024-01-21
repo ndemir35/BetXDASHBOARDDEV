@@ -9,13 +9,12 @@ import { AppComponent } from './app.component';
 import {
   BadgeModule,
   BreadcrumbModule,
-  BreadcrumbRouterService,
   ButtonModule,
   GridModule,
   HeaderModule,
   NavModule,
   SharedModule,
-  SidebarModule,
+  SidebarModule
 } from '@coreui/angular-pro';
 
 import {
@@ -25,22 +24,21 @@ import {
 } from '@angular/common/http';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import {
+  ConfirmBoxConfigModule,
+  DialogConfigModule,
+  NgxAwesomePopupModule,
+  ToastNotificationConfigModule,
+} from '@costlydeveloper/ngx-awesome-popup';
+import {
   TranslateLoader,
   TranslateModule,
   TranslateService,
 } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { appInitializerFactory } from './app-initializer-factory';
-import { BreadcrumbService } from './core/data/services';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { SpinnerComponent } from './shared/components/spinner';
 import { ToastComponent } from './shared/components/toast/toast.component';
-import {
-  ConfirmBoxConfigModule,
-  DialogConfigModule,
-  NgxAwesomePopupModule,
-  ToastNotificationConfigModule,
-} from '@costlydeveloper/ngx-awesome-popup';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -100,10 +98,10 @@ export function createTranslateLoader(http: HttpClient) {
       deps: [TranslateService, Injector],
       multi: true,
     },
-    {
-      provide: BreadcrumbRouterService,
-      useClass: BreadcrumbService,
-    },
+    // {
+    //   provide: BreadcrumbRouterService,
+    //   useClass: BreadcrumbService,
+    // },
   ],
   bootstrap: [AppComponent],
 })

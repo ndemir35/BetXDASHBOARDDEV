@@ -7,7 +7,8 @@
     "LASTNAME": "Soyisim",
     "SAVE": "Kaydet",
     "ERROR_MESSAGE": "İşleminiz gerçekleştirilirken bir hata oluştu.",
-    "SUCCESS_MESSAGE": "İşleminiz başarıyla tamamlandı."
+    "SUCCESS_MESSAGE": "İşleminiz başarıyla tamamlandı.",
+    "INDEFINITE": "Süresiz"
   },
   "POPUP": {
     "ARE_YOU_SURE": "Emin misin?",
@@ -59,32 +60,58 @@
     "DUPLICATE_ROLE_NAME": "\"{{roleName}}\" adlı bir rol zaten tanımlanmış."
   },
   "VALIDATION": {
-    "REQUIRED": "Bu alan gereklidir"
+    "REQUIRED": "Bu alan gereklidir",
+    "DATE_MUST_BE_FUTURE": "Tarih gelecekte olmalıdır."
   },
   "VIEW": {
     "ROLES": {
       "TITLE": "Roller",
+      "DESCRIPTION": "Rollerinizi düzenleyebilme, silebilme veya yeni bir rol oluşturabilme yeteneğiyle rollerinizi kolayca kontrol edin. İzinleri özelleştirerek ve kullanıcı erişimini düzenleyerek rol yönetim sürecinizi basitleştirin, organizasyonel ihtiyaçlarınıza uygun hale getirin.",
       "DELETE_WARNING": "\"{{roleName}}\" rolünü gerçekten silmek istiyor musunuz?",
       "DELETE_SUCCESS": "\" {{roleName}}\"  başarıyla silindi!",
       "DELETE_ERROR": "\"{{roleName}}\"  rolünün silme işlemi başarısız oldu!",
+      "NEW": {
+        "TITLE": "Yeni rol"
+      },
       "LIST": {
         "NAME": "İsim",
         "EXPIRES_AT": "Son geçerlilik tarihi"
+      },
+      "EDIT": {
+        "TITLE": "Rolü güncelle"
+      },
+      "DETAIL": {
+        "TITLE": "Rol detayı",
+        "PERMISSION": {
+          "TITLE": "İzinler",
+          "DESCRIPTION": "Kolay Rol Yönetimi: Kullanıcılara İzinleri Sorunsuz Bir Şekilde Ekleyip Kaldırmak İçin Yetki Ver"
+        },
+        "USER": {
+          "TITLE": "Kullanıcılar",
+          "DESCRIPTION": "Bu rolle ilişkilendirilmiş kullanıcıların listesini keşfedin. Burada, rolünüzün kullanıcı bileşimini kolayca yönetme yeteneğine sahipsiniz. Bu role yeni kullanıcılar ekleyin ya da mevcut kullanıcıları birkaç tıklama ile kaldırın. Kullanıcı yönetimi işlevselliğini kolayca kullanarak rol yönetiminizi güçlendirin."
+        }
       }
     },
     "USERS": {
-      "TITLE": "Kullanıcılar"
+      "TITLE": "Kullanıcılar",
+      "DESCRIPTION": "Kullanıcılarınızı düzenleme, silme veya yeni kullanıcılar oluşturma yeteneğiyle kullanıcılarınızı kolayca yönetin. Kullanıcı profillerini ve izinleri özelleştirerek, erişim ve rolleri kuruluşunuzun gereksinimlerine göre uyarlayın.",
+      "NEW": {
+        "TITLE": "Yeni kullanıcı"
+      },
+      "EDIT": {
+        "TITLE": "Kullanıcıyı Güncelle"
+      }
     }
   },
   "GENERIC": {
     "NO_ITEMS": "Kayıt bulunamadı"
   },
   "BREADCRUMBS": {
-    "DASHBOARD": "Gösterge Paneli",
-    "LIST_ROLE": "Rol Listesi",
-    "NEW_ROLE": "Yeni Rol",
-    "LIST_USER": "Kullanıcı Listesi",
-    "NEW_USER": "Yeni Kullaıcı"
+    "DASHBOARD": "Gösterge paneli",
+    "LIST_ROLE": "Rol listesi",
+    "NEW_ROLE": "Yeni rol",
+    "LIST_USER": "Kullanıcı listesi",
+    "NEW_USER": "Yeni kullaıcı"
   },
   "ACTION_MENU": {
     "ACTIONS": "Aksiyonlar"

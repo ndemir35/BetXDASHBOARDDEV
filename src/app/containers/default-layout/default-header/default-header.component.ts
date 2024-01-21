@@ -50,7 +50,7 @@ export class DefaultHeaderComponent
     themeSwitchRadio: new UntypedFormControl('light'),
   });
   private _destroy$ = new Subject<void>();
-  userType: UserType = UserType.NotDefined;
+  userType?: UserType;
   breadcrumbs: IBreadcrumbItem[] = [];
 
   constructor(
@@ -63,12 +63,9 @@ export class DefaultHeaderComponent
 
   ngOnInit(): void {
     this.userType = this._storageService.userType.value;
-    this._breadcrumbService
-      .getBreadcrumbItems()
+    this._breadcrumbService.active$
       .pipe(takeUntil(this._destroy$))
-      .subscribe((breadcrumbs) => {
-        this.breadcrumbs = breadcrumbs;
-      });
+      .subscribe((bc) => (this.breadcrumbs = bc));
   }
 
   setTheme(value: string): void {
