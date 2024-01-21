@@ -60,6 +60,8 @@ export class PermissionsComponent
   extends BaseListComponent
   implements OnInit, OnDestroy
 {
+  protected override _breadcrumbEntry: BreadcrumbEntry | undefined;
+
   override columns: IColumn[] = [
     {
       key: 'permission',
@@ -104,10 +106,6 @@ export class PermissionsComponent
     _breadcrumbsService: BreadcrumbService
   ) {
     super(_translateService, _breadcrumbsService);
-  }
-
-  protected override getBreadcrumbEntry(): BreadcrumbEntry {
-    throw new Error('Method not implemented.');
   }
 
   override ngOnInit() {

@@ -46,6 +46,8 @@ export class UsersInRoleComponent
   extends BaseListComponent
   implements OnInit, OnDestroy
 {
+  protected override _breadcrumbEntry: BreadcrumbEntry | undefined;
+
   override columnHeaderLabelMap: ReadonlyMap<string, string> = new Map<
     string,
     string
@@ -73,11 +75,6 @@ export class UsersInRoleComponent
 
   override ngOnInit() {
     super.ngOnInit();
-  }
-
-
-  protected override getBreadcrumbEntry(): BreadcrumbEntry {
-    throw new Error('Method not implemented.');
   }
 
   override ngOnDestroy(): void {

@@ -7,19 +7,18 @@ import { BreadcrumbEntry, BreadcrumbService } from './data/services';
 @Directive()
 export abstract class BaseComponent implements OnDestroy, OnInit {
   protected _destroy$ = new Subject<void>();
+  protected abstract _breadcrumbEntry: BreadcrumbEntry | undefined;
 
   constructor(protected _breadcrumbService: BreadcrumbService) {}
-
-  protected abstract getBreadcrumbEntry(): BreadcrumbEntry;
 
   ngOnInit(): void {
     this._setBreadcrumbs();
   }
 
   private _setBreadcrumbs() {
-    try {
-      this._breadcrumbService.setActive(this.getBreadcrumbEntry());
-    } catch {}
+    if (this._breadcrumbEntry) {
+      this._breadcrumbService.setActive(this._breadcrumbEntry);
+    }
   }
 
   ngOnDestroy(): void {
