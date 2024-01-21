@@ -1,0 +1,17 @@
+<ng-container *ngIf="control && control.dirty">
+  <p *ngIf="control.hasError('required')" class="text-danger">
+    {{ "VALIDATION.REQUIRED" | translate }}
+  </p>
+
+  <p *ngIf="control.hasError('minlength')" class="text-danger">
+    {{ "VALIDATION.MIN_LENGTH" | translate: {min: control.errors?.['minlength'].requiredLength } }}
+  </p>
+
+  <p *ngIf="control.hasError('maxlength')" class="text-danger">
+    {{ "VALIDATION.MAX_LENGTH" | translate: {max: control.errors?.['maxlength'].requiredLength } }}
+  </p>
+
+  <p *ngIf="control.hasError('minDate')" class="text-danger">
+    {{ "VALIDATION.DATE_MUST_BE_FUTURE" | translate }}
+  </p>
+</ng-container>

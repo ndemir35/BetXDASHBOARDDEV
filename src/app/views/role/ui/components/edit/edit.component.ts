@@ -9,8 +9,11 @@ import {
   RoleUpdateModel,
   SHARED_MODULES,
 } from '@betx/shared';
+import { minDateValidator } from '@betx/shared/validators/min-date';
 import { RoleContextService } from '@betx/views/role/data/role-context.service';
 import { Subject, finalize, takeUntil, tap } from 'rxjs';
+
+const NAME_MAX_LENGTH = 100;
 
 @Component({
   selector: 'betx-edit',
@@ -23,6 +26,7 @@ export class EditComponent implements OnInit, OnDestroy {
   private _destroy$ = new Subject<void>();
   isLoading = false;
   roleFormGroup: FormGroup;
+  nameMaxLength = NAME_MAX_LENGTH;
 
   constructor(
     _formBuilder: FormBuilder,
@@ -34,8 +38,15 @@ export class EditComponent implements OnInit, OnDestroy {
   ) {
     this.roleFormGroup = _formBuilder.group({
       id: ['', Validators.required],
-      name: ['', Validators.required],
-      expiresAt: ['', Validators.nullValidator],
+      name: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(NAME_MAX_LENGTH),
+        ],
+      ],
+      expiresAt: ['', minDateValidator(new Date())],
     });
   }
 

@@ -65,7 +65,10 @@
     "DUPLICATE_ROLE_NAME": "A role with a name \"{{roleName}}\" is already defined."
   },
   "VALIDATION": {
-    "REQUIRED": "This field is required"
+    "REQUIRED": "This field is required",
+    "DATE_MUST_BE_FUTURE": "Date must be in the future.",
+    "MIN_LENGTH": "Minimum length is {{min}} characters",
+    "MAX_LENGTH": "Maximum length is {{max}} characters"
   },
   "VIEW": {
     "ROLES": {

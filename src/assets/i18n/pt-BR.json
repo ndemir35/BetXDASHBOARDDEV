@@ -66,7 +66,9 @@
   },
   "VALIDATION": {
     "REQUIRED": "Este campo é obrigatório",
-    "DATE_MUST_BE_FUTURE": "A data deve estar no futuro"
+    "DATE_MUST_BE_FUTURE": "A data deve estar no futuro",
+    "MIN_LENGTH": "O comprimento mínimo é de {{min}} caracteres.",
+    "MAX_LENGTH": "O comprimento máximo é de {{max}} caracteres."
   },
   "VIEW": {
     "ROLES": {

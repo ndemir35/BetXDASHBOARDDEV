@@ -12,6 +12,8 @@ import {
 import { minDateValidator } from '@betx/shared/validators/min-date';
 import { finalize, tap } from 'rxjs';
 
+const NAME_MAX_LENGTH = 100;
+
 @Component({
   selector: 'betx-new',
   templateUrl: './new.component.html',
@@ -22,6 +24,7 @@ import { finalize, tap } from 'rxjs';
 export class NewComponent implements OnInit {
   isLoading = false;
   roleFormGroup: FormGroup;
+  nameMaxLength = NAME_MAX_LENGTH;
 
   constructor(
     _formBuilder: FormBuilder,
@@ -31,7 +34,14 @@ export class NewComponent implements OnInit {
     private _breadcrumbService: BreadcrumbService
   ) {
     this.roleFormGroup = _formBuilder.group({
-      name: ['', Validators.required],
+      name: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(NAME_MAX_LENGTH),
+        ],
+      ],
       expiresAt: [null, [minDateValidator(new Date())]],
     });
   }

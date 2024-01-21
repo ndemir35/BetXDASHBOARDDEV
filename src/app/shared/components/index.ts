@@ -3,4 +3,5 @@ export * from './toast';
 export * from './error-message';
 export * from './action-menu';
 export * from './date-column';
-export * from './required-label/required-label.component';
+export * from './validation-message';
+export * from './required-label';

@@ -5,29 +5,22 @@
     <betx-required-label>
       {{ "VIEW.ROLES.LIST.NAME" | translate }}
     </betx-required-label>
-    <input cFormControl type="text" formControlName="name" />
-    <p
-      *ngIf="
-        roleFormGroup.get('name')?.dirty &&
-        roleFormGroup.get('name')?.errors?.['required']
-      "
-      class="text-danger mt-3"
-    >
-      {{ "VALIDATION.REQUIRED" | translate }}
-    </p>
+    <input
+      cFormControl
+      type="text"
+      formControlName="name"
+      [maxlength]="nameMaxLength"
+    />
+    <betx-validation-message
+      [control]="roleFormGroup.get('name')"
+    ></betx-validation-message>
   </div>
   <div class="mb-3">
     <label cLabel>{{ "VIEW.ROLES.LIST.EXPIRES_AT" | translate }}</label>
     <c-date-picker closeOnSelect formControlName="expiresAt" />
-    <p
-      *ngIf="
-        roleFormGroup.get('expiresAt')?.dirty &&
-        roleFormGroup.get('expiresAt')?.errors?.['minDate']
-      "
-      class="text-danger mt-3"
-    >
-      {{ "VALIDATION.DATE_MUST_BE_FUTURE" | translate }}
-    </p>
+    <betx-validation-message
+      [control]="roleFormGroup.get('expiresAt')"
+    ></betx-validation-message>
   </div>
   <div class="d-flex justify-content-end">
     <button
