@@ -1,6 +1,7 @@
 export enum UserType {
-  Admin = 'Admin',
-  Operator = 'Operator',
+  SuperUser = 'SuperUser',
+  Manager = 'Manager',
+  SystemUser = 'SystemUser',
   Customer = 'Customer',
   Player = 'Player',
 }
