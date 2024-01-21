@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BaseListComponent } from '@betx/core/base.component';
 import { BreadcrumbEntry, BreadcrumbService } from '@betx/core/data/services';

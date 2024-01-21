@@ -33,7 +33,8 @@ export abstract class BaseListComponent
   implements OnDestroy, OnInit
 {
   public abstract columns: IColumn[];
-  public abstract columnHeaderLabelMap: ReadonlyMap<string, string>;
+  public isLoading: boolean = false;
+  protected abstract columnHeaderLabelMap: ReadonlyMap<string, string>;
 
   constructor(
     protected _translateService: TranslateService,

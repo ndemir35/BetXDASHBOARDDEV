@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { BaseListComponent } from '@betx/core/base.component';
 import { BreadcrumbEntry, BreadcrumbService } from '@betx/core/data/services';
 import { IconSubset } from '@betx/icons/icon-subset';
 import { DateColumnComponent, Role, SHARED_MODULES } from '@betx/shared';
@@ -21,12 +22,7 @@ import {
   TemplateIdDirective,
 } from '@coreui/angular-pro';
 import { TranslateService } from '@ngx-translate/core';
-import { Subject, filter, of, switchMap, takeUntil, tap } from 'rxjs';
-
-const COLUMN_HEADERS: ReadonlyMap<string, string> = new Map<string, string>([
-  ['name', 'VIEW.ROLES.LIST.NAME'],
-  ['expiresAt', 'VIEW.ROLES.LIST.EXPIRES_AT'],
-]);
+import { filter, of, switchMap, takeUntil, tap } from 'rxjs';
 
 @Component({
   selector: 'betx-list',
@@ -49,19 +45,27 @@ const COLUMN_HEADERS: ReadonlyMap<string, string> = new Map<string, string>([
     ModalModule,
   ],
 })
-export class ListComponent implements OnInit, OnDestroy {
-  private _destroy$ = new Subject<void>();
+export class ListComponent
+  extends BaseListComponent
+  implements OnInit, OnDestroy
+{
+  public override columnHeaderLabelMap: ReadonlyMap<string, string> = new Map<
+    string,
+    string
+  >([
+    ['name', 'VIEW.ROLES.LIST.NAME'],
+    ['expiresAt', 'VIEW.ROLES.LIST.EXPIRES_AT'],
+  ]);
+  protected override _breadcrumbEntry: BreadcrumbEntry | undefined =
+    BreadcrumbEntry.RoleList;
   icons = IconSubset;
-  isLoading = false;
   data: Role[] = [];
   columns: IColumn[] = [
     {
       key: 'name',
-      label: this._translateService.instant('VIEW.ROLES.LIST.NAME'),
     },
     {
       key: 'expiresAt',
-      label: this._translateService.instant('VIEW.ROLES.LIST.EXPIRES_AT'),
     },
     {
       key: 'show',
@@ -74,32 +78,18 @@ export class ListComponent implements OnInit, OnDestroy {
 
   constructor(
     private _roleService: RoleService,
-    private _translateService: TranslateService,
     private _popupService: PopupService,
     private _spinnerService: SpinnerService,
     private _roleContextService: RoleContextService,
     private _router: Router,
-    private _breadcrumbService: BreadcrumbService
-  ) {}
+    _translateService: TranslateService,
+    _breadcrumbService: BreadcrumbService
+  ) {
+    super(_translateService, _breadcrumbService);
+  }
 
-  ngOnInit() {
-    this._breadcrumbService.setActive(BreadcrumbEntry.RoleList);
-
-    this._translateService.onLangChange
-      .pipe(takeUntil(this._destroy$))
-      .subscribe((_) => {
-        this.columns = [
-          ...this.columns.map((column) => {
-            if (COLUMN_HEADERS.has(column.key)) {
-              column.label = this._translateService.instant(
-                COLUMN_HEADERS.get(column.key)!
-              );
-            }
-            return column;
-          }),
-        ];
-      });
-
+  override ngOnInit() {
+    super.ngOnInit();
     this._getRoles().subscribe();
   }
 
@@ -130,8 +120,6 @@ export class ListComponent implements OnInit, OnDestroy {
     });
   }
 
-  private _showDeleteErrorToast(name: string, errorCode?: string) {}
-
   onDeleteRowClick(id: string, name: string) {
     this._popupService
       .confirmDanger('VIEW.ROLES.DELETE_WARNING', {
@@ -161,8 +149,7 @@ export class ListComponent implements OnInit, OnDestroy {
     this._router.navigateByUrl('/role/edit');
   }
 
-  ngOnDestroy(): void {
-    this._destroy$.next();
-    this._destroy$.complete();
+  override ngOnDestroy(): void {
+    super.ngOnDestroy();
   }
 }
