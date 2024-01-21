@@ -4,14 +4,20 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {
   ButtonModule,
   CardModule,
+  DatePickerModule,
   FormModule,
   GridModule,
   LoadingButtonModule,
   SpinnerModule,
 } from '@coreui/angular-pro';
 import { TranslateModule } from '@ngx-translate/core';
-import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import { ApiMessagePipe, ValidationMessagePipe } from './pipes';
+import { IconModule } from '@coreui/icons-angular';
+import {
+  ErrorMessageComponent,
+  RequiredLabelComponent,
+  ValidationMessageComponent,
+} from './components';
 
 export const SHARED_MODULES: Provider[] = [
   TranslateModule,
@@ -20,12 +26,16 @@ export const SHARED_MODULES: Provider[] = [
   CardModule,
   ButtonModule,
   SpinnerModule,
+  IconModule,
 ];
 
 export const FORM_MODULES: Provider[] = [
   ReactiveFormsModule,
   FormModule,
   LoadingButtonModule,
+  DatePickerModule,
+  RequiredLabelComponent,
+  ValidationMessageComponent,
 ];
 
 export const SHARED_COMPONENTS: Provider[] = [ErrorMessageComponent];

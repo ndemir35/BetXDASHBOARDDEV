@@ -103,7 +103,8 @@ export class LoginFormComponent implements OnInit {
   }
 
   private _whenRequestSuccess(userLoginResponse: UserLoginResponse) {
-    this._storageService.setAuthToken(userLoginResponse.token);
+    this._storageService.authToken.value = userLoginResponse.token;
+    this._storageService.userType.value = userLoginResponse.userType;
     this._router.navigateByUrl('');
   }
 
@@ -141,7 +142,6 @@ export class LoginFormComponent implements OnInit {
   }
 
   goToForgotMyPassword() {
-    this._authService.forgotPasswordUsername = this.form.get('username')?.value;
     this._router.navigateByUrl('auth/forgot-password');
   }
 }

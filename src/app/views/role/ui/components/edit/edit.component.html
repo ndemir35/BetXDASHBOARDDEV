@@ -1,0 +1,44 @@
+<h1 class="mb-4">{{ "VIEW.ROLES.EDIT.TITLE" | translate }}</h1>
+
+<form
+  cRow
+  novalidate
+  cForm
+  cRow
+  [formGroup]="roleFormGroup"
+  (ngSubmit)="onSubmit()"
+>
+  <input cFormControl type="hidden" formControlName="id" />
+  <div class="mb-3">
+    <betx-required-label>
+      {{ "VIEW.ROLES.LIST.NAME" | translate }}
+    </betx-required-label>
+    <input
+      cFormControl
+      type="text"
+      formControlName="name"
+      [maxlength]="nameMaxLength"
+    />
+    <betx-validation-message
+      [control]="roleFormGroup.get('name')"
+    ></betx-validation-message>
+  </div>
+  <div class="mb-3">
+    <label cLabel>{{ "VIEW.ROLES.LIST.EXPIRES_AT" | translate }}</label>
+    <c-date-picker closeOnSelect formControlName="expiresAt" />
+    <betx-validation-message
+      [control]="roleFormGroup.get('expiresAt')"
+    ></betx-validation-message>
+  </div>
+  <div class="d-flex justify-content-end">
+    <button
+      type="submit"
+      [disabled]="roleFormGroup.invalid"
+      [loading]="isLoading"
+      cLoadingButton
+      disabledOnLoading
+    >
+      {{ "COMMON.SAVE" | translate }}
+    </button>
+  </div>
+</form>

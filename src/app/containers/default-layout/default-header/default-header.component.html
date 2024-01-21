@@ -14,16 +14,58 @@
           Dashboard
         </a>
       </c-nav-item>
-
     </c-header-nav>
 
-    <!--aside toggler-->
+    <c-header-nav class="ms-auto me-4">
+      <form [formGroup]="themeSwitch" cForm>
+        <c-button-group aria-label="Theme switch">
+          <input
+            class="btn-check"
+            formControlName="themeSwitchRadio"
+            id="btn-light-theme"
+            type="radio"
+            value="light"
+          />
+          <label
+            (click)="setTheme('light')"
+            cButton
+            cFormCheckLabel
+            color="primary"
+          >
+            <svg cIcon name="cilSun"></svg>
+          </label>
+          <input
+            class="btn-check"
+            formControlName="themeSwitchRadio"
+            id="btn-dark-theme"
+            type="radio"
+            value="dark"
+          />
+          <label
+            (click)="setTheme('dark')"
+            cButton
+            cFormCheckLabel
+            color="primary"
+          >
+            <svg cIcon name="cilMoon"></svg>
+          </label>
+        </c-button-group>
+      </form>
+    </c-header-nav>
+
+    <c-badge class="mr-3" color="success">{{ userType }}</c-badge>
     <betx-avatar></betx-avatar>
   </c-container>
   <c-header-divider></c-header-divider>
   <c-container [fluid]="true">
-    <!-- breadcrumbs -->
+    <c-breadcrumb [style]="'--cui-breadcrumb-divider:\'>\''">
+      <c-breadcrumb-item
+        *ngFor="let breadcrumb of breadcrumbs; let i = index"
+        [url]="breadcrumb.url"
+        [active]="i === breadcrumbs.length - 1"
+        >{{ breadcrumb.label | translate }}</c-breadcrumb-item
+      >
+    </c-breadcrumb>
     <c-breadcrumb-router class="ms-2"></c-breadcrumb-router>
   </c-container>
 </ng-container>
-<!--</c-header>-->

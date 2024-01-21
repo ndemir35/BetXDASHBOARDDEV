@@ -7,11 +7,7 @@ import { iconSubset } from './icons/icon-subset';
 
 @Component({
   selector: 'app-root',
-  template: `
-    <router-outlet>
-      <betx-toast></betx-toast>
-    </router-outlet>
-  `,
+  templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit {
   title = 'BetX Admin Dashboard';
@@ -30,7 +26,7 @@ export class AppComponent implements OnInit {
   }
 
   initAppLanguage(): void {
-    this._translateService.setDefaultLang('en-US');
+    this._translateService.setDefaultLang('en');
     const browserLanguage = this._translateService.getBrowserCultureLang();
     if (browserLanguage) {
       this._translateService.use(browserLanguage);

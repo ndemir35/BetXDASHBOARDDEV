@@ -13,11 +13,7 @@ import {
 } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { SHARED_MODULES } from '@betx/shared';
-import {
-  ButtonModule,
-  FormModule,
-  SpinnerModule,
-} from '@coreui/angular-pro';
+import { ButtonModule, FormModule, SpinnerModule } from '@coreui/angular-pro';
 import { IconModule } from '@coreui/icons-angular';
 import { Subscription } from 'rxjs';
 import { IdentityService } from '../../../../shared/data/services/identity.service';
@@ -40,8 +36,7 @@ const MIN_CHARS_TO_ENABLE_LOGIN_BTN = 3;
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ForgotPasswordFormComponent implements OnInit, OnDestroy {
-  private _subscriptions = new Subscription();
+export class ForgotPasswordFormComponent implements OnInit{
   isLoading = false;
   isLoginFailed = false;
   form: FormGroup = new FormGroup({
@@ -65,10 +60,7 @@ export class ForgotPasswordFormComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.form = this._formBuilder.group({
-      username: [
-        { value: this._authService.forgotPasswordUsername, disabled: false },
-        [Validators.required],
-      ],
+      username: [{ value: '', disabled: false }, [Validators.required]],
       password: [{ value: '', disabled: false }, [Validators.required]],
     });
   }
@@ -81,7 +73,5 @@ export class ForgotPasswordFormComponent implements OnInit, OnDestroy {
     this._router.navigateByUrl('auth/login');
   }
 
-  ngOnDestroy(): void {
-    this._subscriptions.unsubscribe();
-  }
+ 
 }

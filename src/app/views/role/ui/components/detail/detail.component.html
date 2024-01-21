@@ -1,0 +1,24 @@
+<ng-container *ngIf="role$ | async; let role">
+  <h1 class="mb-4">{{ role.name | titlecase }}</h1>
+
+  <c-nav variant="underline">
+    <c-nav-item *ngFor="let tab of tabs; let i = index; trackBy: identifyTabs">
+      <a
+        #rla="routerLinkActive"
+        routerLinkActive
+        [routerLink]="[tab.link]"
+        [cTabContent]="tabContent"
+        [active]="rla.isActive"
+        [tabPaneIdx]="i"
+        cNavLink
+      >
+        {{ tab.label | translate }}
+      </a>
+    </c-nav-item>
+  </c-nav>
+  <c-tab-content #tabContent="cTabContent" [activeTabPaneIdx]="0">
+    <c-tab-pane class="p-3">
+      <router-outlet></router-outlet>
+    </c-tab-pane>
+  </c-tab-content>
+</ng-container>

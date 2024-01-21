@@ -1,11 +1,29 @@
 import {
-  cilApplicationsSettings,
-  cilMenu,
-  cilSpeedometer,
-  cilEnvelopeOpen,
-  cilLockLocked,
+  cifBr,
+  cifGb,
+  cifTr,
+  cifUs,
   cilAccountLogout,
-  cilUser
+  cilApplicationsSettings,
+  cilArrowTop,
+  cilBell,
+  cilCommentSquare,
+  cilCreditCard,
+  cilDelete,
+  cilEnvelopeOpen,
+  cilFile,
+  cilLockLocked,
+  cilMenu,
+  cilMoon,
+  cilOptions,
+  cilPencil,
+  cilPlus,
+  cilSettings,
+  cilSpeedometer,
+  cilSun,
+  cilTask,
+  cilUser,
+  cilX
 } from '@coreui/icons';
 
 export const iconSubset = {
@@ -15,15 +33,53 @@ export const iconSubset = {
   cilEnvelopeOpen,
   cilLockLocked,
   cilAccountLogout,
-  cilUser
+  cilUser,
+  cilOptions,
+  cilDelete,
+  cilArrowTop,
+  cilSun,
+  cilMoon,
+  cilFile,
+  cilCreditCard,
+  cilTask,
+  cilBell,
+  cilCommentSquare,
+  cilSettings,
+  cilPencil,
+  cilX,
+  cilPlus,
+
+  cifTr,
+  cifUs,
+  cifBr,
+  cifGb
 };
 
 export enum IconSubset {
   cilApplicationsSettings = 'cilApplicationsSettings',
   cilMenu = 'cilMenu',
   cilSpeedometer = 'cilSpeedometer',
-  cilEnvelopeOpen= 'cilEnvelopeOpen',
+  cilEnvelopeOpen = 'cilEnvelopeOpen',
   cilLockLocked = 'cilLockLocked',
   cilAccountLogout = 'cilAccountLogout',
-  cilUser = 'cilUser'
+  cilUser = 'cilUser',
+  cilOptions = 'cilOptions',
+  cilDelete = 'cilDelete',
+  cilArrowTop = 'cilArrowTop',
+  cilSun = 'cilSun',
+  cilMoon = 'cilMoon',
+  cilFile = 'cilFile',
+  cilCreditCard = 'cilCreditCard',  
+  cilTask = 'cilTask',
+  cilBell = 'cilBell',
+  cilCommentSquare = 'cilCommentSquare',
+  cilSettings = 'cilSettings',
+  cilX = 'cilX',
+  cilPencil = 'cilPencil',
+  cilPlus = 'cilPlus',
+
+  cifTr = 'cifTr',
+  cifUs = 'cifUs',
+  cifBr = 'cifBr',
+  cifGb = 'cifGb'
 }

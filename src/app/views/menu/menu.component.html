@@ -1,0 +1,7 @@
+<betx-admin-menu
+  *ngIf="userType == UserType.SuperUser || userType == UserType.Manager"
+></betx-admin-menu>
+<betx-customer-menu *ngIf="userType === UserType.Customer"></betx-customer-menu>
+<betx-operator-menu
+  *ngIf="userType === UserType.SystemUser"
+></betx-operator-menu>

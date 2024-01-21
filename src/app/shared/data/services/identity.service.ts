@@ -1,27 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BaseApiService } from '@betx/core/base-api-service';
+import { BaseApiService } from '@betx/core/data/services/base-api-service';
 import { Observable, of } from 'rxjs';
 import { environment } from '~/environments/environment';
 import { UserLoginModel, UserRegisterModel } from '../interfaces';
-import { ApiResponse, UserLoginResponse, UserLogoutResponse } from '../interfaces/response';
+import {
+  ApiResponse,
+  UserLoginResponse,
+  UserLogoutResponse,
+} from '../interfaces/response';
 
 @Injectable({
   providedIn: 'root',
 })
 export class IdentityService extends BaseApiService {
-  private _forgotPasswordUsername = '';
-
   constructor(_http: HttpClient) {
     super(_http);
-  }
-
-  set forgotPasswordUsername(username: string) {
-    this._forgotPasswordUsername = username;
-  }
-
-  get forgotPasswordUsername() {
-    return this._forgotPasswordUsername;
   }
 
   logout(): Observable<ApiResponse<UserLogoutResponse>> {

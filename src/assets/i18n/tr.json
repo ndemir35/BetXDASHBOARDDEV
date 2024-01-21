@@ -1,4 +1,27 @@
 {
+  "COMMON": {
+    "EDIT": "Güncelle",
+    "DELETE": "Sil",
+    "NEW": "Yeni",
+    "NAME": "İsim",
+    "LASTNAME": "Soyisim",
+    "SAVE": "Kaydet",
+    "ERROR_MESSAGE": "İşleminiz gerçekleştirilirken bir hata oluştu.",
+    "SUCCESS_MESSAGE": "İşleminiz başarıyla tamamlandı.",
+    "INDEFINITE": "Süresiz",
+    "DESCRIPTION": "Açıklama",
+    "PERMISSION": "İzin",
+    "API": "Api",
+    "FULL_NAME": "Tam adı",
+    "USER_TYPE": "Kullanıcı türü"
+  },
+  "POPUP": {
+    "ARE_YOU_SURE": "Emin misin?",
+    "CONFIRM": "Onayla",
+    "CANCEL": "Vazgeç",
+    "SUCCESS": "İşlem başarılı",
+    "ERROR": "İşlem başarısız"
+  },
   "LOGIN": {
     "LOGIN_FORM": {
       "TITLE": "Giriş",
@@ -26,17 +49,85 @@
   "DASHBOARD": {
     "MENU": {
       "DASHBOARD": "Gösterge Paneli",
-      "USERS": "Kullanıcılar"
+      "USERS": "Kullanıcılar",
+      "ROLES": "Roller"
     }
   },
   "API_RESPONSE": {
-    "USERNOTFOUND": "Sağlanan e-postaya sahip kullanıcı bulunamadı.",
-    "USERLOCKEDOUT": "Kullanıcı kilitlendi.",
-    "INVALIDCREDENTIALS": "Geçersiz kimlik bilgileri.",
-    "INVALIDPASSWORD": "Geçersiz şifre.",
-    "USERNOTCONFIRMED": "Kullanıcı doğrulanmadı."
+    "USER_NOT_FOUND": "Sağlanan e-postaya sahip kullanıcı bulunamadı.",
+    "USER_LOCKED_OUT": "Kullanıcı kilitlendi.",
+    "INVALID_CREDENTIALS": "Geçersiz kimlik bilgileri.",
+    "INVALID_PASSWORD": "Geçersiz şifre.",
+    "USER_NOT_CONFIRMED": "Kullanıcı doğrulanmadı.",
+    "ROLE_NOT_FOUND": "{{roleName}} rolü bulunamadı.",
+    "ROLE_NOT_EMPTY": "Bazı kullanıcılar \"{{roleName}},\" rolünü kullanıyor. Lütfen \"{{roleName}}\" rolünü tüm kullanıcılardan kaldırın ve tekrar deneyin.",
+    "DUPLICATEROLENAME": "\"{{roleName}}\" adlı bir rol zaten tanımlanmış.",
+    "DUPLICATE_ROLE_NAME": "\"{{roleName}}\" adlı bir rol zaten tanımlanmış."
   },
   "VALIDATION": {
-    "REQUIRED": "Bu alan gereklidir"
+    "REQUIRED": "Bu alan gereklidir",
+    "DATE_MUST_BE_FUTURE": "Tarih gelecekte olmalıdır.",
+    "MIN_LENGTH": "Minimum uzunluk {{min}} karakterdir.",
+    "MAX_LENGTH": "Maksimum uzunluk {{max}} karakterdir."
+  },
+  "VIEW": {
+    "ROLES": {
+      "TITLE": "Roller",
+      "DESCRIPTION": "Rollerinizi düzenleyebilme, silebilme veya yeni bir rol oluşturabilme yeteneğiyle rollerinizi kolayca kontrol edin. İzinleri özelleştirerek ve kullanıcı erişimini düzenleyerek rol yönetim sürecinizi basitleştirin, organizasyonel ihtiyaçlarınıza uygun hale getirin.",
+      "DELETE_WARNING": "\"{{roleName}}\" rolünü gerçekten silmek istiyor musunuz?",
+      "DELETE_SUCCESS": "\" {{roleName}}\"  başarıyla silindi!",
+      "DELETE_ERROR": "\"{{roleName}}\"  rolünün silme işlemi başarısız oldu!",
+      "NEW": {
+        "TITLE": "Yeni rol"
+      },
+      "LIST": {
+        "NAME": "İsim",
+        "EXPIRES_AT": "Son geçerlilik tarihi"
+      },
+      "EDIT": {
+        "TITLE": "Rolü güncelle"
+      },
+      "DETAIL": {
+        "TITLE": "Rol detayı",
+        "PERMISSION": {
+          "TITLE": "İzinler",
+          "DESCRIPTION": "Kolay Rol Yönetimi: Kullanıcılara İzinleri Sorunsuz Bir Şekilde Ekleyip Kaldırmak İçin Yetki Ver"
+        },
+        "USER": {
+          "TITLE": "Kullanıcılar",
+          "DESCRIPTION": "Bu rolle ilişkilendirilmiş kullanıcıların listesini keşfedin. Burada, rolünüzün kullanıcı bileşimini kolayca yönetme yeteneğine sahipsiniz. Bu role yeni kullanıcılar ekleyin ya da mevcut kullanıcıları birkaç tıklama ile kaldırın. Kullanıcı yönetimi işlevselliğini kolayca kullanarak rol yönetiminizi güçlendirin."
+        }
+      }
+    },
+    "USERS": {
+      "TITLE": "Kullanıcılar",
+      "DESCRIPTION": "Kullanıcılarınızı düzenleme, silme veya yeni kullanıcılar oluşturma yeteneğiyle kullanıcılarınızı kolayca yönetin. Kullanıcı profillerini ve izinleri özelleştirerek, erişim ve rolleri kuruluşunuzun gereksinimlerine göre uyarlayın.",
+      "NEW": {
+        "TITLE": "Yeni kullanıcı"
+      },
+      "EDIT": {
+        "TITLE": "Kullanıcıyı Güncelle"
+      }
+    }
+  },
+  "GENERIC": {
+    "NO_ITEMS": "Kayıt bulunamadı"
+  },
+  "BREADCRUMBS": {
+    "DASHBOARD": "Gösterge paneli",
+    "LIST_ROLE": "Rol listesi",
+    "NEW_ROLE": "Yeni rol",
+    "LIST_USER": "Kullanıcı listesi",
+    "NEW_USER": "Yeni kullaıcı"
+  },
+  "ACTION_MENU": {
+    "ACTIONS": "Aksiyonlar"
+  },
+  "PROFILE_MENU": {
+    "LANGUAGE": "Dil",
+    "LOGOUT": "Çıkış Yap",
+    "TURKISH": "Türkçe",
+    "ENGLISH": "İngilizce",
+    "PORTUGUESE": "Portekizce"
   }
 }

@@ -1,42 +1,28 @@
-<!-- TODO TRANSLATE -->
+<c-row class="mb-3">
+  <c-col sm="8">
+    <h1 class="mb-4">{{ "VIEW.USERS.TITLE" | translate }}</h1>
+  </c-col>
+  <c-col class="d-flex align-items-center justify-content-end" sm="4">
+    <button cButton [routerLink]="['/user/new']" cNavLink color="success">
+      <svg cIcon name="cil-plus"></svg>
+      {{ "COMMON.NEW" | translate }}
+    </button>
+  </c-col>
+</c-row>
+<c-row class="mb-3">
+  <p>
+    {{ "VIEW.USERS.DESCRIPTION" | translate }}
+  </p>
+</c-row>
 
-<c-card>
-  <c-card-header>User List</c-card-header>
-  <c-nav>
-    <c-nav-item>
-      <a [active]="true" [routerLink]="['/user/new']" cNavLink> New </a>
-    </c-nav-item>
-  </c-nav>
-
-  <c-container>
-    <table cTable>
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Class</th>
-          <th scope="col">Heading</th>
-          <th scope="col">Heading</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>&#64;mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>&#64;fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td colSpan="2">Larry the Bird</td>
-          <td>&#64;twitter</td>
-        </tr>
-      </tbody>
-    </table>
-  </c-container>
-</c-card>
+<c-smart-table
+  activePage="1"
+  [columnFilter]="true"
+  [columnSorter]="true"
+  header
+  [itemsPerPage]="10"
+  [items]="data"
+  pagination
+  [tableProps]="{ hover: true, striped: true, responsive: true }"
+>
+</c-smart-table>

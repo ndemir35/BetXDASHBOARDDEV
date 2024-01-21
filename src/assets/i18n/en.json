@@ -1,4 +1,27 @@
 {
+  "COMMON": {
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "NEW": "New",
+    "NAME": "Name",
+    "LASTNAME": "Surname",
+    "SAVE": "Save",
+    "INDEFINITE": "Indefinite",
+    "DESCRIPTION": "Description",
+    "PERMISSION": "Permission",
+    "API": "Api",
+    "FULL_NAME": "Full name",
+    "USER_TYPE": "User type"
+  },
+  "POPUP": {
+    "ARE_YOU_SURE": "Are you sure?",
+    "CONFIRM": "Confirm",
+    "CANCEL": "Cancel",
+    "SUCCESS": "Operation successful",
+    "ERROR": "Operation failed",
+    "ERROR_MESSAGE": "An error occurred while processing your operation.",
+    "SUCCESS_MESSAGE": "The operation has completed successfully."
+  },
   "LOGIN": {
     "LOGIN_FORM": {
       "TITLE": "Login",
@@ -26,17 +49,78 @@
   "DASHBOARD": {
     "MENU": {
       "DASHBOARD": "Dashboard",
-      "USERS": "Users"
+      "USERS": "Users",
+      "ROLES": "Roles"
     }
   },
   "API_RESPONSE": {
-    "USERNOTFOUND": "User with the provided email not found.",
-    "USERLOCKEDOUT": "User is locked out.",
-    "INVALIDCREDENTIALS": "Invalid credentials.",
-    "INVALIDPASSWORD": "Invalid password.",
-    "USERNOTCONFIRMED": "User is not confirmed."
+    "USER_NOT_FOUND": "User with the provided email not found.",
+    "USER_LOCKED_OUT": "User is locked out.",
+    "INVALID_CREDENTIALS": "Invalid credentials.",
+    "INVALID_PASSWORD": "Invalid password.",
+    "USER_NOT_CONFIRMED": "User is not confirmed.",
+    "ROLE_NOT_FOUND": "The Role {{roleName}} not found.",
+    "ROLE_NOT_EMPTY": "Some users are still using this role \"{{roleName}}\". Please remove the role \"{{roleName}}\" from all users and try again.",
+    "DUPLICATEROLENAME": "A role with a name \"{{roleName}}\" is already defined.",
+    "DUPLICATE_ROLE_NAME": "A role with a name \"{{roleName}}\" is already defined."
   },
   "VALIDATION": {
-    "REQUIRED": "This field is required"
+    "REQUIRED": "This field is required",
+    "DATE_MUST_BE_FUTURE": "Date must be in the future.",
+    "MIN_LENGTH": "Minimum length is {{min}} characters",
+    "MAX_LENGTH": "Maximum length is {{max}} characters"
+  },
+  "VIEW": {
+    "ROLES": {
+      "TITLE": "Roles",
+      "DESCRIPTION": "Effortlessly control your roles with the ability to edit, delete, or create new roles. Streamline your role management process by customizing permissions and user access to meet your organizational needs",
+      "DELETE_WARNING": "Do you really want to delete the role \"{{roleName}}\"?",
+      "DELETE_SUCCESS": "\"{{roleName}}\" deleted successfully!",
+      "DELETE_ERROR": "The delete operation of role \"{{roleName}}\" has failed!",
+      "NEW": {
+        "TITLE": "New role"
+      },
+      "LIST": {
+        "NAME": "Name",
+        "EXPIRES_AT": "Expires at"
+      },
+      "EDIT": {
+        "TITLE": "Update role"
+      },
+      "DETAIL": {
+        "TITLE": "Role detail",
+        "PERMISSION": {
+          "TITLE": "Permissions",
+          "DESCRIPTION": "Effortless Role Management: Empower Users to Seamlessly Add or Remove Permissions from Roles"
+        },
+        "USER": {
+          "TITLE": "Users",
+          "DESCRIPTION": "Explore the list of users currently assigned to this role. Here, you have the ability to seamlessly manage the role's user composition. Add new users to this role effortlessly or remove existing users with just a few clicks. Empower your role administration with easy user management functionality."
+        }
+      }
+    },
+    "USERS": {
+      "TITLE": "Users",
+      "DESCRIPTION": "Effortlessly manage your users with the ability to edit, delete, or create new users. Customize user profiles and permissions to tailor their access and roles according to your organizational requirements.",
+      "NEW": {
+        "TITLE": "New user"
+      },
+      "EDIT": {
+        "TITLE": "Update user"
+      }
+    }
+  },
+  "GENERIC": {
+    "NO_ITEMS": "No items found"
+  },
+  "ACTION_MENU": {
+    "ACTIONS": "Actions"
+  },
+  "PROFILE_MENU": {
+    "LANGUAGE": "Language",
+    "LOGOUT": "Logout",
+    "TURKISH": "Turkish",
+    "ENGLISH": "English",
+    "PORTUGUESE": "Portuguese"
   }
 }

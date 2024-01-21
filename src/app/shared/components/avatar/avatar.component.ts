@@ -4,11 +4,14 @@ import { SHARED_MODULES, StorageService } from '@betx/shared';
 import { IdentityService } from '@betx/shared/data/services/identity.service';
 import {
   AvatarModule,
+  BadgeModule,
   DropdownModule,
-  ListGroupModule,
-  PopoverModule,
+  NavModule,
+  PopoverModule
 } from '@coreui/angular-pro';
 import { IconModule } from '@coreui/icons-angular';
+import { TranslateService } from '@ngx-translate/core';
+import { SpinnerService } from '../spinner';
 
 @Component({
   selector: 'betx-avatar',
@@ -18,25 +21,33 @@ import { IconModule } from '@coreui/icons-angular';
     SHARED_MODULES,
     AvatarModule,
     PopoverModule,
-    ListGroupModule,
     IconModule,
     DropdownModule,
     RouterModule,
+    BadgeModule,
+    NavModule
   ],
 })
 export class AvatarComponent {
   constructor(
     private _authService: IdentityService,
     private _storageService: StorageService,
-    private _router: Router
-  ) {}
+    private _router: Router,
+    private _spinnerService: SpinnerService,
+    private _translateService: TranslateService
+  ) {
+  }
 
   logout() {
-    this._authService.logout().subscribe(x => {
-      console.log(x);
-      this._storageService.removeAuthToken();
-      // this._router.navigateByUrl('auth/login');
-
+    this._spinnerService.show();
+    this._authService.logout().subscribe(() => {
+      this._storageService.authToken.remove();
+      this._spinnerService.hide();
+      this._router.navigateByUrl('auth/login');
     });
+  }
+
+  setLang(lang: string) {
+    this._translateService.use(lang);
   }
 }

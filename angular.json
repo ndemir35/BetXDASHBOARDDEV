@@ -18,7 +18,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "betx",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -37,6 +37,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/@costlydeveloper/ngx-awesome-popup/styles/theme.css",
               "src/scss/styles.scss"
             ],
             "scripts": [],
@@ -82,10 +83,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "betx-dashboard:build:production"
+              "buildTarget": "betx-dashboard:build:production"
             },
             "development": {
-              "browserTarget": "betx-dashboard:build:development"
+              "buildTarget": "betx-dashboard:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -93,7 +94,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "betx-dashboard:build"
+            "buildTarget": "betx-dashboard:build"
           }
         },
         "test": {

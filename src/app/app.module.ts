@@ -1,17 +1,10 @@
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, Injector, NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { NgScrollbarModule } from 'ngx-scrollbar';
-
-// Import routing module
 import { AppRoutingModule } from './app-routing.module';
-
-// Import app component
 import { AppComponent } from './app.component';
-
-// Import containers
 
 import {
   BadgeModule,
@@ -20,13 +13,31 @@ import {
   GridModule,
   HeaderModule,
   NavModule,
-  SidebarModule,
+  SharedModule,
+  SidebarModule
 } from '@coreui/angular-pro';
 
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  HttpClient,
+  HttpClientModule,
+} from '@angular/common/http';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import {
+  ConfirmBoxConfigModule,
+  DialogConfigModule,
+  NgxAwesomePopupModule,
+  ToastNotificationConfigModule,
+} from '@costlydeveloper/ngx-awesome-popup';
+import {
+  TranslateLoader,
+  TranslateModule,
+  TranslateService,
+} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { appInitializerFactory } from './app-initializer-factory';
+import { TokenInterceptor } from './interceptors/token.interceptor';
+import { SpinnerComponent } from './shared/components/spinner';
 import { ToastComponent } from './shared/components/toast/toast.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -55,14 +66,19 @@ export function createTranslateLoader(http: HttpClient) {
     NgScrollbarModule,
     HttpClientModule,
     ToastComponent,
+    SpinnerComponent,
+    SharedModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
         deps: [HttpClient],
       },
-      defaultLanguage: 'en',
     }),
+    NgxAwesomePopupModule.forRoot(), // Essential, mandatory main module.
+    DialogConfigModule.forRoot(), // Needed for instantiating dynamic components.
+    ConfirmBoxConfigModule.forRoot({}), // Needed for instantiating confirm boxes.
+    ToastNotificationConfigModule.forRoot(),
   ],
   providers: [
     {
@@ -71,6 +87,21 @@ export function createTranslateLoader(http: HttpClient) {
     },
     IconSetService,
     Title,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appInitializerFactory,
+      deps: [TranslateService, Injector],
+      multi: true,
+    },
+    // {
+    //   provide: BreadcrumbRouterService,
+    //   useClass: BreadcrumbService,
+    // },
   ],
   bootstrap: [AppComponent],
 })

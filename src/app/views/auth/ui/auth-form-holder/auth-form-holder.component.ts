@@ -10,7 +10,13 @@ import { CardModule } from '@coreui/angular-pro';
   styleUrls: ['./auth-form-holder.component.css'],
 })
 export class AuthFormHolderComponent implements OnInit {
+  appLogo: string | undefined;
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.appLogo = document.body.className.includes('dark-theme')
+      ? 'assets/img/logo-reverse.png'
+      : 'assets/img/logo.png';
+  }
 }

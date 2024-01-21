@@ -1,0 +1,6 @@
+<ng-container *ngIf="date(); else noExpire">
+  {{ date() + "Z" | date : "fullDate" }}
+</ng-container>
+<ng-template #noExpire>
+  {{ "COMMON.INDEFINITE" | translate }}
+</ng-template>

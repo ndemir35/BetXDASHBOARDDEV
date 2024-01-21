@@ -1,0 +1,67 @@
+<c-row class="mb-4">
+  <c-col sm="8">
+    <h1>{{ "VIEW.ROLES.TITLE" | translate }}</h1>
+  </c-col>
+  <c-col sm="4">
+    <c-col class="d-flex justify-content-end" sm="12">
+      <button [routerLink]="['/role/new']" color="success" cButton>
+        <svg cIcon name="cil-plus"></svg>
+        {{ "COMMON.NEW" | translate }}
+      </button>
+    </c-col>
+  </c-col>
+</c-row>
+
+<c-row class="mb-3">
+  <p>{{ "VIEW.ROLES.DESCRIPTION" | translate }}</p>
+</c-row>
+<c-smart-table
+  #smartTable="cSmartTable"
+  activePage="1"
+  [loading]="isLoading"
+  [columnFilter]="true"
+  [columnSorter]="true"
+  [columns]="columns"
+  header
+  [itemsPerPage]="10"
+  [items]="data"
+  pagination
+  [tableProps]="{ hover: true, responsive: true }"
+  [noItemsLabel]="'GENERIC.NO_ITEMS' | translate"
+>
+  <ng-template
+    cTemplateId="tableData"
+    let-columnName="columnName"
+    let-item="item"
+    let-tdContent="tdContent"
+  >
+    <td
+      [cTableActive]="smartTable.tableDataCellProps(item, columnName)?.['active']"
+      [cTableColor]="smartTable.tableDataCellProps(item, columnName)?.color"
+      [cAlign]="smartTable.tableDataCellProps(item, columnName)?.align"
+      [ngClass]="smartTable.tableDataCellClasses(item, columnName)"
+    >
+      <ng-container [ngSwitch]="columnName">
+        <ng-container *ngSwitchCase="'name'">
+          <a role="button" (click)="goToDetail(item)">{{
+            item.name | titlecase
+          }}</a>
+        </ng-container>
+        <ng-container *ngSwitchCase="'show'" class="py-2">
+          <div style="float: right">
+            <betx-action-menu
+              (onEditClick)="onEditRowClick(item)"
+              (onDeleteClick)="onDeleteRowClick(item.id, item.name)"
+            ></betx-action-menu>
+          </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="'expiresAt'" class="py-2">
+          <betx-date-column [date]="item.expiresAt"></betx-date-column>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+          {{ tdContent }}
+        </ng-container>
+      </ng-container>
+    </td>
+  </ng-template>
+</c-smart-table>
