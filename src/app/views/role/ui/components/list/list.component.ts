@@ -2,11 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { BreadcrumbEntry, BreadcrumbService } from '@betx/core/data/services';
 import { IconSubset } from '@betx/icons/icon-subset';
-import {
-  DateColumnComponent,
-  Role,
-  SHARED_MODULES
-} from '@betx/shared';
+import { DateColumnComponent, Role, SHARED_MODULES } from '@betx/shared';
 import { ActionMenuComponent } from '@betx/shared/components/action-menu/action-menu.component';
 import { SpinnerService } from '@betx/shared/components/spinner';
 import { PopupService } from '@betx/shared/data/services/popup.service';
@@ -25,7 +21,7 @@ import {
   TemplateIdDirective,
 } from '@coreui/angular-pro';
 import { TranslateService } from '@ngx-translate/core';
-import { Subject, filter, switchMap, takeUntil, tap } from 'rxjs';
+import { Subject, filter, of, switchMap, takeUntil, tap } from 'rxjs';
 
 const COLUMN_HEADERS: ReadonlyMap<string, string> = new Map<string, string>([
   ['name', 'VIEW.ROLES.LIST.NAME'],
@@ -134,15 +130,7 @@ export class ListComponent implements OnInit, OnDestroy {
     });
   }
 
-  private _showDeleteErrorToast(name: string, errorCode?: string) {
-    const message = errorCode?.length
-      ? `APIRESPONSE.${errorCode}`
-      : 'VIEW.ROLES.DELETE_ERROR';
-
-    return this._popupService.toastError(message, {
-      roleName: name,
-    });
-  }
+  private _showDeleteErrorToast(name: string, errorCode?: string) {}
 
   onDeleteRowClick(id: string, name: string) {
     this._popupService
@@ -157,7 +145,10 @@ export class ListComponent implements OnInit, OnDestroy {
             this._showDeleteSuccessToast(name).subscribe();
             return this._getRoles();
           } else {
-            return this._showDeleteErrorToast(name, resp.errorCode);
+            this._popupService
+              .toastErrorFromApi(resp.errorCode, undefined, { roleName: name })
+              .subscribe();
+            return of(undefined);
           }
         }),
         takeUntil(this._destroy$)
