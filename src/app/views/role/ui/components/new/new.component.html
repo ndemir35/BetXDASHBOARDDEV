@@ -2,9 +2,9 @@
 
 <form #form="ngForm" cForm [formGroup]="roleFormGroup" (ngSubmit)="onSubmit()">
   <div class="mb-3">
-    <label cLabel for="inputEmail-1">{{
-      "VIEW.ROLES.LIST.NAME" | translate
-    }}</label>
+    <betx-required-label>
+      {{ "VIEW.ROLES.LIST.NAME" | translate }}
+    </betx-required-label>
     <input cFormControl type="text" formControlName="name" />
     <p
       *ngIf="

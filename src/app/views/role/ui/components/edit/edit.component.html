@@ -10,9 +10,9 @@
 >
   <input cFormControl type="hidden" formControlName="id" />
   <div class="mb-3">
-    <label cLabel for="inputEmail-1">{{
-      "VIEW.ROLES.LIST.NAME" | translate
-    }}</label>
+    <betx-required-label>
+      {{ "VIEW.ROLES.LIST.NAME" | translate }}
+    </betx-required-label>
     <input class="mb-3" cFormControl type="text" formControlName="name" />
     <p *ngIf="roleFormGroup.get('name')?.invalid" class="text-danger">
       {{ "VALIDATION.REQUIRED" | translate }}
