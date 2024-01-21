@@ -8,7 +8,12 @@
     "SAVE": "Kaydet",
     "ERROR_MESSAGE": "İşleminiz gerçekleştirilirken bir hata oluştu.",
     "SUCCESS_MESSAGE": "İşleminiz başarıyla tamamlandı.",
-    "INDEFINITE": "Süresiz"
+    "INDEFINITE": "Süresiz",
+    "DESCRIPTION": "Açıklama",
+    "PERMISSION": "İzin",
+    "API": "Api",
+    "FULL_NAME": "Tam adı",
+    "USER_TYPE": "Kullanıcı türü"
   },
   "POPUP": {
     "ARE_YOU_SURE": "Emin misin?",

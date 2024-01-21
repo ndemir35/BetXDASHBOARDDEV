@@ -6,7 +6,12 @@
     "NAME": "Name",
     "LASTNAME": "Surname",
     "SAVE": "Save",
-    "INDEFINITE": "Indefinite"
+    "INDEFINITE": "Indefinite",
+    "DESCRIPTION": "Description",
+    "PERMISSION": "Permission",
+    "API": "Api",
+    "FULL_NAME": "Full name",
+    "USER_TYPE": "User type"
   },
   "POPUP": {
     "ARE_YOU_SURE": "Are you sure?",

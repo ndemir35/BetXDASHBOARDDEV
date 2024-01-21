@@ -89,8 +89,6 @@ export class ListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this._breadcrumbService.setActive(BreadcrumbEntry.RoleList);
 
-    this.isLoading = true;
-
     this._translateService.onLangChange
       .pipe(takeUntil(this._destroy$))
       .subscribe((_) => {

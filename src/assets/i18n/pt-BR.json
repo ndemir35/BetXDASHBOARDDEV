@@ -8,7 +8,12 @@
     "SAVE": "Salvar",
     "ERROR_MESSAGE": "Ocorreu um erro ao processar sua operação.",
     "SUCCESS_MESSAGE": "A operação foi concluída com sucesso.",
-    "INDEFINITE": "Indeterminado"
+    "INDEFINITE": "Indeterminado",
+    "DESCRIPTION": "Descrição",
+    "PERMISSION": "Permissão",
+    "API": "Api",
+    "FULL_NAME": "Nome completo",
+    "USER_TYPE": "Tipo de usuário"
   },
   "POPUP": {
     "ARE_YOU_SURE": "Tem certeza?",
