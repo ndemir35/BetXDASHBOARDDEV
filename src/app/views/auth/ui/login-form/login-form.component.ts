@@ -12,11 +12,11 @@ import {
   SHARED_MODULES,
   ValidationMessagePipe,
 } from '@betx/shared';
-import { UserLoginModel } from '@betx/shared/data';
 import {
   ApiResponse,
+  UserLoginModel,
   UserLoginResponse,
-} from '@betx/shared/data/interfaces/response';
+} from '@betx/shared/data';
 import { ApiMessagePipe } from '@betx/shared/pipes/api-message.pipe';
 import { AlertModule, ButtonModule, SpinnerModule } from '@coreui/angular-pro';
 import { IconModule } from '@coreui/icons-angular';

@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BaseIdentityService } from '@betx/core/data/services/base-identity-service';
 import { Observable, of } from 'rxjs';
-import { UserLoginModel, UserRegisterModel } from '../interfaces';
 import {
   ApiResponse,
+  UserLoginModel,
   UserLoginResponse,
   UserLogoutResponse,
-} from '../interfaces/response';
+  UserRegisterModel,
+} from '../interfaces';
 
 @Injectable({
   providedIn: 'root',

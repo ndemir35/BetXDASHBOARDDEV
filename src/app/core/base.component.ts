@@ -45,7 +45,6 @@ export abstract class BaseListComponent
 
   override ngOnInit(): void {
     super.ngOnInit();
-    console.log(this.columnHeaderLabelMap, this.columns);
     this._listenLanguageChanges();
   }
 
