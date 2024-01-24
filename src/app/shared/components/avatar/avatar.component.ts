@@ -41,7 +41,7 @@ export class AvatarComponent {
   logout() {
     this._spinnerService.show();
     this._authService.logout().subscribe(() => {
-      this._storageService.authToken.remove();
+      this._storageService.userType.remove();
       this._spinnerService.hide();
       this._router.navigateByUrl('auth/login');
     });

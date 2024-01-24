@@ -103,7 +103,6 @@ export class LoginFormComponent implements OnInit {
   }
 
   private _whenRequestSuccess(userLoginResponse: UserLoginResponse) {
-    this._storageService.authToken.value = userLoginResponse.token;
     this._storageService.userType.value = userLoginResponse.userType;
     this._router.navigateByUrl('');
   }
