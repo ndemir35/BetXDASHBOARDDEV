@@ -14,7 +14,7 @@ import {
   HeaderModule,
   NavModule,
   SharedModule,
-  SidebarModule
+  SidebarModule,
 } from '@coreui/angular-pro';
 
 import {
@@ -36,7 +36,6 @@ import {
 } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { appInitializerFactory } from './app-initializer-factory';
-import { TokenInterceptor } from './interceptors/token.interceptor';
 import { SpinnerComponent } from './shared/components/spinner';
 import { ToastComponent } from './shared/components/toast/toast.component';
 
@@ -88,20 +87,11 @@ export function createTranslateLoader(http: HttpClient) {
     IconSetService,
     Title,
     {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true,
-    },
-    {
       provide: APP_INITIALIZER,
       useFactory: appInitializerFactory,
       deps: [TranslateService, Injector],
       multi: true,
     },
-    // {
-    //   provide: BreadcrumbRouterService,
-    //   useClass: BreadcrumbService,
-    // },
   ],
   bootstrap: [AppComponent],
 })

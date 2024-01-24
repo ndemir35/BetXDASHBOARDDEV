@@ -1,10 +1,11 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { ApiResponse } from '@betx/shared/data/interfaces/response';
+import { ApiResponse } from '@betx/shared';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
-export class BaseApiService {
-  
+export abstract class BaseApiService {
+  abstract baseUrl: string;
+
   constructor(private _http: HttpClient) {}
 
   private _handleError<T>(
@@ -28,15 +29,21 @@ export class BaseApiService {
     };
   }
 
-  post<TRequest, TResponse>(url: string, body: TRequest): Observable<ApiResponse<TResponse>> {
+  post<TRequest, TResponse>(
+    path: string,
+    body: TRequest
+  ): Observable<ApiResponse<TResponse>> {
     return this._http
-      .post(url, body)
-      .pipe(map(this._mapResponse<TResponse>), catchError(this._handleError<TResponse>));
+      .post(`${this.baseUrl}${path}`, body, { withCredentials: true })
+      .pipe(
+        map(this._mapResponse<TResponse>),
+        catchError(this._handleError<TResponse>)
+      );
   }
 
-  get<T>(url: string): Observable<ApiResponse<T>> {
+  get<T>(path: string): Observable<ApiResponse<T>> {
     return this._http
-      .get(url)
+      .get(`${this.baseUrl}${path}`, { withCredentials: true })
       .pipe(map(this._mapResponse<T>), catchError(this._handleError<T>));
   }
 }

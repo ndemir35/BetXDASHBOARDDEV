@@ -1,76 +1,40 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { BaseListComponent } from '@betx/core/base.component';
+import { ActivatedRoute } from '@angular/router';
+import { BaseGenericListComponent } from '@betx/core/base.component';
 import { BreadcrumbEntry, BreadcrumbService } from '@betx/core/data/services';
-import { SHARED_MODULES } from '@betx/shared';
 import {
-  ButtonModule,
-  GridModule,
-  IColumn,
-  SharedModule,
-  SmartTableModule,
-  TableModule,
-  TemplateIdDirective,
-} from '@coreui/angular-pro';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
-
-const COLUMN_HEADERS: ReadonlyMap<string, string> = new Map<string, string>([
-  ['name', 'VIEW.ROLES.LIST.NAME'],
-  ['expiresAt', 'VIEW.ROLES.LIST.EXPIRES_AT'],
-]);
-
-const MOCK_DATA = [
-  {
-    permission: 'create:invoice',
-    description: 'Create invoice',
-    api: 'Sales Module',
-  },
-  {
-    permission: 'read:catalog-item',
-    description: 'View catalog items',
-    api: 'Gift Shop Module',
-  },
-  {
-    permission: 'read:customer-profile',
-    description: 'View customer profiles',
-    api: 'Gift Shop Module',
-  },
-  {
-    permission: 'update:user-profile',
-    description: 'Update user proile',
-    api: 'Identity Module',
-  },
-];
+  ApiResponse,
+  Permission,
+  SHARED_LIST_PAGE_MODULES,
+  SHARED_MODULES,
+} from '@betx/shared';
+import { PermissionService } from '@betx/shared/data/services/permission.service';
+import { IColumn } from '@coreui/angular-pro';
+import { TranslateService } from '@ngx-translate/core';
+import { Observable, switchMap, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'betx-permissions',
   templateUrl: './permissions.component.html',
   styleUrls: ['./permissions.component.css'],
   standalone: true,
-  imports: [
-    SHARED_MODULES,
-    SmartTableModule,
-    SharedModule,
-    TemplateIdDirective,
-    GridModule,
-    TranslateModule,
-  ],
+  imports: [SHARED_MODULES, SHARED_LIST_PAGE_MODULES],
 })
 export class PermissionsComponent
-  extends BaseListComponent
+  extends BaseGenericListComponent<Permission>
   implements OnInit, OnDestroy
 {
   protected override _breadcrumbEntry: BreadcrumbEntry | undefined;
 
   override columns: IColumn[] = [
     {
-      key: 'permission',
+      key: 'action',
     },
     {
-      key: 'description',
+      key: 'controller',
     },
     {
-      key: 'api',
+      key: 'serviceName',
     },
     {
       key: 'show',
@@ -84,38 +48,35 @@ export class PermissionsComponent
     string,
     string
   >([
-    ['permission', 'COMMON.PERMISSION'],
-    ['description', 'COMMON.DESCRIPTION'],
-    ['api', 'COMMON.API'],
+    ['action', 'VIEW.ROLES.DETAIL.PERMISSION.ACTION'],
+    ['controller', 'VIEW.ROLES.DETAIL.PERMISSION.CONTROLLER'],
+    ['serviceName', 'VIEW.ROLES.DETAIL.PERMISSION.SERVICE'],
   ]);
-  data: any[] = [
-    ...MOCK_DATA,
-    ...MOCK_DATA,
-    ...MOCK_DATA,
-    ...MOCK_DATA,
-    ...MOCK_DATA,
-    ...MOCK_DATA,
-    ...MOCK_DATA,
-    ...MOCK_DATA,
-    ...MOCK_DATA,
-    ...MOCK_DATA,
-  ];
+  override data: Permission[] = [];
 
   constructor(
     _translateService: TranslateService,
-    _breadcrumbsService: BreadcrumbService
+    _breadcrumbsService: BreadcrumbService,
+    private _permissionService: PermissionService,
+    private _route: ActivatedRoute
   ) {
     super(_translateService, _breadcrumbsService);
   }
 
+  override getData(): Observable<ApiResponse<Permission[]>> | undefined {
+    return this._route.parent?.params.pipe(
+      takeUntil(this._destroy$),
+      switchMap((params: any) => {
+        return this._permissionService.list(params.id);
+      })
+    );
+  }
+
+  override deleteRow(id: string): Observable<ApiResponse<any>> {
+    throw 'not implemented';
+  }
+
   override ngOnInit() {
     super.ngOnInit();
-    this.data = [
-      ...this.data,
-      ...this.data,
-      ...this.data,
-      ...this.data,
-      ...this.data,
-    ];
   }
 }

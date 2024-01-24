@@ -16,6 +16,7 @@
 </c-row>
 
 <c-smart-table
+  #smartTable="cSmartTable"
   activePage="1"
   [columnFilter]="true"
   [columnSorter]="true"
@@ -25,5 +26,32 @@
   [items]="data"
   pagination
   [tableProps]="{ hover: true, striped: true, responsive: true }"
+  [noItemsLabel]="'GENERIC.NO_ITEMS' | translate"
 >
+  <ng-template
+    cTemplateId="tableData"
+    let-columnName="columnName"
+    let-item="item"
+    let-tdContent="tdContent"
+  >
+    <td
+      [cTableActive]="smartTable.tableDataCellProps(item, columnName)?.['active']"
+      [cTableColor]="smartTable.tableDataCellProps(item, columnName)?.color"
+      [cAlign]="smartTable.tableDataCellProps(item, columnName)?.align"
+      [ngClass]="smartTable.tableDataCellClasses(item, columnName)"
+    >
+      <ng-container [ngSwitch]="columnName">
+        <ng-container *ngSwitchCase="'show'" class="py-2">
+          <div style="float: right">
+            <betx-action-menu
+              (onDeleteClick)="deleteRow(item.id)"
+            ></betx-action-menu>
+          </div>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+          {{ tdContent }}
+        </ng-container>
+      </ng-container>
+    </td>
+  </ng-template>
 </c-smart-table>

@@ -5,6 +5,5 @@ import { StorageItem, UserType } from '../interfaces';
   providedIn: 'root',
 })
 export class StorageService {
-  authToken = new StorageItem<string>('authToken');
   userType = new StorageItem<UserType>('userType');
 }
