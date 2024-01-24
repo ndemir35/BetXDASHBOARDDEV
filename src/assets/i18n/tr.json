@@ -91,7 +91,10 @@
         "TITLE": "Rol detayı",
         "PERMISSION": {
           "TITLE": "İzinler",
-          "DESCRIPTION": "Kolay Rol Yönetimi: Kullanıcılara İzinleri Sorunsuz Bir Şekilde Ekleyip Kaldırmak İçin Yetki Ver"
+          "DESCRIPTION": "Kolay Rol Yönetimi: Kullanıcılara İzinleri Sorunsuz Bir Şekilde Ekleyip Kaldırmak İçin Yetki Ver",
+          "ACTION": "Eylem",
+          "CONTROLLER": "Kontrolör",
+          "SERVICE": "Hizmet"
         },
         "USER": {
           "TITLE": "Kullanıcılar",

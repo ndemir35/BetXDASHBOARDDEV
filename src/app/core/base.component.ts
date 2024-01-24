@@ -1,7 +1,8 @@
 import { Directive, OnDestroy, OnInit } from '@angular/core';
+import { ApiResponse } from '@betx/shared';
 import { IColumn } from '@coreui/angular-pro';
 import { TranslateService } from '@ngx-translate/core';
-import { Subject, takeUntil } from 'rxjs';
+import { Observable, Subject, takeUntil, tap } from 'rxjs';
 import { BreadcrumbEntry, BreadcrumbService } from './data/services';
 
 @Directive()
@@ -32,8 +33,8 @@ export abstract class BaseListComponent
   extends BaseComponent
   implements OnDestroy, OnInit
 {
-  public abstract columns: IColumn[];
   public isLoading: boolean = false;
+  public abstract columns: IColumn[];
   protected abstract columnHeaderLabelMap: ReadonlyMap<string, string>;
 
   constructor(
@@ -65,6 +66,47 @@ export abstract class BaseListComponent
     this._translateService.onLangChange
       .pipe(takeUntil(this._destroy$))
       .subscribe(this._translateColumns.bind(this));
+  }
+
+  override ngOnDestroy(): void {
+    super.ngOnDestroy();
+  }
+}
+@Directive()
+export abstract class BaseGenericListComponent<T>
+  extends BaseListComponent
+  implements OnInit, OnDestroy
+{
+  public data: T[] = [];
+  public override isLoading: boolean = false;
+
+  constructor(
+    _translateService: TranslateService,
+    _breadcrumbService: BreadcrumbService
+  ) {
+    super(_translateService, _breadcrumbService);
+  }
+
+  abstract getData(): Observable<ApiResponse<T[]>> | undefined;
+
+  abstract deleteRow(id: string): Observable<ApiResponse<any>>;
+
+  onDataReceived(response: ApiResponse<T[]>) {
+    this.data = response.data;
+  }
+
+  override ngOnInit(): void {
+    super.ngOnInit();
+    this.isLoading = true;
+
+    this.getData()
+      ?.pipe(
+        tap(() => (this.isLoading = false)),
+        takeUntil(this._destroy$)
+      )
+      .subscribe((res: ApiResponse<T[]>) => {
+        this.onDataReceived(res);
+      });
   }
 
   override ngOnDestroy(): void {

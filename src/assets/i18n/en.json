@@ -91,7 +91,10 @@
         "TITLE": "Role detail",
         "PERMISSION": {
           "TITLE": "Permissions",
-          "DESCRIPTION": "Effortless Role Management: Empower Users to Seamlessly Add or Remove Permissions from Roles"
+          "DESCRIPTION": "Effortless Role Management: Empower Users to Seamlessly Add or Remove Permissions from Roles",
+          "ACTION": "Action",
+          "CONTROLLER": "Controller",
+          "SERVICE": "Service"
         },
         "USER": {
           "TITLE": "Users",

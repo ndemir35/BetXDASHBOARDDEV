@@ -91,7 +91,10 @@
         "TITLE": "Detalhes da função",
         "PERMISSION": {
           "TITLE": "Permissões",
-          "DESCRIPTION": "Gerenciamento de Funções Descomplicado: Capacite os Usuários a Adicionar ou Remover Permissões dos Papéis com Facilidade"
+          "DESCRIPTION": "Gerenciamento de Funções Descomplicado: Capacite os Usuários a Adicionar ou Remover Permissões dos Papéis com Facilidade",
+          "ACTION": "Ação",
+          "CONTROLLER": "Controlador",
+          "SERVICE": "Serviço"
         },
         "USER": {
           "TITLE": "Usuários",

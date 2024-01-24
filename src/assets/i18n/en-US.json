@@ -73,27 +73,48 @@
   "VIEW": {
     "ROLES": {
       "TITLE": "Roles",
+      "DESCRIPTION": "Effortlessly control your roles with the ability to edit, delete, or create new roles. Streamline your role management process by customizing permissions and user access to meet your organizational needs",
       "DELETE_WARNING": "Do you really want to delete the role \"{{roleName}}\"?",
       "DELETE_SUCCESS": "\"{{roleName}}\" deleted successfully!",
       "DELETE_ERROR": "The delete operation of role \"{{roleName}}\" has failed!",
+      "NEW": {
+        "TITLE": "New role"
+      },
       "LIST": {
         "NAME": "Name",
         "EXPIRES_AT": "Expires at"
+      },
+      "EDIT": {
+        "TITLE": "Update role"
+      },
+      "DETAIL": {
+        "TITLE": "Role detail",
+        "PERMISSION": {
+          "TITLE": "Permissions",
+          "DESCRIPTION": "Effortless Role Management: Empower Users to Seamlessly Add or Remove Permissions from Roles",
+          "ACTION": "Action",
+          "CONTROLLER": "Controller",
+          "SERVICE": "Service"
+        },
+        "USER": {
+          "TITLE": "Users",
+          "DESCRIPTION": "Explore the list of users currently assigned to this role. Here, you have the ability to seamlessly manage the role's user composition. Add new users to this role effortlessly or remove existing users with just a few clicks. Empower your role administration with easy user management functionality."
+        }
       }
     },
     "USERS": {
-      "TITLE": "Users"
+      "TITLE": "Users",
+      "DESCRIPTION": "Effortlessly manage your users with the ability to edit, delete, or create new users. Customize user profiles and permissions to tailor their access and roles according to your organizational requirements.",
+      "NEW": {
+        "TITLE": "New user"
+      },
+      "EDIT": {
+        "TITLE": "Update user"
+      }
     }
   },
   "GENERIC": {
     "NO_ITEMS": "No items found"
-  },
-  "BREADCRUMBS": {
-    "DASHBOARD": "Dashboard",
-    "LIST_ROLE": "Role list",
-    "NEW_ROLE": "New role",
-    "LIST_USER": "User list",
-    "NEW_USER": "New user"
   },
   "ACTION_MENU": {
     "ACTIONS": "Actions"

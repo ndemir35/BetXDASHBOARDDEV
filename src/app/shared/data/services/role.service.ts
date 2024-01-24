@@ -28,7 +28,7 @@ export class RoleService extends BaseIdentityService {
       map((response) => ({
         ...response,
         data: response.data?.map(
-          (d) =>
+          (d: any) =>
             (({
               id: d.roleId,
               name: d.roleName,
