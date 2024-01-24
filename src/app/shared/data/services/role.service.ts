@@ -1,24 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BaseApiService } from '@betx/core/data/services/base-api-service';
+import { BaseIdentityService } from '@betx/core/data/services/base-identity-service';
 import { Observable, map } from 'rxjs';
-import { environment } from '~/environments/environment';
 import {
   ApiResponse,
   Role,
   RoleDeleteModel,
   RoleListResponse,
   RoleNewModel,
-  RoleUpdateModel
+  RoleUpdateModel,
 } from '../interfaces';
-
-const SERVICE_URL = environment.identityServiceUrl;
 
 @Injectable({
   providedIn: 'root',
 })
-export class RoleService extends BaseApiService {
-
+export class RoleService extends BaseIdentityService {
   constructor(_httpClient: HttpClient) {
     super(_httpClient);
   }
@@ -28,9 +24,7 @@ export class RoleService extends BaseApiService {
    * @returns {Observable<ApiResponse<Role[]>>} An observable that emits a response containing a list of roles.
    */
   listRoles(): Observable<ApiResponse<Role[]>> {
-    return this.get<RoleListResponse[]>(
-      `${environment.identityServiceUrl}/role/list`
-    ).pipe(
+    return this.get<RoleListResponse[]>(`/role/list`).pipe(
       map((response) => ({
         ...response,
         data: response.data?.map(
@@ -51,7 +45,7 @@ export class RoleService extends BaseApiService {
    * @returns {Observable<any>} - An observable that emits when the role is successfully deleted.
    */
   delete(id: string): Observable<ApiResponse<any>> {
-    return this.post<RoleDeleteModel, any>(SERVICE_URL + '/role/delete', {
+    return this.post<RoleDeleteModel, any>('/role/delete', {
       roleId: id,
     });
   }
@@ -63,9 +57,8 @@ export class RoleService extends BaseApiService {
    * @returns {Observable<ApiResponse<any>>} An observable that emits a response indicating whether the role was added successfully.
    */
   add(model: RoleNewModel): Observable<ApiResponse<any>> {
-    return this.post<RoleNewModel, any>(SERVICE_URL + '/role/add', model);
+    return this.post<RoleNewModel, any>('/role/add', model);
   }
-
 
   /**
    * Updates an existing role in the system.
@@ -74,6 +67,6 @@ export class RoleService extends BaseApiService {
    * @returns {Observable<ApiResponse<any>>} An observable that emits a response indicating whether the role was updated successfully.
    */
   update(model: RoleUpdateModel): Observable<ApiResponse<any>> {
-    return this.post<RoleUpdateModel, any>(SERVICE_URL + '/role/update', model);
+    return this.post<RoleUpdateModel, any>('/role/update', model);
   }
 }

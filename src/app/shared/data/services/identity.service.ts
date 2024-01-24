@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BaseApiService } from '@betx/core/data/services/base-api-service';
+import { BaseIdentityService } from '@betx/core/data/services/base-identity-service';
 import { Observable, of } from 'rxjs';
-import { environment } from '~/environments/environment';
 import { UserLoginModel, UserRegisterModel } from '../interfaces';
 import {
   ApiResponse,
@@ -13,13 +12,13 @@ import {
 @Injectable({
   providedIn: 'root',
 })
-export class IdentityService extends BaseApiService {
+export class IdentityService extends BaseIdentityService {
   constructor(_http: HttpClient) {
     super(_http);
   }
 
   logout(): Observable<ApiResponse<UserLogoutResponse>> {
-    return this.post(`${environment.identityServiceUrl}/user/logout`, {});
+    return this.post(`/user/logout`, {});
   }
 
   isLoggedIn(): Observable<boolean> {
@@ -30,7 +29,7 @@ export class IdentityService extends BaseApiService {
     userLoginModel: UserLoginModel
   ): Observable<ApiResponse<UserLoginResponse>> {
     return this.post<UserLoginModel, UserLoginResponse>(
-      `${environment.identityServiceUrl}/user/login`,
+      `/user/login`,
       userLoginModel
     );
   }
@@ -41,6 +40,6 @@ export class IdentityService extends BaseApiService {
 
   register(user: UserRegisterModel): Observable<ApiResponse<any>> {
     user.userTypeId = '1';
-    return this.post(`${environment.identityServiceUrl}/user/register`, user);
+    return this.post(`/user/register`, user);
   }
 }
